@@ -1,0 +1,35 @@
+digraph {
+  rankdir=LR;
+  label="Team structures";
+  labelloc=t;
+  fontname=helvetica;
+  // bgcolor=transparent;
+
+  node[fontname=helvetica; label=""; style=filled];
+
+  // Set cluster order (top to bottom) by initializing
+  // nodes in each cluster starting from bottom to top
+  d1, solo;
+
+  // Shapes are projects
+  d1, d2, solo[shape=circle];
+
+  // Colors are people
+  d1, solo[fillcolor="#66C2A5"];
+  d2[fillcolor="#8DA0CB"];
+
+  // Invisible last nodes
+  dinv1, soloinv1[style=invis, width=0];
+
+
+  subgraph cluster1 {
+    label="Diachronic";
+    d1 -> d2 -> dinv1;
+  }
+
+  subgraph cluster2 {
+    label="Solo";
+    solo -> soloinv1[minlen=2];
+  }
+
+}

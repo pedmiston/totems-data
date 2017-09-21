@@ -1,0 +1,44 @@
+digraph {
+  rankdir=LR;
+  label="Strategies";
+  labelloc=t;
+  fontname=helvetica;
+  // bgcolor=transparent;
+
+  node[fontname=helvetica; label=""; style=filled];
+
+  // Set cluster order (top to bottom) by initializing
+  // nodes in each cluster starting from bottom to top
+  s1, solo, d1;
+
+  // Shapes are projects
+  d1, d2, solo, s1, s2[shape=circle];
+
+  // Colors are people
+  s1[fillcolor="#66C2A5"];
+  s2[fillcolor="#b3e2cd"];
+  d1[fillcolor="#8DA0CB"];
+  d2[fillcolor="#cbd5e8"];
+  solo[fillcolor="#FC8D62"];
+
+  // Invisible last nodes
+  dinv1, soloinv1, sinv1, sinv2[style=invis, width=0];
+
+
+  subgraph cluster1 {
+    label="Diachronic";
+    d1 -> d2 -> dinv1;
+  }
+
+  subgraph cluster2 {
+    label="Isolated";
+    solo -> soloinv1[minlen=2];
+  }
+
+  subgraph cluster3 {
+    label="Synchronic";
+    s1 -> sinv1;
+    s2 -> sinv2;
+  }
+
+}

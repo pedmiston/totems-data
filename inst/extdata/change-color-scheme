@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Replace color hexes from values set at rev 44d6a8f
+
+# Diachronic team color
+D1=549F88
+D2=66C2A5
+D3=81CDB5
+D4=9DD8C5
+
+# Synchronic team colors
+S1=7483A7
+S2=8DA0CB
+S3=A1B1D4
+S4=B6C2DD
+
+# Isolated colors
+I1=F28D62
+I2=FCA17E
+
+sed \
+    -i.bk \
+    -e "s/2171b5/$D1/g" \
+    -e "s/6baed6/$D2/g" \
+    -e "s/bdd7e7/$D3/g" \
+    -e "s/eff3ff/$D4/g" \
+    -e "s/238b45/$S1/g" \
+    -e "s/74c476/$S2/g" \
+    -e "s/bae4b3/$S3/g" \
+    -e "s/edf8e9/$S4/g" \
+    *.gv

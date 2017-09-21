@@ -1,0 +1,43 @@
+digraph {
+  rankdir=BT;
+  label="Feedback conditions";
+  labelloc="t";
+  fontname=helvetica;
+  // bgcolor=transparent;
+
+  node[label="", shape=circle, fontname=helvetica; style=filled];
+  edge[fontname=helvetica];
+
+  // Colors are people
+  y1, n1, e1, ya, na, ea[fillcolor="#66C2A5"];
+  yb, nb, eb[fillcolor="#8DA0CB"];
+
+  // Shapes
+  yfeedback, efeedback[shape=rect, label="Evaluator"];
+  nfeedback[style=invis, width=0];
+
+  subgraph cluster0 {
+    label = "Yes";
+    labelloc = "b";
+    y1 -> yfeedback -> {ya, yb};
+    ya -> yb[constraint=false];
+  }
+
+  subgraph cluster1 {
+    label = "No";
+    labelloc = "b";
+    n1 -> nfeedback[arrowhead=none, headclip=false];
+    nfeedback -> {na, nb}[tailclip=false];
+    na -> nb[constraint=false];
+  }
+
+  subgraph cluster2 {
+    label = "Enforced";
+    labelloc = "b";
+    e1 -> efeedback;
+    efeedback -> e1[tailport=se, headport=e, weight=0];
+    efeedback -> {ea, eb};
+    ea -> eb[constraint=false];
+  }
+
+}

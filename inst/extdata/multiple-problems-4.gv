@@ -1,0 +1,40 @@
+digraph {
+  fontname=helvetica;
+  node[fontname=helvetica; label=""; style=filled; width=0.5];
+  rankdir=LR;
+
+  // Determine subgraph order
+  d1a, s1a;
+
+  // Colors are people
+  s1b, s2b, s3b, s4b, d1b, d2b, d3b, d4b[fillcolor="#FC8D62"];
+  s1a, s2a, s3a, s4a, d1a, d2a, d3a, d4a[fillcolor="#66C2A5"];
+  s1c, s2c, s3c, s4c, d1c, d2c, d3c, d4c[fillcolor="#8DA0CB"];
+  s1d, s2d, s3d, s4d, d1d, d2d, d3d, d4d[fillcolor="#E78AC3"];
+
+  // Shapes are projects
+  s1a, s1b, s1c, s1d, d1a, d2b, d3c, d4d[shape=circle];
+  s2a, s2b, s2c, s2d, d1d, d2a, d3b, d4c[shape=square];
+  s3a, s3b, s3c, s3d, d1c, d2d, d3a, d4b[shape=diamond];
+  s4a, s4b, s4c, s4d, d1b, d2c, d3d, d4a[shape=triangle];
+
+  // Invisible last nodes
+  sinv1, sinv2, sinv3, sinv4, dinv1, dinv2, dinv3, dinv4[style=invis];
+
+  subgraph cluster0 {
+    label="Synchronic team";
+    s1a -> s2a -> s3a -> s4a -> sinv1;
+    s1b -> s2b -> s3b -> s4b -> sinv2;
+    s1c -> s2c -> s3c -> s4c -> sinv3;
+    s1d -> s2d -> s3d -> s4d -> sinv4;
+  }
+
+  subgraph cluster1 {
+    label="Diachronic team";
+    d1a -> d2a -> d3a -> d4a -> dinv1;
+    d1b -> d2b -> d3b -> d4b -> dinv2;
+    d1c -> d2c -> d3c -> d4c -> dinv3;
+    d1d -> d2d -> d3d -> d4d -> dinv4;
+  }
+
+}

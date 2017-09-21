@@ -1,0 +1,37 @@
+digraph {
+  rankdir=LR;
+  label="Multiple problems";
+  labelloc=t;
+  fontname=helvetica;
+  // bgcolor=transparent;
+
+  node[fontname=helvetica; label=""; style=filled; width=0.5];
+
+  // Set cluster order (top to bottom) by initializing
+  // nodes in each cluster starting from bottom to top
+  s1a, d1a;
+
+  // Colors are people
+  s1a, s2a, d1a, d2a[fillcolor="#66C2A5"];
+  s1b, s2b, d1b, d2b[fillcolor="#8DA0CB"];
+
+  // Shapes are projects
+  s1a, s1b, d1a, d2b[shape=circle];
+  s2a, s2b, d1b, d2a[shape=square];
+
+  // Invisible last nodes
+  sinv1, sinv2, dinv1, dinv2[style=invis, width=0];
+
+  subgraph cluster1 {
+    label="Synchronic";
+    s1a -> s2a -> sinv1;
+    s1b -> s2b -> sinv2;
+  }
+
+  subgraph cluster2 {
+    label="Diachronic";
+    d1a -> d2a -> dinv1;
+    d1b -> d2b -> dinv2;
+  }
+
+}
