@@ -4,7 +4,10 @@
 \alias{connect_db}
 \title{Connect to the Totems MySQL DB.}
 \usage{
-connect_db()
+connect_db(config_file = "config.yml")
+}
+\arguments{
+\item{config_file}{Config file in yaml format. Defaults to "config.yml".}
 }
 \description{
 Connect to the Totems MySQL DB.

@@ -1,3 +1,8 @@
-source("R/db.R")
+library(devtools)
+load_all()
+
 con <- connect_db()
-RMySQL::dbListTables(con)
+Teams <- data_teams(con)
+Players <- data_players(con)
+
+use_data(Teams, Players, overwrite = TRUE)
