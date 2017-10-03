@@ -6,6 +6,9 @@
 \usage{
 data_players(con)
 }
+\arguments{
+\item{con}{DBIConnection class. See \code{\link{connect_db}}.}
+}
 \description{
 Get player data from the database.
 }

@@ -6,6 +6,9 @@
 \usage{
 data_teams(con)
 }
+\arguments{
+\item{con}{DBIConnection class. See \code{\link{connect_db}}.}
+}
 \description{
 Get team data from the database.
 }
