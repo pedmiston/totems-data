@@ -4,10 +4,7 @@
 \alias{data_players}
 \title{Get player data from the database.}
 \usage{
-data_players(con)
-}
-\arguments{
-\item{con}{DBIConnection class. See \code{\link{connect_db}}.}
+data_players()
 }
 \description{
 Get player data from the database.

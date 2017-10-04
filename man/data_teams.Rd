@@ -2,13 +2,10 @@
 % Please edit documentation in R/data-teams.R
 \name{data_teams}
 \alias{data_teams}
-\title{Get team data from the database.}
+\title{Get Teams data.}
 \usage{
-data_teams(con)
-}
-\arguments{
-\item{con}{DBIConnection class. See \code{\link{connect_db}}.}
+data_teams()
 }
 \description{
-Get team data from the database.
+Get Teams data.
 }

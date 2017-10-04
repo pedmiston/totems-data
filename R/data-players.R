@@ -1,38 +1,46 @@
 #' Get player data from the database.
-#' @param con DBIConnection class. See \code{\link{connect_db}}.
 #' @import dplyr
+#' @import RMySQL
 #' @export
-data_players <- function(con) {
-  teams <- data_teams(con)
-  Players <- tbl(con, "Table_Player") %>%
-    collect() %>%
-    rename_player_id(con) %>%
-    rename_group_id(con) %>%
-    left_join(teams) %>%
+data_players <- function() {
+  con <- connect_db()
+  Players <- collect(tbl(con, "Table_Player")) %>%
+    replace_id_group() %>%
+    replace_id_player() %>%
+    join_teams() %>%
     create_generation() %>%
     assign_player_ix() %>%
-    select(PlayerID, TeamID, Strategy, Generation, PlayerIX, SessionDuration) %>%
-    arrange(Strategy, TeamID, Generation)
-  collect(Players)
+    arrange(Strategy, TeamID, Generation) %>%
+    select(
+      PlayerID,
+      PlayerIX,
+      Strategy,
+      TeamID,
+      Generation,
+      SessionDuration
+    )
+  dbDisconnect(con)
+  Players
+}
+
+#' Replace ID_Player with PlayerID
+replace_id_player <- function(frame) {
+  recode_id_player(frame) %>% select(-ID_Player)
 }
 
 #' Recode ID_Player (int) as PlayerID (char)
-recode_player_id <- function(frame, con) {
-  player_id_levels <- tbl(con, "Table_Player") %>%
+recode_id_player <- function(frame) {
+  con <- connect_db()
+  player_id_levels <- collect(tbl(con, "Table_Player")) %>%
     arrange(ID_Player) %>%
-    collect() %>%
     .$ID_Player
   player_id_labels <- paste0("P", seq_along(player_id_levels))
   player_id_map <- data_frame(
     ID_Player = player_id_levels,
     PlayerID = player_id_labels
   )
-  left_join(frame, player_id_map, copy = TRUE)
-}
-
-#' Replace ID_Player with PlayerID
-rename_player_id <- function(frame, con) {
-  recode_player_id(frame, con) %>% select(-ID_Player)
+  dbDisconnect(con)
+  left_join(frame, player_id_map)
 }
 
 #' Create Generation from Ancestor by Strategy
@@ -46,4 +54,9 @@ assign_player_ix <- function(frame) {
     group_by(TeamID, Generation) %>%
     mutate(PlayerIX = paste0("P", 1:n())) %>%
     ungroup()
+}
+
+join_players <- function(frame) {
+  players <- data_players()
+  left_join(frame, players)
 }

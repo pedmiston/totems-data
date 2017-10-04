@@ -2,41 +2,56 @@
 #' @param con DBI Connection class.
 #' @import dplyr
 #' @export
-data_guesses <- function(con) {
-  players <- data_players(con)
-  teams <- data_teams(con)
-  Workshop <- tbl(con, "Table_Workshop") %>%
-    collect() %>%
-    rename_player_id(con) %>%
-    left_join(players) %>%
-    left_join(teams) %>%
-    calculate_time() %>%
-    count_guesses("PlayerID", "GuessNum") %>%
-    count_guesses("TeamID", "TeamGuessNum") %>%
+data_guesses <- function() {
+  con <- connect_db()
+  Guesses <- collect(tbl(con, "Table_Workshop")) %>%
+    replace_id_player() %>%
+    join_players() %>%
+    join_teams() %>%
+    replace_trial_time() %>%
+    calculate_team_time() %>%
+    count_player_guesses() %>%
+    count_team_guesses() %>%
     calculate_score() %>%
     determine_unique_guess() %>%
     determine_unique_item() %>%
     select(
-      PlayerID,
+      PlayerID, TeamID, Strategy, Generation,
       PlayerTime, TeamTime,
-      GuessNum, TeamGuessNum,
+      PlayerGuessNum, TeamGuessNum,
       Guess = WorkShopString, Result = WorkShopResult,
       Score, TeamScore,
       UniqueGuess, TeamUniqueGuess,
       UniqueItem, TeamUniqueItem
     )
+  RMySQL::dbDisconnect(con)
+  Guesses
 }
 
-calculate_time <- function(frame) {
-  session_duration_sec <- 25 * 60
-  # Convert milliseconds to seconds
+#' Replace TrialTime (msec) with PlayerTime (sec)
+replace_trial_time <- function(frame) {
   frame %>%
-    mutate(
-      PlayerTime = TrialTime/1000,
-      TeamTime = ifelse(Strategy == "Diachronic",
-                        (Generation-1) * session_duration_sec + PlayerTime,
-                        PlayerTime)
-    )
+    mutate(PlayerTime = TrialTime/1000) %>%
+    select(-TrialTime)
+}
+
+#' Calculate TeamTime for Diachronic teams.
+calculate_team_time <- function(frame) {
+  session_duration_sec <- 25 * 60
+  frame %>%
+    mutate(TeamTime = ifelse(Strategy == "Diachronic",
+                             (Generation-1) * session_duration_sec + PlayerTime,
+                             PlayerTime))
+}
+
+#' Enumerate each player's guesses.
+count_player_guesses <- function(frame) {
+  count_guesses(frame, "PlayerID", "PlayerGuessNum")
+}
+
+#' Enumerate each team's guesses.
+count_team_guesses <- function(frame) {
+  count_guesses(frame, "TeamID", "TeamGuessNum")
 }
 
 #' Enumerate guesses by a grouping variable.

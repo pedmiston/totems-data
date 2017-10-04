@@ -2,13 +2,14 @@
 % Please edit documentation in R/db.R
 \name{connect_db}
 \alias{connect_db}
-\title{Connect to the Totems MySQL DB.}
+\title{Open a connection to the Totems MySQL DB.}
 \usage{
-connect_db(config_file = "config.yml")
+connect_db()
 }
-\arguments{
-\item{config_file}{Name of config file in yaml format. Defaults to "config.yml".}
+\value{
+DBI Connection class
 }
 \description{
-Connect to the Totems MySQL DB.
+Reads DB info from a file "config.yml"
+expected in the current directory.
 }

@@ -1,8 +1,12 @@
-#' Connect to the Totems MySQL DB.
-#' @param config_file Name of config file in yaml format. Defaults to "config.yml".
+#' Open a connection to the Totems MySQL DB.
+#'
+#' Reads DB info from a file "config.yml"
+#' expected in the current directory.
+#'
+#' @return DBI Connection class
 #' @export
-connect_db <- function(config_file = "config.yml") {
-  config <- yaml::yaml.load_file(config_file)
+connect_db <- function() {
+  config <- yaml::yaml.load_file("config.yml")
   DBI::dbConnect(RMySQL::MySQL(),
                  dbname = "Totems",
                  host = config$host,
@@ -11,11 +15,11 @@ connect_db <- function(config_file = "config.yml") {
                  password = config$password)
 }
 
-#' Create a blank config file.
-#' @inheritParams connect_db
+#' Create a blank config file "config.yml" in the current directory.
 #' @import magrittr
-create_blank_config <- function(config_file = "config.yml") {
-  list(host="", port="", user="", password="") %>%
+#' @export
+create_blank_config <- function() {
+  list(host="", port=0, user="", password="") %>%
     yaml::as.yaml() %>%
-    writeLines(con = config_file)
+    writeLines(con = "config.yml")
 }

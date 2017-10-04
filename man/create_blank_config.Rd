@@ -2,13 +2,10 @@
 % Please edit documentation in R/db.R
 \name{create_blank_config}
 \alias{create_blank_config}
-\title{Create a blank config file.}
+\title{Create a blank config file "config.yml" in the current directory.}
 \usage{
-create_blank_config(config_file = "config.yml")
-}
-\arguments{
-\item{config_file}{Name of config file in yaml format. Defaults to "config.yml".}
+create_blank_config()
 }
 \description{
-Create a blank config file.
+Create a blank config file "config.yml" in the current directory.
 }
