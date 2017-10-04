@@ -4,8 +4,7 @@
 data_teams <- function(con) {
   Teams <- tbl(con, "Table_Group") %>%
     rename_group_id(con) %>%
-    rename(Strategy = Treatment, TeamSize = Size) %>%
-    select(TeamID, Strategy, TeamSize)
+    select(TeamID, Strategy = Treatment, TeamSize = Size, SessionDuration = BuildingTime)
   collect(Teams)
 }
 
@@ -20,7 +19,7 @@ recode_group_id <- function(frame, con) {
     ID_Group = team_id_levels,
     TeamID = team_id_labels
   )
-  left_join(frame, team_id_map)
+  left_join(frame, team_id_map, copy = TRUE)
 }
 
 #' Replace ID_Group with TeamID.

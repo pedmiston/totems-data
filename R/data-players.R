@@ -3,12 +3,15 @@
 #' @import dplyr
 #' @export
 data_players <- function(con) {
+  teams <- data_teams(con)
   Players <- tbl(con, "Table_Player") %>%
+    collect() %>%
     rename_player_id(con) %>%
     rename_group_id(con) %>%
+    left_join(teams) %>%
     create_generation() %>%
     assign_player_ix() %>%
-    select(PlayerID, TeamID, Strategy = Treatment, Generation, PlayerIX, SessionDuration = BuildingTime) %>%
+    select(PlayerID, TeamID, Strategy, Generation, PlayerIX, SessionDuration) %>%
     arrange(Strategy, TeamID, Generation)
   collect(Players)
 }
@@ -24,7 +27,7 @@ recode_player_id <- function(frame, con) {
     ID_Player = player_id_levels,
     PlayerID = player_id_labels
   )
-  left_join(frame, player_id_map)
+  left_join(frame, player_id_map, copy = TRUE)
 }
 
 #' Replace ID_Player with PlayerID
