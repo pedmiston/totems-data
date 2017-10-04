@@ -13,8 +13,12 @@ data_guesses <- function() {
     count_player_guesses() %>%
     count_team_guesses() %>%
     calculate_score() %>%
+    # rolling_player_guesses() %>%
     determine_unique_guess() %>%
-    determine_unique_item() %>%
+    label_unique_guesses() %>%
+    label_team_unique_guesses() %>%
+    label_unique_item() %>%
+    label_team_unique_item() %>%
     select(
       PlayerID, TeamID, Strategy, Generation,
       PlayerTime, TeamTime,
@@ -46,7 +50,7 @@ calculate_team_time <- function(frame) {
 
 #' Enumerate each player's guesses.
 count_player_guesses <- function(frame) {
-  count_guesses(frame, "PlayerID", "PlayerGuessNum")
+  count_guesses(frame, "PlayerID", "GuessNum")
 }
 
 #' Enumerate each team's guesses.
@@ -72,18 +76,18 @@ calculate_score <- function(frame) {
     )
 }
 
-determine_unique_guess <- function(frame) {
-  frame %>%
-    mutate(
-      UniqueGuess = NA,
-      TeamUniqueGuess = NA
-    )
+label_team_unique_guesses <- function(frame) {
+  frame
 }
 
-determine_unique_item <- function(frame) {
+label_unique_items <- function(frame) {
   frame %>%
     mutate(
       UniqueItem = NA,
       TeamUniqueItem = NA
     )
+}
+
+label_team_unique_items <- function(frame) {
+  frame
 }
