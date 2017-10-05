@@ -75,3 +75,9 @@ test_that("item uniqueness is labeled", {
   result <- label_unique_items(Inventories)
   expect_equal(result$UniqueItem, expected)
 })
+
+test_that("inventory size is labeled", {
+  expected <- c(6, 7, 8, 6, 7)
+  result <- label_unique_items(Inventories)
+  expect_equal(result$InventorySize, expected)
+})

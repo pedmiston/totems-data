@@ -19,16 +19,13 @@ data_guesses <- function() {
     count_player_guesses() %>%
     count_team_guesses() %>%
 
-    # Label guesses as unique
+    # Label guesses as unique and cumulate unique guesses
     label_unique_guesses() %>%
     label_unique_team_guesses() %>%
 
-    # Label items as unique
+    # Label items as unique and cumulate unique items
     label_unique_items() %>%
     label_unique_team_items() %>%
-
-    # Compute cumulative sums of unique items and guesses
-    cumulate_uniques() %>%
 
     # Merge score
     merge_player_score() %>%
@@ -44,9 +41,9 @@ data_guesses <- function() {
       Guess, Result,
       PlayerScore, TeamScore,
       UniqueGuess, NumUniqueGuesses,
-      UniqueItem, NumUniqueItems,
+      UniqueItem, InventorySize,
       UniqueTeamGuess, NumUniqueTeamGuesses,
-      UniqueTeamItem, NumUniqueTeamItems,
+      UniqueTeamItem, TeamInventorySize,
       NumCurrentPlayers, TeamSize
     )
   Guesses

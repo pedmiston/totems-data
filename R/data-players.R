@@ -52,6 +52,7 @@ assign_player_ix <- function(frame) {
     ungroup()
 }
 
+#' Merge with Players data
 join_players <- function(frame) {
   players <- data_players()
   left_join(frame, players)

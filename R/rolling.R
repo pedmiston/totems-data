@@ -1,7 +1,8 @@
 #' Keep track of accumulating variables.
 #'
-#' @example
-#' rolling(c("a", "b", "b", "c")) # == list(NA, "a", c("a", "b"), c("a", "b"))
+#' @examples
+#' items <- c("a", "b", "b", "c")
+#' rolling(items)
 #'
 #' @import magrittr
 #' @export
@@ -20,6 +21,8 @@ rolling <- function(items, default = NA) {
   results
 }
 
+#' Create PrevGuesses list column containing
+#' unique guesses made by this player.
 rolling_player_guesses <- function(Guesses) {
   Guesses %>%
     group_by(PlayerID) %>%
@@ -29,14 +32,8 @@ rolling_player_guesses <- function(Guesses) {
     arrange(PlayerID, GuessNum)
 }
 
-label_unique_guesses <- function(frame) {
-  frame %>%
-    rolling_player_guesses() %>%
-    rowwise() %>%
-    mutate(UniqueGuess = !(Guess %in% PrevGuesses)) %>%
-    ungroup()
-}
-
+#' Create PrevTeamGuesses list column containing
+#' unique guesses made by this team.
 rolling_team_guesses <- function(Guesses) {
   Guesses %>%
     group_by(TeamID) %>%
@@ -46,14 +43,8 @@ rolling_team_guesses <- function(Guesses) {
     arrange(TeamID, TeamGuessNum)
 }
 
-label_unique_team_guesses <- function(frame) {
-  frame %>%
-    rolling_team_guesses() %>%
-    rowwise() %>%
-    mutate(UniqueTeamGuess = !(Guess %in% PrevTeamGuesses)) %>%
-    ungroup()
-}
-
+#' Create PrevInventory list column containing
+#' unique inventories held by this player.
 rolling_player_inventory <- function(Guesses) {
   Guesses %>%
     group_by(PlayerID) %>%
@@ -63,14 +54,8 @@ rolling_player_inventory <- function(Guesses) {
     arrange(PlayerID, GuessNum)
 }
 
-label_unique_items <- function(Guesses) {
-  Guesses %>%
-    rolling_player_inventory() %>%
-    rowwise() %>%
-    mutate(UniqueItem = !(Result %in% PrevInventory)) %>%
-    ungroup()
-}
-
+#' Create PrevTeamInventory list column containing
+#' unique inventories held by this team.
 rolling_team_inventory <- function(Guesses) {
   Guesses %>%
     group_by(TeamID) %>%
@@ -80,10 +65,50 @@ rolling_team_inventory <- function(Guesses) {
     arrange(TeamID, TeamGuessNum)
 }
 
+#' Assess the uniqueness of each Guess for this player.
+label_unique_guesses <- function(frame) {
+  frame %>%
+    rolling_player_guesses() %>%
+    rowwise() %>%
+    mutate(
+      UniqueGuess = !(Guess %in% PrevGuesses),
+      NumUniqueGuesses = length(PrevGuesses)
+    ) %>%
+    ungroup()
+}
+
+#' Assess the uniqueness of each Guess for this team.
+label_unique_team_guesses <- function(frame) {
+  frame %>%
+    rolling_team_guesses() %>%
+    rowwise() %>%
+    mutate(
+      UniqueTeamGuess = !(Guess %in% PrevTeamGuesses),
+      NumUniqueTeamGuesses = length(PrevTeamGuesses)
+    ) %>%
+    ungroup()
+}
+
+#' Assess the uniqueness of each created Item for this player.
+label_unique_items <- function(Guesses) {
+  Guesses %>%
+    rolling_player_inventory() %>%
+    rowwise() %>%
+    mutate(
+      UniqueItem = !(Result %in% PrevInventory),
+      InventorySize = length(PrevInventory)
+    ) %>%
+    ungroup()
+}
+
+#' Assess the uniqueness of each created Item for this team.
 label_unique_team_items <- function(frame) {
   frame %>%
     rolling_team_inventory() %>%
     rowwise() %>%
-    mutate(UniqueTeamItem = !(Result %in% PrevTeamInventory)) %>%
+    mutate(
+      UniqueTeamItem = !(Result %in% PrevTeamInventory),
+      TeamInventorySize = length(PrevTeamInventory)
+    ) %>%
     ungroup()
 }
