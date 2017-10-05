@@ -3,32 +3,43 @@
 #' @import dplyr
 #' @export
 data_guesses <- function() {
-  con <- connect_db()
-  Guesses <- collect(tbl(con, "Table_Workshop")) %>%
+  Guesses <- collect_tbl("Table_Workshop") %>%
+    rename(Guess = WorkShopString, Result = WorkShopResult) %>%
+
+    # Merge player and team info
     replace_id_player() %>%
     join_players() %>%
     join_teams() %>%
+
+    # Calculate kinds of time
     replace_trial_time() %>%
     calculate_team_time() %>%
+
+    # Enumerate guesses by player and team
     count_player_guesses() %>%
     count_team_guesses() %>%
-    calculate_score() %>%
-    # rolling_player_guesses() %>%
-    determine_unique_guess() %>%
+
+    # Label guesses as unique
     label_unique_guesses() %>%
-    label_team_unique_guesses() %>%
-    label_unique_item() %>%
-    label_team_unique_item() %>%
+    label_unique_team_guesses() %>%
+
+    # Label items as unique
+    label_unique_items() %>%
+    label_unique_team_items() %>%
+
+    # Merge score
+    merge_player_score() %>%
+    merge_team_score() %>%
+
     select(
       PlayerID, TeamID, Strategy, Generation,
       PlayerTime, TeamTime,
-      PlayerGuessNum, TeamGuessNum,
-      Guess = WorkShopString, Result = WorkShopResult,
-      Score, TeamScore,
-      UniqueGuess, TeamUniqueGuess,
-      UniqueItem, TeamUniqueItem
+      GuessNum, TeamGuessNum,
+      Guess, Result,
+      PlayerScore, TeamScore,
+      UniqueGuess, UniqueTeamGuess,
+      UniqueItem, UniqueTeamItem
     )
-  RMySQL::dbDisconnect(con)
   Guesses
 }
 
@@ -68,26 +79,23 @@ count_guesses <- function(frame, grouping_var, guess_col_name) {
     ungroup()
 }
 
-calculate_score <- function(frame) {
-  frame %>%
-    mutate(
-      Score = NA,
-      TeamScore = NA
-    )
+#' Score guesses that resulted in unique items
+merge_player_score <- function(frame) {
+  scores <- read_scores() %>%
+    select(Guess, Result, PlayerScore = Score) %>%
+    mutate(UniqueItem = TRUE)
+  left_join(frame, scores) %>%
+    tidyr::replace_na(list(PlayerScore = 0))
 }
 
-label_team_unique_guesses <- function(frame) {
-  frame
+#' Score guesses that resulted in unique team items
+merge_team_score <- function(frame) {
+  scores <- read_scores() %>%
+    select(Guess, Result, TeamScore = Score) %>%
+    mutate(UniqueTeamItem = TRUE)
+  left_join(frame, scores) %>%
+    tidyr::replace_na(list(TeamScore = 0))
 }
 
-label_unique_items <- function(frame) {
-  frame %>%
-    mutate(
-      UniqueItem = NA,
-      TeamUniqueItem = NA
-    )
-}
-
-label_team_unique_items <- function(frame) {
-  frame
-}
+#' Read the scores data
+read_scores <- function() readr::read_csv("data-raw/scores.csv")

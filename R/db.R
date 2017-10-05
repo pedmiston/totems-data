@@ -23,3 +23,12 @@ create_blank_config <- function() {
     yaml::as.yaml() %>%
     writeLines(con = "config.yml")
 }
+
+#' Collect a single table from the db.
+#' @export
+collect_tbl <- function(name) {
+  con <- connect_db()
+  frame <- tbl(con, name) %>% collect()
+  RMySQL::dbDisconnect(con)
+  frame
+}
