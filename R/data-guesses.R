@@ -27,9 +27,15 @@ data_guesses <- function() {
     label_unique_items() %>%
     label_unique_team_items() %>%
 
+    # Compute cumulative sums of unique items and guesses
+    cumulate_uniques() %>%
+
     # Merge score
     merge_player_score() %>%
     merge_team_score() %>%
+
+    # Determine the number of current players
+    determine_current_players() %>%
 
     select(
       PlayerID, TeamID, Strategy, Generation,
@@ -37,8 +43,9 @@ data_guesses <- function() {
       GuessNum, TeamGuessNum,
       Guess, Result,
       PlayerScore, TeamScore,
-      UniqueGuess, UniqueTeamGuess,
-      UniqueItem, UniqueTeamItem
+      UniqueGuess, UniqueItem, NumUniqueItems,
+      UniqueTeamGuess, UniqueTeamItem, NumUniqueTeamItems,
+      NumCurrentPlayers, TeamSize
     )
   Guesses
 }
@@ -99,3 +106,10 @@ merge_team_score <- function(frame) {
 
 #' Read the scores data
 read_scores <- function() readr::read_csv("data-raw/scores.csv")
+
+#' Determine the number of current players
+determine_current_players <- function(frame) {
+  frame %>% mutate(
+    NumCurrentPlayers = ifelse(Strategy == "Diachronic", 1, TeamSize)
+  )
+}
