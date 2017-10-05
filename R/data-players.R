@@ -3,8 +3,7 @@
 #' @import RMySQL
 #' @export
 data_players <- function() {
-  con <- connect_db()
-  Players <- collect(tbl(con, "Table_Player")) %>%
+  Players <- collect_tbl("Table_Player") %>%
     replace_id_group() %>%
     replace_id_player() %>%
     join_teams() %>%
@@ -19,7 +18,6 @@ data_players <- function() {
       Generation,
       SessionDuration
     )
-  dbDisconnect(con)
   Players
 }
 
@@ -30,8 +28,7 @@ replace_id_player <- function(frame) {
 
 #' Recode ID_Player (int) as PlayerID (char)
 recode_id_player <- function(frame) {
-  con <- connect_db()
-  player_id_levels <- collect(tbl(con, "Table_Player")) %>%
+  player_id_levels <- collect_tbl("Table_Player") %>%
     arrange(ID_Player) %>%
     .$ID_Player
   player_id_labels <- paste0("P", seq_along(player_id_levels))
@@ -39,7 +36,6 @@ recode_id_player <- function(frame) {
     ID_Player = player_id_levels,
     PlayerID = player_id_labels
   )
-  dbDisconnect(con)
   left_join(frame, player_id_map)
 }
 

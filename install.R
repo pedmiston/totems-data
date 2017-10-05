@@ -1,4 +1,4 @@
 #!/usr/bin/env Rscript
-library(devtools)
+source("data-raw/use-data.R")
 document()
 install()

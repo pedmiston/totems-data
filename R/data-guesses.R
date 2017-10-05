@@ -43,8 +43,10 @@ data_guesses <- function() {
       GuessNum, TeamGuessNum,
       Guess, Result,
       PlayerScore, TeamScore,
-      UniqueGuess, UniqueItem, NumUniqueItems,
-      UniqueTeamGuess, UniqueTeamItem, NumUniqueTeamItems,
+      UniqueGuess, NumUniqueGuesses,
+      UniqueItem, NumUniqueItems,
+      UniqueTeamGuess, NumUniqueTeamGuesses,
+      UniqueTeamItem, NumUniqueTeamItems,
       NumCurrentPlayers, TeamSize
     )
   Guesses

@@ -1,63 +1,70 @@
 data_team_performance <- function() {
   Guesses <- data_guesses()
   TeamPerformance <- Guesses %>%
-    filter_complete_teams() %>%
-    label_team_size() %>%
-    group_by(TeamID, TeamSize) %>%
+    label_experiment() %>%
+    filter_valid_players() %>%
+    group_by(Exp, TeamID) %>%
     summarize(
-      Score = sum(Score),
-      NumInnovations = sum(TeamUniqueItem),
-      NumGuesses = max(TeamGuessNum),
-      NumUniqueGuesses = sum(TeamUniqueGuess)
-    )
+      TeamScore = sum(TeamScore),
+      TeamGuesses = max(TeamGuessNum),
+      UniqueTeamGuesses = max(NumUniqueTeamGuesses),
+      UniqueTeamItems = max(NumUniqueTeamItems)
+    ) %>%
+    join_teams()
   TeamPerformance
-}
-
-label_team_size <- function(guesses) {
-  diachronic <- filter(guesses, Strategy == "Diachronic") %>%
-    clone_diachronic_teams()
-
-  synchronic <- guesses %>%
-    left_join(data_teams()[,c("TeamID", "TeamSize")]) %>%
-    filter(Strategy == "Synchronic")
-
-  isolated <- guesses %>%
-    left_join(data_teams()[,c("TeamID", "SessionDuration")]) %>%
-    filter(Strategy == "Isolated") %>%
-    mutate(TeamSize = ifelse(SessionDuration == 50, 2, 4)) %>%
-    select(-SessionDuration)
-
-  bind_rows(
-    diachronic,
-    synchronic,
-    isolated
-  )
-}
-
-#' Duplicate guesses to allow summarizing diachronic team
-#' performance at TeamSize == 2 and TeamSize == 4.
-clone_diachronic_teams <- function(diachronic) {
-  diachronic2 <- filter(diachronic, Generation <= 2) %>%
-    mutate(TeamSize = 2)
-  diachronic4 <- diachronic %>%
-    mutate(TeamSize = 4)
-  bind_rows(diachronic2, diachronic4)
 }
 
 data_player_performance <- function() {
   Guesses <- data_guesses()
   PlayerPerformance <- Guesses %>%
-    group_by(PlayerID) %>%
+    label_experiment() %>%
+    filter_valid_players() %>%
+    group_by(Exp, PlayerID) %>%
     summarize(
-      NumInnovations = sum(UniqueItem),
+      Score = sum(Score),
       NumGuesses = max(GuessNum),
-      NumUniqueGuesses = sum(UniqueGuess),
-      NumTeamUniqueGuesses = sum(TeamUniqueGuess)
+      UniqueGuesses = max(NumUniqueGuesses),
+      UniqueItems = max(NumUniqueItems)
     ) %>%
-    # Add in Score from Player table
-    left_join(select(Player, PlayerID, Score))
+    join_players() %>%
+    join_teams()
 }
 
-filter_complete_teams <- function(frame) {
+label_experiment <- function(frame) {
+  diachronic <- filter(frame, Strategy == "Diachronic")
+  diachronic2 <- filter(diachronic, Generation <= 2) %>%
+    mutate(
+      TeamSize = 2,
+      Exp = "50LaborMinutes"
+    )
+  diachronic4 <- diachronic %>%
+    mutate(
+      TeamSize = 4,
+      Exp = "100LaborMinutes"
+    )
+
+  synchronic_exp_map <- data_frame(
+    TeamSize = c(2, 4),
+    Exp = c("50LaborMinutes", "100LaborMinutes")
+  )
+  synchronic <- filter(frame, Strategy == "Synchronic") %>%
+    left_join(synchronic_exp_map)
+
+  isolated_map <- data_players() %>%
+    filter(Strategy == "Isolated") %>%
+    mutate(Exp = ifelse(SessionDuration == 25, "50LaborMinutes", "100LaborMinutes")) %>%
+    select(PlayerID, Exp)
+  isolated <- filter(frame, Strategy == "Isolated") %>%
+    left_join(isolated_map)
+
+  bind_rows(
+    diachronic2,
+    diachronic4,
+    synchronic,
+    isolated
+  )
+}
+
+filter_valid_players <- function(frame) {
   frame
 }

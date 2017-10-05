@@ -3,16 +3,17 @@
 #' @import RMySQL
 #' @export
 data_teams <- function() {
-  con <- connect_db()
-  Teams <- collect(tbl(con, "Table_Group")) %>%
+  Teams <- collect_tbl("Table_Group") %>%
     replace_id_group() %>%
+    mutate(
+      TeamSize = ifelse(Treatment == "Isolated", 1, Size)
+    ) %>%
     select(
       TeamID,
       Strategy = Treatment,
-      TeamSize = Size,
+      TeamSize,
       SessionDuration = BuildingTime
     )
-  dbDisconnect(con)
   Teams
 }
 
@@ -26,8 +27,7 @@ replace_id_group <- function(frame) {
 
 #' Recode ID_Group as TeamID.
 recode_id_group <- function(frame) {
-  con <- connect_db()
-  team_id_levels <- collect(tbl(con, "Table_Group")) %>%
+  team_id_levels <- collect_tbl("Table_Group") %>%
     arrange(ID_Group) %>%
     .$ID_Group
   team_id_labels <- paste0("G", seq_along(team_id_levels))
@@ -35,7 +35,6 @@ recode_id_group <- function(frame) {
     ID_Group = team_id_levels,
     TeamID = team_id_labels
   )
-  dbDisconnect(con)
   left_join(frame, team_id_map)
 }
 

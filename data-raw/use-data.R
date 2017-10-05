@@ -1,8 +1,13 @@
 library(devtools)
 load_all()
 
-con <- connect_db()
-Teams <- data_teams(con)
-Players <- data_players(con)
+Teams <- data_teams()
+Players <- data_players()
+TeamPerformance <- data_team_performance()
 
-use_data(Teams, Players, overwrite = TRUE)
+use_data(
+  Teams,
+  Players,
+  TeamPerformance,
+  overwrite = TRUE
+)
