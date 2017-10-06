@@ -3,13 +3,16 @@
 #' @export
 data_teams <- function() {
   Teams <- collect_tbl("Table_Group") %>%
+    rename(Strategy = Treatment, SessionDuration = BuildingTime) %>%
     replace_id_group() %>%
-    mutate(TeamSize = ifelse(Treatment == "Isolated", 1, Size)) %>%
+    mutate(
+      TeamSize = ifelse(Strategy == "Isolated", 1, Size)
+    ) %>%
     select(
       TeamID,
-      Strategy = Treatment,
+      Strategy,
       TeamSize,
-      SessionDuration = BuildingTime
+      SessionDuration
     )
   Teams
 }

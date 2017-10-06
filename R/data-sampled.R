@@ -1,60 +1,42 @@
-data_sampled <- function(con) {
+data_sampled <- function() {
+  Guesses <- data_guesses()
   SampledPerformance <- Guesses %>%
-    left_join(PlayerInfo) %>%
-    calculate_rolling_team_performance() %>%
-    calculate_rolling_player_performance() %>%
-    group_by(PlayerID) %>%
-    # Sample closest trial every 60 seconds
-    do({ get_closest_trials_to_times(., times = seq(0, 50 * 60, by = 60)) }) %>%
-    ungroup() %>%
-    # Prevent Synchronic teams from being sampled outside their range.
-    filter(!(Strategy == "Synchronic" & SampledTime > 25*60)) %>%
-    # Calculate number of guesses in each time bin
-    group_by(PlayerID) %>%
-    mutate(
-      NewGuesses = GuessNum - lag(GuessNum),
-      NewTeamGuesses = TeamGuessNum - lag(TeamGuessNum)
-    ) %>%
-    ungroup() %>%
-    group_by(PlayerID, SampledTime) %>%
-    summarize(
-      # Take max() of cumsum variables, not mean()
-      NumInnovations = max(NumInnovations),
-      NumTeamInnovations = max(NumTeamInnovations),
-      Score = max(Score),
-      TeamScore = max(TeamScore),
-      # Since time step is 60 seconds,
-      GuessesPerMinute = max(NewGuesses),
-      TeamGuessesPerMinute = max(NewTeamGuesses)
-    ) %>%
-    ungroup() %>%
-    left_join(PlayerInfo) %>%
-    mutate(
-      SampledPlayerTime = ifelse(Strategy != "Diachronic", SampledTime,
-                                 SampledTime - (Generation - 1) * (25 * 60))
-    ) %>%
-    select(
-      PlayerID, SampledTime, SampledPlayerTime,
-      NumInnovations, NumTeamInnovations,
-      Score, TeamScore,
-      GuessesPerMinute, TeamGuessesPerMinute
-    )
+    sample_every(60)
 }
 
-calculate_rolling_team_performance <- . %>%
-  group_by(TeamID) %>%
-  arrange(TeamTime) %>%
-  mutate(
-    NumTeamInnovations = cumsum(TeamUniqueItem),
-    TeamScore = cumsum(Score)
-  ) %>%
-  ungroup()
+sample_every <- function(frame, seconds) {
+  frame %>%
+    left_join(data_teams()[,c("TeamID", "SessionDuration")])
 
-calculate_rolling_player_performance <- . %>%
-  group_by(PlayerID) %>%
-  arrange(TeamTime) %>%
-  mutate(
-    NumInnovations = cumsum(UniqueItem),
-    Score = cumsum(Score)
-  ) %>%
-  ungroup()
+
+}
+
+#' @import dplyr
+#' @export
+get_closest_trials_to_times <- function(trials, times, time_col = "TeamTime") {
+  lapply(times, get_closest_trial_to_time, trials = trials, time_col = time_col) %>%
+    bind_rows()
+}
+
+#' @import magrittr
+#' @export
+get_closest_trial_to_time <- function(time, trials, time_col = "TeamTime",
+                                      sample_time_col = "SampledTime") {
+  trials %<>% arrange_(.dots = time_col)
+  trials_that_have_happened <- trials[[time_col]] <= time
+  trial <- trials[trials_that_have_happened, ] %>% tail(1)
+  if (nrow(trial) == 1) {
+    trial[, sample_time_col] <- time
+  } else if (time == 0) {
+    first_trial <- trials %>%
+      head(1) %>%
+      select(PlayerID, TeamID, Strategy) %>%
+      mutate(
+        NumInnovations = 0,
+        GuessNum = 0,
+        TeamGuessNum = 0
+      )
+    trial %<>% bind_rows(first_trial)
+  }
+  trial
+}
