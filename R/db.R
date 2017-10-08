@@ -32,3 +32,8 @@ collect_tbl <- function(name) {
   RMySQL::dbDisconnect(con)
   frame
 }
+
+collect_local <- function(name) {
+  local_src <- "data-raw/tables/"
+  read.csv(paste0(local_src, name, ".csv"))
+}
