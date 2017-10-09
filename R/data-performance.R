@@ -8,7 +8,7 @@ data_team_performance <- function() {
       TeamScore = sum(TeamScore),
       TeamGuesses = max(TeamGuessNum),
       UniqueTeamGuesses = max(NumUniqueTeamGuesses),
-      UniqueTeamItems = max(NumUniqueTeamItems)
+      TeamInventorySize = max(TeamInventorySize)
     ) %>%
     join_teams()
   TeamPerformance

@@ -7,6 +7,6 @@
 replace_id_group(frame)
 }
 \description{
-This function deidentifies ID_Group by removing
-datetime information from it.
+TeamID is a deidentified version of ID_Group
+with datetime information removed.
 }

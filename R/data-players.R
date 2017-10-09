@@ -4,52 +4,63 @@
 #' @export
 data_players <- function() {
   Players <- collect_tbl("Table_Player") %>%
+    mutate(ID_Player = as.numeric(ID_Player)) %>%
     replace_id_group() %>%
-    replace_id_player() %>%
     join_teams() %>%
-    create_generation() %>%
-    assign_player_ix() %>%
-    arrange(Strategy, TeamID, Generation) %>%
+    replace_id_player() %>%
+    replace_ancestor() %>%
+    label_experiment() %>%
+    label_valid_players() %>%
     select(
+      Exp,
       PlayerID,
-      PlayerIX,
-      Strategy,
       TeamID,
+      Strategy,
+      Session,
       Generation,
-      SessionDuration
+      Duration
     )
-  Players
+  Players %>%
+    arrange(desc(Exp), TeamID, Generation, Session)
 }
 
-#' Replace ID_Player with PlayerID
+#' Replace ID_Player with PlayerID and Session.
+#'
+#' For Diachronic and Synchronic players, PlayerID is
+#' just the letter P plus ID_Player, and Session is 1.
+#'
+#' For Isolated players, ID_Player is more analogous
+#' to Session because Isolated players who return for
+#' multiple sessions are given multiple ID_Player values.
+#'
 replace_id_player <- function(frame) {
-  recode_id_player(frame) %>% select(-ID_Player)
+  players <- collect_tbl("Table_Player") %>%
+    mutate(ID_Player = as.integer(ID_Player)) %>%
+    replace_id_group() %>%
+    select(ID_Player, TeamID) %>%
+    label_strategy()
+
+  # Treat team players and isolated players separately.
+  team_players <- dplyr::filter(players, Strategy != "Isolated") %>%
+    mutate(PlayerID = paste0("P", ID_Player), Session = 1)
+  isolated_players <- dplyr::filter(players, Strategy == "Isolated") %>%
+    group_by(TeamID) %>%
+    mutate(
+      PlayerID = paste0("P", min(ID_Player)),
+      Session = 1:n()
+    )
+  player_id_map <- bind_rows(team_players, isolated_players) %>%
+    select(ID_Player, PlayerID, Session)
+
+  left_join(frame, player_id_map) %>%
+    select(-ID_Player)
 }
 
-#' Recode ID_Player (int) as PlayerID (char)
-recode_id_player <- function(frame) {
-  player_id_levels <- collect_tbl("Table_Player") %>%
-    arrange(ID_Player) %>%
-    .$ID_Player
-  player_id_labels <- paste0("P", seq_along(player_id_levels))
-  player_id_map <- data_frame(
-    ID_Player = player_id_levels,
-    PlayerID = player_id_labels
-  )
-  left_join(frame, player_id_map)
-}
-
-#' Create Generation from Ancestor by Strategy
-create_generation <- function(frame) {
-  mutate(frame, Generation = ifelse(Strategy != "Diachronic", 1, Ancestor))
-}
-
-#' Assign PlayerIX, which enumerates players in teams
-assign_player_ix <- function(frame) {
+#' Create Generation from Ancestor by Strategy.
+replace_ancestor <- function(frame) {
   frame %>%
-    group_by(TeamID, Generation) %>%
-    mutate(PlayerIX = paste0("P", 1:n())) %>%
-    ungroup()
+    mutate(Generation = ifelse(Strategy == "Synchronic", 1, Ancestor)) %>%
+    select(-Ancestor)
 }
 
 #' Merge with Players data

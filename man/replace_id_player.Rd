@@ -2,10 +2,16 @@
 % Please edit documentation in R/data-players.R
 \name{replace_id_player}
 \alias{replace_id_player}
-\title{Replace ID_Player with PlayerID}
+\title{Replace ID_Player with PlayerID and Session.}
 \usage{
 replace_id_player(frame)
 }
 \description{
-Replace ID_Player with PlayerID
+For Diachronic and Synchronic players, PlayerID is
+just the letter P plus ID_Player, and Session is 1.
+}
+\details{
+For Isolated players, ID_Player is more analogous
+to Session because Isolated players who return for
+multiple sessions are given multiple ID_Player values.
 }

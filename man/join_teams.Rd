@@ -2,10 +2,10 @@
 % Please edit documentation in R/data-teams.R
 \name{join_teams}
 \alias{join_teams}
-\title{Left join the given frame with the teams data.}
+\title{Join the given frame with the Teams data.}
 \usage{
 join_teams(frame)
 }
 \description{
-Left join the given frame with the teams data.
+Join the given frame with the Teams data.
 }
