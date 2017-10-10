@@ -1,24 +1,27 @@
 #' Label the experiment of the observations in frame.
 #'
-#' Data for Gen1 and Gen2 Diachronic players is
+#' Data for Generation = 1 and Generation = 2 Diachronic players is
 #' duplicated: once for the 50 labor minutes comparison,
 #' and once for the 100 labor minutes comparison.
 #'
-#' @import dplyr
-#' @param frame Requires columns TeamID and PlayerID.
-#' @return The same data as in frame, but with new columns Exp and TeamSize
+#' Data for SessionIX = 1 and SessionIX = 2 Isolated players
+#' with Duration = 25 is similarly duplicated.
+#'
+#' **This means statistics cannot be collapsed across experiments.**
+#'
+#' @param frame Requires columns TeamID, PlayerID, SessionIX, and Generation.
+#' @return The same data as in frame, but with a new column Exp.
 label_experiment <- function(frame) {
   teams <- collect_tbl("Table_Group") %>%
     replace_id_group() %>%
     select(TeamID, Strategy = Treatment, Duration = BuildingTime, TeamSize = Size)
 
   players <- collect_tbl("Table_Player") %>%
-    mutate(ID_Player = as.integer(ID_Player)) %>%
     replace_id_group() %>%
     replace_id_player() %>%
     left_join(teams) %>%
     replace_ancestor() %>%
-    select(PlayerID, TeamID, Session, Strategy, Generation, TeamSize, Duration)
+    select(PlayerID, TeamID, SessionID, SessionIX, Strategy, Generation, TeamSize, Duration)
 
   diachronic <- dplyr::filter(players, Strategy == "Diachronic")
   diachronic2 <- dplyr::filter(diachronic, Generation <= 2) %>%
@@ -35,7 +38,7 @@ label_experiment <- function(frame) {
   isolated <- dplyr::filter(players, Strategy == "Isolated")
   isolated2 <- bind_rows(
     dplyr::filter(isolated, Duration == 50),
-    dplyr::filter(isolated, Duration == 25, Session <= 2)
+    dplyr::filter(isolated, Duration == 25, SessionIX <= 2)
   ) %>% mutate(Exp = "50LaborMinutes")
   isolated4 <- dplyr::filter(isolated, Duration == 25) %>%
     mutate(Exp = "100LaborMinutes")
@@ -47,13 +50,14 @@ label_experiment <- function(frame) {
     isolated2,
     isolated4
   ) %>%
-    select(TeamID, PlayerID, Session, Exp)
+    select(TeamID, PlayerID, SessionIX, Generation, Exp)
+
+  if(missing(frame)) return(experiment_map)
 
   if(!("PlayerID" %in% colnames(frame))) {
     experiment_map <- experiment_map %>%
       select(TeamID, Exp) %>%
       unique()
   }
-
   merge(frame, experiment_map)
 }

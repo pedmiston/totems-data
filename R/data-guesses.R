@@ -1,15 +1,14 @@
-#' Get data for each guess made by players.
-#' @param con DBI Connection class.
-#' @import dplyr
-#' @export
+#' Get Guesses data.
 data_guesses <- function() {
   Guesses <- collect_tbl("Table_Workshop") %>%
     rename(Guess = WorkShopString, Result = WorkShopResult) %>%
 
-    # Merge player and team info
-    replace_id_player() %>%
-    join_players() %>%
-    join_teams() %>%
+    # Prereqs:
+    replace_id_player() %>%  # +PlayerID,SessionIX
+    label_generation() %>%   # +Generation
+    label_team_id() %>%      # +TeamID
+    label_experiment() %>%   # +Exp
+    label_team_size() %>%    # +TeamSize
 
     # Calculate kinds of time
     replace_trial_time() %>%
@@ -32,10 +31,10 @@ data_guesses <- function() {
     merge_team_score() %>%
 
     # Determine the number of current players
-    determine_current_players() %>%
+    label_current_players() %>%
 
     select(
-      PlayerID, TeamID, Strategy, Generation,
+      Exp, PlayerID, SessionIX, TeamID, Strategy, Generation,
       PlayerTime, TeamTime,
       GuessNum, TeamGuessNum,
       Guess, Result,
@@ -56,13 +55,12 @@ replace_trial_time <- function(frame) {
     select(-TrialTime)
 }
 
-#' Calculate TeamTime for Diachronic teams.
+#' Calculate TeamTime.
 calculate_team_time <- function(frame) {
   session_duration_sec <- 25 * 60
   frame %>%
-    mutate(TeamTime = ifelse(Strategy == "Diachronic",
-                             (Generation-1) * session_duration_sec + PlayerTime,
-                             PlayerTime))
+    mutate(TeamTime = ifelse(Strategy == "Synchronic", PlayerTime * TeamSize,
+                             (Generation-1) * session_duration_sec + PlayerTime))
 }
 
 #' Enumerate each player's guesses.
@@ -106,8 +104,8 @@ merge_team_score <- function(frame) {
 #' Read the scores data
 read_scores <- function() readr::read_csv("data-raw/scores.csv")
 
-#' Determine the number of current players
-determine_current_players <- function(frame) {
+#' Label the number of current players
+label_current_players <- function(frame) {
   frame %>% mutate(
     NumCurrentPlayers = ifelse(Strategy == "Diachronic", 1, TeamSize)
   )
