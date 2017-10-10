@@ -19,11 +19,11 @@ data_guesses <- function() {
     count_team_guesses() %>%
 
     # Label guesses as unique and count cumulate unique guesses
-    label_unique_guesses() %>%
+    label_unique_player_guesses() %>%
     label_unique_team_guesses() %>%
 
     # Label items as unique and count cumulate unique items
-    label_unique_items() %>%
+    label_unique_player_items() %>%
     label_unique_team_items() %>%
 
     # Merge score
@@ -39,10 +39,10 @@ data_guesses <- function() {
       GuessNum, TeamGuessNum,
       Guess, Result,
       PlayerScore, TeamScore,
-      UniqueGuess, NumUniqueGuesses,
-      UniqueItem, InventorySize,
+      UniquePlayerGuess, NumUniqueGuesses,
+      UniquePlayerItem, PlayerInventorySize, PlayerInventoryID,
       UniqueTeamGuess, NumUniqueTeamGuesses,
-      UniqueTeamItem, TeamInventorySize,
+      UniqueTeamItem, TeamInventorySize, TeamInventoryID,
       NumCurrentPlayers, TeamSize
     )
   Guesses
@@ -209,7 +209,8 @@ label_unique_items <- function(Guesses) {
     rowwise() %>%
     mutate(
       UniqueItem = !(Result %in% PrevInventory),
-      InventorySize = length(PrevInventory)
+      InventorySize = length(PrevInventory),
+      PlayerInventoryID = inventory_to_id(PrevInventory)
     ) %>%
     ungroup()
 }
@@ -221,7 +222,12 @@ label_unique_team_items <- function(frame) {
     rowwise() %>%
     mutate(
       UniqueTeamItem = !(Result %in% PrevTeamInventory),
-      TeamInventorySize = length(PrevTeamInventory)
+      TeamInventorySize = length(PrevTeamInventory),
+      TeamInventoryID = inventory_to_id(PrevTeamInventory)
     ) %>%
     ungroup()
+}
+
+inventory_to_id <- function(inventory) {
+    paste(inventory, collapse = "-")
 }
