@@ -1,8 +1,6 @@
 data_team_performance <- function() {
   Guesses <- data_guesses()
   TeamPerformance <- Guesses %>%
-    label_experiment() %>%
-    filter_valid_players() %>%
     group_by(Exp, TeamID) %>%
     summarize(
       TeamScore = sum(TeamScore),
@@ -17,14 +15,12 @@ data_team_performance <- function() {
 data_player_performance <- function() {
   Guesses <- data_guesses()
   PlayerPerformance <- Guesses %>%
-    label_experiment() %>%
-    filter_valid_players() %>%
     group_by(Exp, PlayerID) %>%
     summarize(
       Score = sum(Score),
       NumGuesses = max(GuessNum),
       UniqueGuesses = max(NumUniqueGuesses),
-      UniqueItems = max(NumUniqueItems)
+      UniquePlayerItems = max(NumUniquePlayerItems)
     ) %>%
     join_players() %>%
     join_teams()
