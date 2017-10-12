@@ -2,3 +2,4 @@ config.yml
 data-raw/tables/
 .Rhistory
 .Rproj.user
+man/
