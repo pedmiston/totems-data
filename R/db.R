@@ -4,7 +4,6 @@
 #' expected in the current directory.
 #'
 #' @return DBI Connection class
-#' @export
 connect_db <- function() {
   config <- yaml::yaml.load_file("config.yml")
   DBI::dbConnect(RMySQL::MySQL(),
@@ -17,7 +16,6 @@ connect_db <- function() {
 
 #' Create a blank config file "config.yml" in the current directory.
 #' @import magrittr
-#' @export
 create_blank_config <- function() {
   list(host="", port=0, user="", password="") %>%
     yaml::as.yaml() %>%
@@ -25,7 +23,6 @@ create_blank_config <- function() {
 }
 
 #' Collect a single table from the db.
-#' @export
 collect_tbl <- function(name) {
   con <- connect_db()
   frame <- tbl(con, name) %>% collect()
