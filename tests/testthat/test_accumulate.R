@@ -1,42 +1,42 @@
-context("Rolling vars")
+context("accumulate vars")
 
-test_that("rolling accumulates char items", {
+test_that("accumulate char items", {
   given <- c("a", "b", "c")
   expected <- list(NA, "a", c("a", "b"))
-  result <- rolling(given)
+  result <- accumulate(given)
   expect_equal(result, expected)
 })
 
-test_that("rolling accumulates unique char items", {
+test_that("accumulate unique char items", {
   given <- c("a", "b", "b", "c")
   expected <- list(NA, "a", c("a", "b"), c("a", "b"))
-  result <- rolling(given)
+  result <- accumulate(given)
   expect_equal(result, expected)
 })
 
-test_that("rolling accumulates int items", {
+test_that("accumulate int items", {
   given <- 1:4
   expected <- list(NA, 1, 1:2, 1:3)
-  result <- rolling(given)
+  result <- accumulate(given)
   expect_equal(result, expected)
 })
 
-test_that("rolling accumulates unique int items", {
+test_that("accumulate unique int items", {
   given <- c(1, 2, 2, 3)
   expected <- list(NA, 1, 1:2, 1:2)
-  result <- rolling(given)
+  result <- accumulate(given)
   expect_equal(result, expected)
 })
 
-test_that("rolling accumulates with default int items", {
+test_that("accumulate with default int items", {
   default <- 1:4
   given <- c(5, 5, 6)
   expected <- list(1:4, 1:5, 1:5)
-  result <- rolling(given, default = default)
+  result <- accumulate(given, default = default)
   expect_equal(result, expected)
 })
 
-context("Rolling guesses")
+context("accumulate guesses")
 
 Guesses <- data_frame(
   GuessNum = c(1, 2, 3, 1, 2),
@@ -56,7 +56,7 @@ test_that("guess uniqueness is labeled", {
   expect_equal(result$UniqueGuess, expected)
 })
 
-context("Rolling inventory")
+context("accumulate results")
 
 Inventories <- data_frame(
   Result = c(7, 8, 9, 7, 7),
