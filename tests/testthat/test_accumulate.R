@@ -1,4 +1,4 @@
-context("accumulate vars")
+context("Accumulate vars")
 
 test_that("accumulate char items", {
   given <- c("a", "b", "c")
@@ -36,48 +36,17 @@ test_that("accumulate with default int items", {
   expect_equal(result, expected)
 })
 
-context("accumulate guesses")
+context("Accumulate session")
 
 Guesses <- data_frame(
-  GuessNum = c(1, 2, 3, 1, 2),
-  PlayerID = c("P1", "P1", "P1", "P2", "P2"),
-  Guess = c("a", "b", "c", "a", "a")
+  SessionID = 1,
+  SessionTime = 1:2,
+  Guess = 1:2,
+  Result = 7:8
 )
 
-test_that("guesses can be rolled by player", {
-  expected <- list(NA, "a", c("a", "b"), NA, "a")
-  result <- accumulate_player_guesses(Guesses)
-  expect_equal(result$PrevGuesses, expected)
-})
-
-test_that("guess uniqueness is labeled", {
-  expected <- c(T, T, T, T, F)
-  result <- label_unique_guesses(Guesses)
-  expect_equal(result$UniqueGuess, expected)
-})
-
-context("accumulate results")
-
-Inventories <- data_frame(
-  Result = c(7, 8, 9, 7, 7),
-  PlayerID = c("P1", "P1", "P1", "P2", "P2"),
-  GuessNum = c(1, 2, 3, 1, 2)
-)
-
-test_that("inventories incorporate default", {
+test_that("results incorporate default items", {
   expected <- list(1:6, 1:7, 1:8, 1:6, 1:7)
-  result <- accumulate_player_inventory(Inventories)
-  expect_equal(result$PrevInventory, expected)
-})
-
-test_that("item uniqueness is labeled", {
-  expected <- c(T, T, T, T, F)
-  result <- label_unique_items(Inventories)
-  expect_equal(result$UniquePlayerResult, expected)
-})
-
-test_that("inventory size is labeled", {
-  expected <- c(6, 7, 8, 6, 7)
-  result <- label_unique_items(Inventories)
-  expect_equal(result$InventorySize, expected)
+  result <- accumulate_session(Guesses)
+  expect_equal(result$PrevSessionResults, expected)
 })

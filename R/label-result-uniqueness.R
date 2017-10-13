@@ -42,6 +42,3 @@ label_unique_team_results <- function(frame) {
     ungroup()
 }
 
-inventory_to_id <- function(inventory) {
-    paste(inventory, collapse = "-")
-}

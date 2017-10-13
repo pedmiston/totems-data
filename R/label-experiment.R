@@ -59,5 +59,5 @@ label_experiment <- function(frame) {
       select(TeamID, Exp) %>%
       unique()
   }
-  merge(frame, experiment_map)
+  inner_join(frame, experiment_map)
 }
