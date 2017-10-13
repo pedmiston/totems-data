@@ -30,8 +30,8 @@ data_guesses <- function() {
     label_score() %>%
     select(
       Guess, Result,
-      PlayerID, SessionIX, TeamID,
-      Strategy, TeamSize, Duration, Generation, Exp,
+      PlayerID, SessionID, SessionIX, TeamID,
+      Strategy, TeamSize, Generation, Exp,
       SessionTime, PlayerTime, TeamTime, CalendarTime,
       NumSessionGuesses, NumPlayerGuesses, NumTeamGuesses,
       UniqueSessionGuess, UniquePlayerGuess, UniqueTeamGuess,
