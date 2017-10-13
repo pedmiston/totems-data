@@ -23,14 +23,25 @@ create_blank_config <- function() {
 }
 
 #' Collect a single table from the db.
-collect_tbl <- function(name) {
-  con <- connect_db()
-  frame <- tbl(con, name) %>% collect()
-  RMySQL::dbDisconnect(con)
-  frame
-}
+#'
+#' Tries to use a local copy if it's available,
+#' unless force is set to TRUE.
+collect_tbl <- function(name, force = FALSE) {
+  local_tbl <- file.path("data-raw/tables/", paste0(name, ".csv"))
+  if(file.exists(local_tbl) & !force) {
+    frame <- readr::read_csv(local_tbl)
 
-collect_local <- function(name) {
-  local_src <- "data-raw/tables/"
-  read.csv(paste0(local_src, name, ".csv"))
+    if("ID_Player" %in% frame) {
+      # convert ID_Player from int back to character
+      frame$ID_Player <- as.character(frame$ID_Player)
+    }
+
+    return(frame)
+  } else {
+    con <- connect_db()
+    frame <- tbl(con, name) %>% collect()
+    write.csv(frame, local_tbl, row.names = FALSE)
+    RMySQL::dbDisconnect(con)
+    return(frame)
+  }
 }
