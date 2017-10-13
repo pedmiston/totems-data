@@ -94,7 +94,8 @@ label_team_id <- function(frame) {
   map <- collect_tbl("Table_Player") %>%
     replace_id_group() %>%
     replace_id_player() %>%
-    select(PlayerID, TeamID)
+    select(PlayerID, TeamID) %>%
+    unique()
   if(missing(frame)) return(map)
   left_join(frame, map)
 }
