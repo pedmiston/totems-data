@@ -73,7 +73,7 @@ test_that("inventories incorporate default", {
 test_that("item uniqueness is labeled", {
   expected <- c(T, T, T, T, F)
   result <- label_unique_items(Inventories)
-  expect_equal(result$UniquePlayerItem, expected)
+  expect_equal(result$UniquePlayerResult, expected)
 })
 
 test_that("inventory size is labeled", {

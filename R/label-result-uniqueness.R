@@ -6,14 +6,14 @@ label_result_uniqueness <- function(frame) {
     label_unique_team_results()
 }
 
-#' Assess the uniqueness of
+#' Assess the uniqueness of results created in this session.
 label_unique_session_results <- function(frame) {
   Guesses %>%
     rowwise() %>%
     mutate(
-      UniqueSessionItem = !(Result %in% PrevSessionInventory),
-      SessionInventorySize = length(PrevSessionInventory),
-      SessionInventoryID = inventory_to_id(PrevSessionInventory)
+      UniqueSessionResult = !(Result %in% PrevSessionResults),
+      SessionInventorySize = length(PrevSessionResults),
+      SessionInventoryID = inventory_to_id(PrevSessionResults)
     ) %>%
     ungroup()
 }
@@ -23,9 +23,9 @@ label_unique_player_results <- function(Guesses) {
   Guesses %>%
     rowwise() %>%
     mutate(
-      UniquePlayerItem = !(Result %in% PrevPlayerInventory),
-      PlayerInventorySize = length(PrevPlayerInventory),
-      PlayerInventoryID = inventory_to_id(PrevPlayerInventory)
+      UniquePlayerResult = !(Result %in% PrevPlayerResults),
+      PlayerInventorySize = length(PrevPlayerResults),
+      PlayerInventoryID = inventory_to_id(PrevPlayerResults)
     ) %>%
     ungroup()
 }
@@ -35,9 +35,9 @@ label_unique_team_results <- function(frame) {
   frame %>%
     rowwise() %>%
     mutate(
-      UniqueTeamItem = !(Result %in% PrevTeamInventory),
-      TeamInventorySize = length(PrevTeamInventory),
-      TeamInventoryID = inventory_to_id(PrevTeamInventory)
+      UniqueTeamResult = !(Result %in% PrevTeamResults),
+      TeamResultsSize = length(PrevTeamResults),
+      TeamResultsID = inventory_to_id(PrevTeamResults)
     ) %>%
     ungroup()
 }

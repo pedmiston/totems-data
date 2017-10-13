@@ -14,15 +14,15 @@ data_guesses <- function() {
     rename(Guess = WorkShopString, Result = WorkShopResult) %>%
     replace_id_player() %>%
     replace_trial_time() %>%
-    # order matters!
     label_generation() %>%
     label_team_id() %>%
     label_experiment() %>%
     label_team_size() %>%
     label_current_players() %>%
     label_time() %>%
-    label_guess_num() %>%
-    accumulate() %>%
+    accumulate_session() %>%
+    accumulate_player() %>%
+    accumulate_team() %>%
     label_guess_uniqueness() %>%
     label_result_uniqueness() %>%
     label_score() %>%
@@ -34,7 +34,7 @@ data_guesses <- function() {
       NumSessionGuesses, NumPlayerGuesses, NumTeamGuesses,
       UniqueSessionGuess, UniquePlayerGuess, UniqueTeamGuess,
       NumUniqueSessionGuesses, NumUniquePlayerGuesses, NumUniqueTeamGuesses,
-      UniqueSessionItem, UniquePlayerItem, UniqueTeamItem,
+      UniqueSessionResult, UniquePlayerResult, UniqueTeamResult,
       SessionInventoryID, PlayerInventoryID, TeamInventoryID,
       SessionScore, PlayerScore, TeamScore
     )

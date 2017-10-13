@@ -20,7 +20,7 @@ data_player_performance <- function() {
       Score = sum(Score),
       NumGuesses = max(GuessNum),
       UniqueGuesses = max(NumUniqueGuesses),
-      UniquePlayerItems = max(NumUniquePlayerItems)
+      UniquePlayerResults = max(NumUniquePlayerResults)
     ) %>%
     join_players() %>%
     join_teams()

@@ -11,7 +11,7 @@ label_score <- function(frame) {
 label_session_score <- function(frame) {
   scores <- scores %>%
     rename(SessionScore = Score) %>%
-    mutate(UniqueSessionItem = TRUE)
+    mutate(UniqueSessionResult = TRUE)
   left_join(frame, scores) %>%
     tidyr::replace_na(list(SessionScore = 0))
 }
@@ -20,7 +20,7 @@ label_session_score <- function(frame) {
 label_player_score <- function(frame) {
   scores <- scores %>%
     rename(PlayerScore = Score) %>%
-    mutate(UniquePlayerItem = TRUE)
+    mutate(UniquePlayerResult = TRUE)
   left_join(frame, scores) %>%
     tidyr::replace_na(list(PlayerScore = 0))
 }
@@ -29,7 +29,7 @@ label_player_score <- function(frame) {
 label_team_score <- function(frame) {
   scores <- scores %>%
     rename(TeamScore = Score) %>%
-    mutate(UniqueTeamItem = TRUE)
+    mutate(UniqueTeamResult = TRUE)
   left_join(frame, scores) %>%
     tidyr::replace_na(list(TeamScore = 0))
 }

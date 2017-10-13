@@ -7,7 +7,7 @@
 #'
 #' @import magrittr
 #' @export
-accumulator <- function(items, default = NA) {
+accumulate <- function(items, default = NA) {
   results <- list()
   if (length(default) > 1) default <- sort(default)
   for(i in seq_along(items)) {
@@ -22,20 +22,14 @@ accumulator <- function(items, default = NA) {
   results
 }
 
-accumulate <- function(Guesses) {
-  Guesses %>%
-    accumulate_session() %>%
-    accumulate_player() %>%
-    accumulate_team()
-}
-
 accumulate_session <- function(Guesses) {
   Guesses %>%
     group_by(SessionID) %>%
-    arrange(SessionGuessNum) %>%
+    arrange(SessionTime) %>%
     mutate(
-      PrevSessionGuesses = accumulator(Guess),
-      PrevSessionResults = accumulator(Result, default = 1:6)
+      NumSessionGuess = 1:n(),
+      PrevSessionGuesses = accumulate(Guess),
+      PrevSessionResults = accumulate(Result, default = 1:6)
     ) %>%
     ungroup()
 }
@@ -43,10 +37,11 @@ accumulate_session <- function(Guesses) {
 accumulate_player <- function(Guesses) {
   Guesses %>%
     group_by(PlayerID) %>%
-    arrange(PlayerGuessNum) %>%
+    arrange(PlayerTime) %>%
     mutate(
-      PrevPlayerGuesses = accumulator(Guess),
-      PrevPlayerResults = accumulator(Result, default = 1:6)
+      NumPlayerGuessses = 1:n(),
+      PrevPlayerGuesses = accumulate(Guess),
+      PrevPlayerResults = accumulate(Result, default = 1:6)
     ) %>%
     ungroup()
 }
@@ -54,10 +49,11 @@ accumulate_player <- function(Guesses) {
 accumulate_team <- function(Guesses) {
   Guesses %>%
     group_by(TeamID) %>%
-    arrange(TeamGuessNum) %>%
+    arrange(TeamTime) %>%
     mutate(
-      PrevTeamGuesses = accumulator(Guess),
-      PrevTeamResults = accumulator(Result, default = 1:6)
+      NumTeamGuesses = 1:n(),
+      PrevTeamGuesses = accumulate(Guess),
+      PrevTeamResults = accumulate(Result, default = 1:6)
     ) %>%
     ungroup()
 }
