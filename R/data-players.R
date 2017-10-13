@@ -11,12 +11,15 @@ data_players <- function() {
     replace_ancestor() %>%
     label_experiment() %>%
     label_valid_players() %>%
+    label_team_size() %>%
     select(
       Exp,
       PlayerID,
       TeamID,
+      TeamSize,
       Strategy,
-      Session,
+      SessionID,
+      SessionIX,
       Generation,
       Duration
     )
@@ -57,7 +60,8 @@ replace_id_player <- function(frame) {
       PlayerID = paste0("P", max(ID_PlayerInt)),
       SessionID = paste0("S", ID_Player),
       SessionIX = 1:n()
-    )
+    ) %>%
+    select(-ID_PlayerInt)
   player_id_map <- bind_rows(team_players, isolated_players) %>%
     select(ID_Player, PlayerID, SessionID, SessionIX)
 
