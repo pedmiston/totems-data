@@ -4,11 +4,11 @@
 #' A Guess is a single trial of the experiment:
 #' a combination of items selected from the
 #' current Inventory which may or may not yield
-#' a result.
+#' a resulting Item.
 #'
 #' The guess and the result can both be unique
 #' or repeated, relative to the current session,
-#' player, and team.
+#' player, or team.
 data_guesses <- function() {
   Guesses <- collect_tbl("Table_Workshop") %>%
     rename(Guess = WorkShopString, Result = WorkShopResult) %>%
@@ -22,8 +22,9 @@ data_guesses <- function() {
     label_current_players() %>%
     label_time() %>%
     label_guess_num() %>%
+    accumulate() %>%
     label_guess_uniqueness() %>%
-    label_item_uniqueness() %>%
+    label_result_uniqueness() %>%
     label_score() %>%
     select(
       Guess, Result,
