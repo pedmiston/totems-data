@@ -19,7 +19,7 @@ data_inventories <- function() {
       EndTime = max(SessionTime),
       Duration = EndTime - StartTime,
       Result = ifelse(sum(UniqueSessionResult) == 0, 0,
-                      Result[UniqueTeamResult == 1])
+                      Result[UniqueSessionResult == 1])
     ) %>%
     rename(InventoryID = SessionInventoryID) %>%
     join_players()
