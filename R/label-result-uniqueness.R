@@ -8,7 +8,7 @@ label_result_uniqueness <- function(frame) {
 
 #' Assess the uniqueness of results created in this session.
 label_unique_session_results <- function(frame) {
-  Guesses %>%
+  frame %>%
     rowwise() %>%
     mutate(
       UniqueSessionResult = !(Result %in% PrevSessionResults),
@@ -19,8 +19,8 @@ label_unique_session_results <- function(frame) {
 }
 
 #' Assess the uniqueness of each created Item for this player.
-label_unique_player_results <- function(Guesses) {
-  Guesses %>%
+label_unique_player_results <- function(frame) {
+  frame %>%
     rowwise() %>%
     mutate(
       UniquePlayerResult = !(Result %in% PrevPlayerResults),

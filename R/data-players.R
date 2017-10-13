@@ -80,16 +80,20 @@ replace_ancestor <- function(frame) {
 }
 
 label_generation <- function(frame) {
-  collect_tbl("Table_Player") %>%
-    recode_player_id() %>%
+  map <- collect_tbl("Table_Player") %>%
+    replace_id_player() %>%
+    label_team_id() %>%
+    label_strategy() %>%
     replace_ancestor() %>%
     select(PlayerID, SessionIX, Generation)
+  if(missing(frame)) return(map)
+  left_join(frame, map)
 }
 
 label_team_id <- function(frame) {
   map <- collect_tbl("Table_Player") %>%
-    replace_group_id() %>%
-    replace_player_id() %>%
+    replace_id_group() %>%
+    replace_id_player() %>%
     select(PlayerID, TeamID)
   if(missing(frame)) return(map)
   left_join(frame, map)

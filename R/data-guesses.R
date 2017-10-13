@@ -14,6 +14,8 @@ data_guesses <- function() {
     rename(Guess = WorkShopString, Result = WorkShopResult) %>%
     replace_id_player() %>%
     replace_trial_time() %>%
+    label_team_id() %>%
+    label_strategy() %>%
     label_generation() %>%
     label_team_id() %>%
     label_experiment() %>%
