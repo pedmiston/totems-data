@@ -46,7 +46,7 @@ Guesses <- data_frame(
 )
 
 test_that("results incorporate default items", {
-  expected <- list(1:6, 1:7, 1:8, 1:6, 1:7)
+  expected <- list(1:6, 1:7)
   result <- accumulate_session(Guesses)
   expect_equal(result$PrevSessionResults, expected)
 })

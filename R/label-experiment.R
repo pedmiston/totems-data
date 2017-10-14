@@ -11,7 +11,14 @@
 #'
 #' @param frame Requires columns TeamID, PlayerID, SessionIX, and Generation.
 #' @return The same data as in frame, but with a new column Exp.
-label_experiment <- function(frame) {
+label_experiment <- function(frame, map) {
+  if(missing(map)) map <- make_experiment_map()
+  in_common <- intersect(names(frame), names(map))
+  map <- unique(map[,c(in_common, "Exp")])
+  inner_join(frame, map)
+}
+
+make_experiment_map <- function() {
   teams <- collect_tbl("Table_Group") %>%
     replace_id_group() %>%
     select(TeamID, Strategy = Treatment, Duration = BuildingTime, TeamSize = Size)
@@ -43,21 +50,12 @@ label_experiment <- function(frame) {
   isolated4 <- dplyr::filter(isolated, Duration == 25) %>%
     mutate(Exp = "100LaborMinutes")
 
-  experiment_map <- bind_rows(
+  bind_rows(
     diachronic2,
     diachronic4,
     synchronic,
     isolated2,
     isolated4
   ) %>%
-    select(TeamID, PlayerID, SessionIX, Generation, Exp)
-
-  if(missing(frame)) return(experiment_map)
-
-  if(!("PlayerID" %in% colnames(frame))) {
-    experiment_map <- experiment_map %>%
-      select(TeamID, Exp) %>%
-      unique()
-  }
-  inner_join(frame, experiment_map)
+    select(TeamID, PlayerID, SessionID, SessionIX, Generation, Exp)
 }
