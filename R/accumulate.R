@@ -29,7 +29,7 @@ accumulate_session <- function(Guesses) {
     mutate(
       NumSessionGuess = 1:n(),
       PrevSessionGuesses = accumulate(Guess),
-      PrevSessionResults = accumulate(Result, default = 1:6)
+      PrevSessionInventory = accumulate(Result, default = 1:6)
     ) %>%
     ungroup()
 }
@@ -41,7 +41,7 @@ accumulate_player <- function(Guesses) {
     mutate(
       NumPlayerGuessses = 1:n(),
       PrevPlayerGuesses = accumulate(Guess),
-      PrevPlayerResults = accumulate(Result, default = 1:6)
+      PrevPlayerInventory = accumulate(Result, default = 1:6)
     ) %>%
     ungroup()
 }
@@ -53,7 +53,7 @@ accumulate_team <- function(Guesses) {
     mutate(
       NumTeamGuesses = 1:n(),
       PrevTeamGuesses = accumulate(Guess),
-      PrevTeamResults = accumulate(Result, default = 1:6)
+      PrevTeamInventory = accumulate(Result, default = 1:6)
     ) %>%
     ungroup()
 }
