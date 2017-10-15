@@ -1,8 +1,3 @@
-data_sampled <- function() {
-  Guesses <- data_guesses()
-  SampledPerformance <- Guesses %>%
-    sample_every(60)
-}
 
 sample_every <- function(frame, seconds) {
   frame %>%

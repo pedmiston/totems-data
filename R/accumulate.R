@@ -22,14 +22,53 @@ accumulate <- function(items, default = NA) {
   results
 }
 
+#' Assign a string id representing the vector of accumulated variables.
+assign_ids <- function(accumulated) {
+  purrr::map(accumulated, function(x) paste(sort(x), collapse = "-")) %>%
+    unlist()
+}
+
+#' Assign a hash representing the vector of accumulated variables.
+assign_hashes <- function(accumulated) {
+  accumulated %>%
+    assign_ids() %>%
+    purrr::map(function(id) digest::digest(id)) %>%
+    unlist()
+}
+
+#' Accumulate Guesses and Results by some grouping variable.
+accumulate_by <- function(Guesses, group) {
+  time_var <- paste0(group, "Time")
+  id_var <- paste0(group, "ID")
+  num_var <- paste0("Num", group, "Guess")
+  guesses_var <- paste0("Prev", group, "Guesses")
+  guesses_hash_var <- paste0("Prev", group, "GuessesHash")
+  inventory_var <- paste0("Prev", group, "Inventory")
+  inventory_id_var <- paste0("Prev", group, "InventoryID")
+
+  Guesses %>%
+    arrange(!!time_var) %>%
+    group_by(!!id_var) %>%
+    mutate(
+      !!num_var := 1:n(),
+      !!guesses_var := accumulate(Guess),
+      !!guesses_hash_var := assign_hashes(!!guesses_var),
+      !!inventory_var := accumulate(Result, default = 1:6),
+      !!inventory_id_var := assign_ids(!!inventory_var)
+    ) %>%
+    ungroup()
+}
+
 accumulate_session <- function(Guesses) {
   Guesses %>%
-    group_by(SessionID) %>%
     arrange(SessionTime) %>%
+    group_by(SessionID) %>%
     mutate(
       NumSessionGuess = 1:n(),
       PrevSessionGuesses = accumulate(Guess),
-      PrevSessionInventory = accumulate(Result, default = 1:6)
+      PrevSessionGuessesHash = assign_hashes(PrevSessionGuesses),
+      PrevSessionInventory = accumulate(Result, default = 1:6),
+      PrevSessionInventoryID = assign_ids(PrevSessionInventory)
     ) %>%
     ungroup()
 }
@@ -39,9 +78,11 @@ accumulate_player <- function(Guesses) {
     group_by(PlayerID) %>%
     arrange(PlayerTime) %>%
     mutate(
-      NumPlayerGuessses = 1:n(),
+      NumPlayerGuesss = 1:n(),
       PrevPlayerGuesses = accumulate(Guess),
-      PrevPlayerInventory = accumulate(Result, default = 1:6)
+      PrevPlayerGuessesHash = assign_hashes(PrevPlayerGuesses),
+      PrevPlayerInventory = accumulate(Result, default = 1:6),
+      PrevPlayerInventoryID = assign_ids(PrevPlayerInventory)
     ) %>%
     ungroup()
 }
@@ -51,9 +92,11 @@ accumulate_team <- function(Guesses) {
     group_by(TeamID) %>%
     arrange(TeamTime) %>%
     mutate(
-      NumTeamGuesses = 1:n(),
+      NumTeamGuess = 1:n(),
       PrevTeamGuesses = accumulate(Guess),
-      PrevTeamInventory = accumulate(Result, default = 1:6)
+      PrevTeamGuessesHash = assign_hashes(PrevTeamGuesses),
+      PrevTeamInventory = accumulate(Result, default = 1:6),
+      PrevTeamInventoryID = assign_ids(PrevTeamInventory)
     ) %>%
     ungroup()
 }

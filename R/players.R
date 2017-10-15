@@ -1,30 +1,3 @@
-#' Get Player data.
-data_players <- function() {
-  teams <- collect_tbl("Table_Group") %>%
-    replace_id_group() %>%
-    select(TeamID, Strategy = Treatment, Duration = BuildingTime)
-
-  players <- collect_tbl("Table_Player") %>%
-    replace_id_group() %>%
-    left_join(teams) %>%
-    replace_id_player() %>%
-    replace_ancestor() %>%
-    label_experiment() %>%
-    label_valid_players() %>%
-    label_team_size() %>%
-    select(
-      Exp,
-      PlayerID,
-      TeamID,
-      TeamSize,
-      Strategy,
-      SessionID,
-      SessionIX,
-      Generation,
-      Duration
-    )
-   players %>% arrange(desc(Exp), TeamID, Generation, Session)
-}
 
 join_players <- function(frame) left_join(frame, data_players())
 
@@ -40,7 +13,7 @@ join_players <- function(frame) left_join(frame, data_players())
 #' SessionIX = 1:4?
 #' PlayerID = "P" + max(ID_Player)
 replace_id_player <- function(frame) {
-  players <- collect_tbl("Table_Player") %>%
+  players <- read_table("Table_Player") %>%
     replace_id_group() %>%
     label_strategy() %>%
     select(ID_Player, TeamID, Strategy)
@@ -80,7 +53,7 @@ replace_ancestor <- function(frame) {
 }
 
 label_generation <- function(frame) {
-  map <- collect_tbl("Table_Player") %>%
+  map <- read_table("Table_Player") %>%
     replace_id_player() %>%
     label_team_id() %>%
     label_strategy() %>%
@@ -91,11 +64,55 @@ label_generation <- function(frame) {
 }
 
 label_team_id <- function(frame) {
-  map <- collect_tbl("Table_Player") %>%
+  map <- read_table("Table_Player") %>%
     replace_id_group() %>%
     replace_id_player() %>%
     select(PlayerID, TeamID) %>%
     unique()
   if(missing(frame)) return(map)
   left_join(frame, map)
+}
+
+
+label_valid_players <- function(frame) {
+  teams <- read_table("Table_Group") %>%
+    rename(Strategy = Treatment, Duration = BuildingTime) %>%
+    replace_id_group() %>%
+    label_experiment() %>%
+    replace_size() %>%
+    select(TeamID, Strategy, TeamSize)
+
+  players <- read_table("Table_Player") %>%
+    mutate(ID_Player = as.numeric(ID_Player)) %>%
+    replace_id_group() %>%
+    label_strategy() %>%
+    replace_id_player() %>%
+    replace_ancestor() %>%
+    label_experiment() %>%
+    left_join(teams)
+
+  diachronic <- dplyr::filter(players, Strategy == "Diachronic") %>%
+    group_by(Exp, TeamID) %>%
+    mutate(ActualTeamSize = n()) %>%
+    ungroup() %>%
+    select(Exp, TeamID, PlayerID, Generation, ActualTeamSize)
+
+  synchronic <- dplyr::filter(players, Strategy == "Synchronic")
+  isolated <- dplyr::filter(players, Strategy == "Isolated")
+
+  valid_player_map <- players %>%
+    mutate(IsValidPlayer = TRUE) %>%
+    select(Exp, TeamID, PlayerID, Session, IsValidPlayer)
+
+  if(missing(frame)) return(valid_player_map)
+  left_join(frame, valid_player_map)
+}
+
+label_valid_teams <- function(frame) {
+  valid_team_map <- label_valid_players() %>%
+    group_by(Exp, TeamID) %>%
+    summarize(IsValidTeam = all(IsValidPlayer))
+
+  if(missing(frame)) return(valid_team_map)
+  left_join(frme, valid_team_map)
 }

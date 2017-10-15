@@ -36,6 +36,31 @@ test_that("accumulate with default int items", {
   expect_equal(result, expected)
 })
 
+context("Assign ids")
+
+test_that("assign_ids works for results of accumulate", {
+  given <- 2:4
+  accumulated <- accumulate(given, default = 1)
+  ids <- assign_ids(accumulated)
+  expect_equal(ids, c("1", "1-2", "1-2-3"))
+})
+
+test_that("assign_ids assigns the empty string for NA inventories", {
+  expect_equal(assign_ids(accumulate(NA)), "")
+})
+
+context("Assign hashes")
+
+test_that("assign_hashes is vectorized", {
+  given <- 2:4
+  accumulated <- accumulate(given, default = 1)
+  hashes <- assign_hashes(accumulated)
+  expected <- assign_ids(accumulated) %>%
+    purrr::map(function(id) digest::digest(id)) %>%
+    unlist()
+  expect_equal(hashes, expected)
+})
+
 context("Accumulate session")
 
 Guesses <- data_frame(

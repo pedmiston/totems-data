@@ -15,7 +15,7 @@ label_time <- function(frame) {
 }
 
 label_player_time <- function(frame) {
-  durations <- collect_tbl("Table_Group") %>%
+  durations <- read_table("Table_Group") %>%
     replace_id_group() %>%
     select(TeamID, DurationMin = BuildingTime)
 
@@ -25,7 +25,7 @@ label_player_time <- function(frame) {
 }
 
 label_team_time <- function(frame) {
-  durations <- collect_tbl("Table_Group") %>%
+  durations <- read_table("Table_Group") %>%
     replace_id_group() %>%
     select(TeamID, DurationMin = BuildingTime)
 

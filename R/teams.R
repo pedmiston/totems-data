@@ -1,29 +1,9 @@
-#' Get Teams data.
-data_teams <- function() {
-  Teams <- collect_tbl("Table_Group") %>%
-    rename(Strategy = Treatment, Duration = BuildingTime) %>%
-    replace_id_group() %>%
-    label_experiment() %>%
-    label_team_size() %>%
-    label_valid_teams() %>%
-    select(
-      Exp,
-      TeamID,
-      Strategy,
-      TeamSize,
-      Duration
-    )
-  Teams
-}
-
-join_teams <- function(frame) left_join(frame, data_teams())
-
 #' Replace ID_Group with TeamID.
 #'
 #' TeamID is a deidentified version of ID_Group
 #' with datetime information removed.
 replace_id_group <- function(frame) {
-  id_groups <- collect_tbl("Table_Group")$ID_Group %>% sort()
+  id_groups <- read_table("Table_Group")$ID_Group %>% sort()
   team_ids <- paste0("G", seq_along(id_groups))
   map <- data_frame(ID_Group = id_groups, TeamID = team_ids)
   if(missing(frame)) return(map)
@@ -47,9 +27,16 @@ label_team_size <- function(frame) {
 
 #' Label the Strategy of the teams by TeamID.
 label_strategy <- function(frame) {
-  map <- collect_tbl("Table_Group") %>%
+  map <- read_table("Table_Group") %>%
     replace_id_group() %>%
     select(TeamID, Strategy = Treatment)
   if(missing(frame)) return(map)
   left_join(frame, map)
+}
+
+#' Label the number of current players
+label_current_players <- function(frame) {
+  frame %>% mutate(
+    NumCurrentPlayers = ifelse(Strategy == "Diachronic", 1, TeamSize)
+  )
 }

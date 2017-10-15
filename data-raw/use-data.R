@@ -1,13 +1,21 @@
 library(devtools)
 load_all()
 
-Teams <- data_teams()
-Players <- data_players()
-TeamPerformance <- data_team_performance()
+# Collect the latest data from the DB.
+collect_tables()
 
-use_data(
-  Teams,
-  Players,
-  TeamPerformance,
-  overwrite = TRUE
-)
+
+
+
+# Guesses <- data_guesses()
+# Teams <- data_teams()
+# Players <- data_players()
+# TeamPerformance <- data_team_performance()
+
+# use_data(
+#   Guesses,
+#   Teams,
+#   Players,
+#   TeamPerformance,
+#   overwrite = TRUE
+# )

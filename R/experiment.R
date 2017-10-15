@@ -19,11 +19,11 @@ label_experiment <- function(frame, map) {
 }
 
 make_experiment_map <- function() {
-  teams <- collect_tbl("Table_Group") %>%
+  teams <- read_table("Table_Group") %>%
     replace_id_group() %>%
     select(TeamID, Strategy = Treatment, Duration = BuildingTime, TeamSize = Size)
 
-  players <- collect_tbl("Table_Player") %>%
+  players <- read_table("Table_Player") %>%
     replace_id_group() %>%
     replace_id_player() %>%
     left_join(teams) %>%

@@ -15,7 +15,6 @@ connect_db <- function() {
 }
 
 #' Create a blank config file "config.yml" in the current directory.
-#' @import magrittr
 create_blank_config <- function() {
   list(host="", port=0, user="", password="") %>%
     yaml::as.yaml() %>%
@@ -23,25 +22,31 @@ create_blank_config <- function() {
 }
 
 #' Collect a single table from the db.
-#'
-#' Tries to use a local copy if it's available,
-#' unless force is set to TRUE.
-collect_tbl <- function(name, force = FALSE) {
-  local_tbl <- file.path("data-raw/tables/", paste0(name, ".csv"))
-  if(file.exists(local_tbl) & !force) {
-    frame <- readr::read_csv(local_tbl)
-
-    if("ID_Player" %in% frame) {
-      # convert ID_Player from int back to character
-      frame$ID_Player <- as.character(frame$ID_Player)
-    }
-
-    return(frame)
-  } else {
+collect_table <- function(name, con, save = TRUE) {
+  teardown <- missing(con)
+  if(missing(con)) {
     con <- connect_db()
-    frame <- tbl(con, name) %>% collect()
-    write.csv(frame, local_tbl, row.names = FALSE)
-    RMySQL::dbDisconnect(con)
-    return(frame)
   }
+  frame <- collect(tbl(con, name))
+  if(save) {
+    out <- paste0("data-raw/tables/", name, ".csv")
+    write.csv(frame, out, row.names = FALSE)
+  }
+  if(teardown) RMySQL::dbDisconnect(con)
+  return(frame)
+}
+
+#' Collect all tables in the db.
+collect_tables <- function() {
+  con <- connect_db()
+  tables <- RMySQL::dbListTables(con)
+  for(table in tables) {
+    collect_table(table, con)
+  }
+  RMySQL::dbDisconnect(con)
+}
+
+read_table <- function(name) {
+  src <- paste0("data-raw/tables/", name, ".csv")
+  readr::read_csv(src)
 }
