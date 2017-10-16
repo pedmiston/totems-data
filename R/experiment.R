@@ -11,51 +11,90 @@
 #'
 #' @param frame Requires columns TeamID, PlayerID, SessionIX, and Generation.
 #' @return The same data as in frame, but with a new column Exp.
-label_experiment <- function(frame, map) {
-  if(missing(map)) map <- make_experiment_map()
-  in_common <- intersect(names(frame), names(map))
-  map <- unique(map[,c(in_common, "Exp")])
-  inner_join(frame, map)
+label_player_experiment <- function(frame) {
+  diachronic_50 <- data_frame(
+    Strategy = "Diachronic",
+    Exp = "50LaborMinutes",
+    TeamSize = 2,
+    SessionSize = 1,
+    Duration = 25,
+    SessionIX = 1,
+    PlayerIX = 1:2,
+    Generation = 1:2
+  )
+
+  diachronic_100 <- data_frame(
+    Strategy = "Diachronic",
+    Exp = "100LaborMinutes",
+    TeamSize = 4,
+    SessionSize = 1,
+    Duration = 25,
+    SessionIX = 1,
+    PlayerIX = 1:4,
+    Generation = 1:4
+  )
+
+  synchronic_50 <- data_frame(
+    Strategy = "Synchronic",
+    Exp = "50LaborMinutes",
+    TeamSize = 2,
+    SessionSize = 1,
+    Duration = 25,
+    SessionIX = 1,
+    PlayerIX = 1:2,
+    Generation = 1
+  )
+
+  synchronic_100 <- data_frame(
+    Strategy = "Synchronic",
+    Exp = "100LaborMinutes",
+    TeamSize = 4,
+    SessionSize = 1,
+    Duration = 25,
+    SessionIX = 1,
+    PlayerIX = 1:4,
+    Generation = 1
+  )
+
+  isolated_50 <- data_frame(
+    Strategy = "Isolated",
+    Exp = "50LaborMinutes",
+    TeamSize = 1,
+    SessionSize = c(1, 2, 2),
+    Duration = c(50, 25, 25),
+    SessionIX = c(1, 1, 2),
+    PlayerIX = 1,
+    Generation = c(1, 1, 2)
+  )
+
+  isolated_100 <- data_frame(
+    Strategy = "Isolated",
+    Exp = "100LaborMinutes",
+    TeamSize = 1,
+    SessionSize = 4,
+    Duration = 25,
+    SessionIX = 1:4,
+    PlayerIX = 1,
+    Generation = 1:4
+  )
+
+  experiment_map <- bind_rows(
+    diachronic_50,
+    diachronic_100,
+    synchronic_50,
+    synchronic_100,
+    isolated_50,
+    isolated_100
+  )
+
+  if(missing(frame)) return(experiment_map)
+  inner_join(frame, experiment_map)
 }
 
-make_experiment_map <- function() {
-  teams <- read_table("Table_Group") %>%
-    replace_id_group() %>%
-    select(TeamID, Strategy = Treatment, Duration = BuildingTime, TeamSize = Size)
-
-  players <- read_table("Table_Player") %>%
-    replace_id_group() %>%
-    replace_id_player() %>%
-    left_join(teams) %>%
-    replace_ancestor() %>%
-    select(PlayerID, TeamID, SessionID, SessionIX, Strategy, Generation, TeamSize, Duration)
-
-  diachronic <- dplyr::filter(players, Strategy == "Diachronic")
-  diachronic2 <- dplyr::filter(diachronic, Generation <= 2) %>%
-    mutate(TeamSize = 2, Exp = "50LaborMinutes")
-  diachronic4 <- mutate(diachronic, TeamSize = 4, Exp = "100LaborMinutes")
-
-  synchronic_exp_map <- data_frame(
-    TeamSize = c(2, 4),
-    Exp = c("50LaborMinutes", "100LaborMinutes")
-  )
-  synchronic <- dplyr::filter(players, Strategy == "Synchronic") %>%
-    left_join(synchronic_exp_map)
-
-  isolated <- dplyr::filter(players, Strategy == "Isolated")
-  isolated2 <- bind_rows(
-    dplyr::filter(isolated, Duration == 50),
-    dplyr::filter(isolated, Duration == 25, SessionIX <= 2)
-  ) %>% mutate(Exp = "50LaborMinutes")
-  isolated4 <- dplyr::filter(isolated, Duration == 25) %>%
-    mutate(Exp = "100LaborMinutes")
-
-  bind_rows(
-    diachronic2,
-    diachronic4,
-    synchronic,
-    isolated2,
-    isolated4
-  ) %>%
-    select(TeamID, PlayerID, SessionID, SessionIX, Generation, Exp)
+label_team_experiment <- function(frame) {
+  experiment_map <- label_player_experiment() %>%
+    select(Strategy, Duration, Exp, TeamSize, SessionSize) %>%
+    unique()
+  if(missing(frame)) return(experiment_map)
+  inner_join(frame, experiment_map)
 }

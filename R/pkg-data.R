@@ -3,15 +3,16 @@ data_teams <- function() {
   Teams <- read_table("Table_Group") %>%
     rename(Strategy = Treatment, Duration = BuildingTime) %>%
     replace_id_group() %>%
-    label_experiment() %>%
-    label_team_size() %>%
+    label_team_experiment() %>%
     label_valid_teams() %>%
     select(
       Exp,
       TeamID,
       Strategy,
       TeamSize,
-      Duration
+      SessionSize,
+      Duration,
+      IsTeamValid
     )
   Teams
 }
@@ -30,9 +31,8 @@ data_players <- function() {
     left_join(teams) %>%
     replace_id_player() %>%
     replace_ancestor() %>%
-    label_experiment() %>%
+    label_player_experiment() %>%
     label_valid_players() %>%
-    label_team_size() %>%
     select(
       Exp,
       PlayerID,
@@ -76,8 +76,7 @@ data_guesses <- function() {
     label_strategy() %>%
     label_generation() %>%
     label_team_id() %>%
-    label_experiment() %>%
-    label_team_size() %>%
+    label_player_experiment() %>%
     label_current_players() %>%
     label_time() %>%
     # accumulate_by("Session") %>%

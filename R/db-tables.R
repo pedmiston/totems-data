@@ -46,6 +46,7 @@ collect_tables <- function() {
   RMySQL::dbDisconnect(con)
 }
 
+#' Read a local version of the table.
 read_table <- function(name) {
   src <- paste0("data-raw/tables/", name, ".csv")
   readr::read_csv(src)

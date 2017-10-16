@@ -1,42 +1,68 @@
-
-join_players <- function(frame) left_join(frame, data_players())
-
-#' Replace ID_Player with PlayerID, SessionID, and SessionIX
+#' Replace ID_Player with PlayerID, PlayerIX, SessionID, and SessionIX.
 #'
-#' For Diachronic and Synchronic players:
+#' For Diachronic players:
 #' PlayerID = "P" + ID_Player
+#' PlayerIX = 1:4?
 #' SessionID = "S" + ID_Player
 #' SessionIX = 1
 #'
+#' For Synchronic players, who participate in the same session:
+#' PlayerID = "P" + ID_Player
+#' PlayerIX = 1:4?
+#' SessionID = "S" + min(ID_Player)
+#' SessionIX = 1
+#'
 #' For Isolated players, who are assigned multiple values for ID_Player:
+#' PlayerID = "P" + max(ID_Player)
+#' PlayerIX = 1
 #' SessionID = "S" + ID_Player
 #' SessionIX = 1:4?
-#' PlayerID = "P" + max(ID_Player)
 replace_id_player <- function(frame) {
   players <- read_table("Table_Player") %>%
     replace_id_group() %>%
     label_strategy() %>%
     select(ID_Player, TeamID, Strategy)
 
-  # Treat team players and isolated players separately.
-  team_players <- dplyr::filter(players, Strategy != "Isolated") %>%
+  # Treat each strategy separately
+
+  diachronic_players <- dplyr::filter(players, Strategy == "Diachronic") %>%
     mutate(
       PlayerID = paste0("P", ID_Player),
       SessionID = paste0("S", ID_Player),
       SessionIX = 1
-    )
+    ) %>%
+    arrange(ID_Player) %>%
+    group_by(TeamID) %>%
+    mutate(PlayerIX = 1:n()) %>%
+    ungroup()
+
+  synchronic_players <- dplyr::filter(players, Strategy == "Synchronic") %>%
+    mutate(
+      PlayerID = paste0("P", ID_Player),
+      SessionID = paste0("S", min(ID_Player)),
+      SessionIX = 1
+    ) %>%
+    arrange(ID_Player) %>%
+    group_by(TeamID) %>%
+    mutate(PlayerIX = 1:n()) %>%
+    ungroup()
+
   isolated_players <- dplyr::filter(players, Strategy == "Isolated") %>%
-    mutate(ID_PlayerInt = as.numeric(ID_Player)) %>%
-    arrange(ID_PlayerInt) %>%
+    arrange(ID_Player) %>%
     group_by(TeamID) %>%
     mutate(
-      PlayerID = paste0("P", max(ID_PlayerInt)),
+      PlayerID = paste0("P", max(ID_Player)),
+      PlayerIX = 1,
       SessionID = paste0("S", ID_Player),
       SessionIX = 1:n()
+    )
+
+  player_id_map <- bind_rows(
+      diachronic_players,
+      synchronic_players,
+      isolated_players
     ) %>%
-    select(-ID_PlayerInt)
-  player_id_map <- bind_rows(team_players, isolated_players) %>%
-    select(ID_Player, PlayerID, SessionID, SessionIX)
+    select(ID_Player, PlayerID, PlayerIX, SessionID, SessionIX)
 
   left_join(frame, player_id_map) %>%
     select(-ID_Player)
@@ -75,44 +101,27 @@ label_team_id <- function(frame) {
 
 
 label_valid_players <- function(frame) {
-  teams <- read_table("Table_Group") %>%
-    rename(Strategy = Treatment, Duration = BuildingTime) %>%
-    replace_id_group() %>%
-    label_experiment() %>%
-    replace_size() %>%
-    select(TeamID, Strategy, TeamSize)
-
   players <- read_table("Table_Player") %>%
-    mutate(ID_Player = as.numeric(ID_Player)) %>%
     replace_id_group() %>%
     label_strategy() %>%
     replace_id_player() %>%
     replace_ancestor() %>%
-    label_experiment() %>%
-    left_join(teams)
+    label_player_experiment()
 
-  diachronic <- dplyr::filter(players, Strategy == "Diachronic") %>%
+  team_players_map <- dplyr::filter(players, Strategy != "Isolated") %>%
     group_by(Exp, TeamID) %>%
-    mutate(ActualTeamSize = n()) %>%
-    ungroup() %>%
-    select(Exp, TeamID, PlayerID, Generation, ActualTeamSize)
+    mutate(IsPlayerValid = (n() == TeamSize)) %>%
+    ungroup()
 
-  synchronic <- dplyr::filter(players, Strategy == "Synchronic")
-  isolated <- dplyr::filter(players, Strategy == "Isolated")
+  isolated_players_map <- dplyr::filter(players, Strategy == "Isolated") %>%
+    group_by(Exp, Duration, PlayerID) %>%
+    mutate(IsPlayerValid = (n() == SessionSize))
 
-  valid_player_map <- players %>%
-    mutate(IsValidPlayer = TRUE) %>%
-    select(Exp, TeamID, PlayerID, Session, IsValidPlayer)
+  valid_players_map <- bind_rows(team_players_map, isolated_players_map) %>%
+    select(Exp, TeamID, PlayerID, SessionID, SessionIX, IsPlayerValid)
 
-  if(missing(frame)) return(valid_player_map)
-  left_join(frame, valid_player_map)
+  if(missing(frame)) return(valid_players_map)
+  left_join(frame, valid_players_map)
 }
 
-label_valid_teams <- function(frame) {
-  valid_team_map <- label_valid_players() %>%
-    group_by(Exp, TeamID) %>%
-    summarize(IsValidTeam = all(IsValidPlayer))
-
-  if(missing(frame)) return(valid_team_map)
-  left_join(frme, valid_team_map)
-}
+join_players <- function(frame) left_join(frame, data_players())

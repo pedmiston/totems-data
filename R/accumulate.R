@@ -37,7 +37,7 @@ assign_hashes <- function(accumulated) {
 }
 
 #' Accumulate Guesses and Results by some grouping variable.
-accumulate_by <- function(Guesses, group) {
+accumulate_by <- function(guesses, group) {
   time_var <- paste0(group, "Time")
   id_var <- paste0(group, "ID")
   num_var <- paste0("Num", group, "Guess")
@@ -46,7 +46,7 @@ accumulate_by <- function(Guesses, group) {
   inventory_var <- paste0("Prev", group, "Inventory")
   inventory_id_var <- paste0("Prev", group, "InventoryID")
 
-  Guesses %>%
+  guesses %>%
     arrange(!!time_var) %>%
     group_by(!!id_var) %>%
     mutate(

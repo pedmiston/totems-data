@@ -31,7 +31,6 @@ label_team_time <- function(frame) {
 
   frame %>%
     left_join(durations) %>%
-    label_team_size() %>%
     mutate(TeamTime = ifelse(Strategy == "Synchronic", SessionTime*TeamSize,
                              DurationMin*(Generation-1) + SessionTime))
 }
