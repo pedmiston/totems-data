@@ -59,7 +59,9 @@ replace_ancestor <- function(frame) {
 }
 
 label_generation <- function(frame) {
-  map <- select(player_conditions(), PlayerID, SessionIX, Generation)
+  map <- player_conditions() %>%
+    select(Strategy, PlayerIX, SessionIX, Generation) %>%
+    unique()
   if(missing(frame)) return(map)
   left_join(frame, map)
 }

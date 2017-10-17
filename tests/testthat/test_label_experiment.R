@@ -16,7 +16,8 @@ test_that("labeling player conditions does not duplicate synchronic players", {
   frame <- data_frame(
     Strategy = "Synchronic",
     PlayerIX = 1,
-    SessionIX = 1
+    SessionIX = 1,
+    PlayersPerSession = 2
   )
   result <- label_player_conditions(frame)
   expect_equal(nrow(result), 1)

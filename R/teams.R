@@ -26,6 +26,16 @@ label_current_players <- function(frame) {
   )
 }
 
+label_players_per_session <- function(frame) {
+  players_per_session_map <- read_table("Table_Group") %>%
+    replace_id_group() %>%
+    rename(Strategy = Treatment) %>%
+    mutate(PlayersPerSession = ifelse(Strategy == "Synchronic", Size, 1)) %>%
+    select(TeamID, PlayersPerSession)
+  if(missing(frame)) return(players_per_session_map)
+  left_join(frame, players_per_session_map)
+}
+
 label_valid_teams <- function(frame) {
   valid_team_map <- label_valid_players() %>%
     group_by(Exp, TeamID) %>%

@@ -3,6 +3,7 @@ data_teams <- function() {
   Teams <- read_table("Table_Group") %>%
     rename(Strategy = Treatment, SessionDuration = BuildingTime) %>%
     replace_id_group() %>%
+    label_players_per_session() %>%
     label_team_conditions() %>%
     select(
       Exp,
@@ -12,7 +13,8 @@ data_teams <- function() {
       SessionsPerPlayer,
       PlayersPerSession,
       SessionDuration
-    )
+    ) %>%
+    arrange(TeamID, desc(Exp))
   Teams
 }
 
@@ -24,6 +26,7 @@ data_players <- function() {
   Players <- read_table("Table_Player") %>%
     replace_id_group() %>%
     label_strategy() %>%
+    label_players_per_session() %>%
     replace_id_player() %>%
     replace_ancestor() %>%
     label_player_conditions() %>%
@@ -63,6 +66,7 @@ data_guesses <- function() {
     label_strategy() %>%
     label_generation() %>%
     label_team_id() %>%
+    label_players_per_session() %>%
     label_player_conditions() %>%
     label_time() %>%
     accumulate_by("Session") %>%
