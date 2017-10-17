@@ -15,7 +15,6 @@ test_that("labeling player conditions duplicates diachronic players", {
 test_that("labeling player conditions does not duplicate synchronic players", {
   frame <- data_frame(
     Strategy = "Synchronic",
-    NumPlayers = 2,
     PlayerIX = 1,
     SessionIX = 1
   )
