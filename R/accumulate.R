@@ -1,4 +1,4 @@
-#' Keep track of accumulating variables.
+#' Accumulate items over trials, i.e. Guesses and Results.
 #'
 #' @examples
 #' items <- c("a", "b", "b", "c")
@@ -13,13 +13,17 @@ accumulate <- function(items, default = NA) {
   for(i in seq_along(items)) {
     if (i == 1) results[[i]] <- default
     else {
-      results[[i]] <- c(results[[i-1]], items[i-1]) %>%
-        .[!is.na(.)] %>%
-        unique() %>%
-        sort()
+      prev_ix <- i - 1
+      results[[i]] <- append(results[[prev_ix]], items[prev_ix])
     }
   }
   results
+}
+
+#' Append a new item to the previous items.
+append <- function(prev, new) {
+  if(is.na(new)) return(prev)
+  unique(c(prev, new)) %>% sort()
 }
 
 #' Assign a string id representing the vector of accumulated variables.

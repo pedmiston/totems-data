@@ -17,22 +17,22 @@ label_time <- function(frame) {
 label_player_time <- function(frame) {
   durations <- read_table("Table_Group") %>%
     replace_id_group() %>%
-    select(TeamID, DurationMin = BuildingTime)
+    select(TeamID, SessionDurationMin = BuildingTime)
 
   frame %>%
     left_join(durations) %>%
-    mutate(PlayerTime = DurationMin*(SessionIX-1) + SessionTime)
+    mutate(PlayerTime = SessionDurationMin*(SessionIX-1) + SessionTime)
 }
 
 label_team_time <- function(frame) {
   durations <- read_table("Table_Group") %>%
     replace_id_group() %>%
-    select(TeamID, DurationMin = BuildingTime)
+    select(TeamID, SessionDurationMin = BuildingTime)
 
   frame %>%
     left_join(durations) %>%
-    mutate(TeamTime = ifelse(Strategy == "Synchronic", SessionTime*TeamSize,
-                             DurationMin*(Generation-1) + SessionTime))
+    mutate(TeamTime = ifelse(Strategy == "Synchronic", SessionTime*NumPlayers,
+                             SessionDurationMin*(Generation-1) + SessionTime))
 }
 
 label_calendar_time <- function(frame) {

@@ -1,18 +1,17 @@
-#' Get Teams data.
+#' Create Teams data.
 data_teams <- function() {
   Teams <- read_table("Table_Group") %>%
-    rename(Strategy = Treatment, Duration = BuildingTime) %>%
+    rename(Strategy = Treatment, SessionDuration = BuildingTime) %>%
     replace_id_group() %>%
-    label_team_experiment() %>%
-    label_valid_teams() %>%
+    label_team_conditions() %>%
     select(
       Exp,
       TeamID,
       Strategy,
-      TeamSize,
-      SessionSize,
-      Duration,
-      IsTeamValid
+      NumPlayers,
+      SessionsPerPlayer,
+      PlayersPerSession,
+      SessionDuration
     )
   Teams
 }
@@ -22,35 +21,29 @@ data_teams <- function() {
 
 #' Get Player data.
 data_players <- function() {
-  teams <- read_table("Table_Group") %>%
+  Players <- read_table("Table_Player") %>%
     replace_id_group() %>%
-    select(TeamID, Strategy = Treatment, Duration = BuildingTime)
-
-  players <- read_table("Table_Player") %>%
-    replace_id_group() %>%
-    left_join(teams) %>%
+    label_strategy() %>%
     replace_id_player() %>%
     replace_ancestor() %>%
-    label_player_experiment() %>%
-    label_valid_players() %>%
+    label_player_conditions() %>%
     select(
       Exp,
       PlayerID,
-      TeamID,
-      TeamSize,
-      Strategy,
+      PlayerIX,
       SessionID,
       SessionIX,
+      TeamID,
+      Strategy,
+      NumPlayers,
       Generation,
-      Duration
-    )
-   players %>% arrange(desc(Exp), TeamID, Generation, Session)
+      SessionDuration
+    ) %>%
+    arrange(TeamID, desc(Exp), PlayerIX, SessionIX, Strategy)
+  Players
 }
 
-
-
-
-#' Get Guesses data.
+#' Guesses data.
 #'
 #' Guesses are the primary unit of observation.
 #' A Guess is a single trial of the experiment:
@@ -62,12 +55,6 @@ data_players <- function() {
 #' or repeated, relative to the current session,
 #' player, or team.
 data_guesses <- function() {
-  local_guesses <- "data/Guesses.rda"
-  if (file.exists(local_guesses)) {
-    load(local_guesses)
-    return(Guesses)
-  }
-
   Guesses <- read_table("Table_Workshop") %>%
     rename(Guess = WorkShopString, Result = WorkShopResult) %>%
     replace_id_player() %>%
@@ -76,22 +63,21 @@ data_guesses <- function() {
     label_strategy() %>%
     label_generation() %>%
     label_team_id() %>%
-    label_player_experiment() %>%
-    label_current_players() %>%
+    label_player_conditions() %>%
     label_time() %>%
-    # accumulate_by("Session") %>%
-    # accumulate_by("Player") %>%
-    # accumulate_by("Team") %>%
-    accumulate_session() %>%
-    accumulate_player() %>%
-    accumulate_team() %>%
+    accumulate_by("Session") %>%
+    accumulate_by("Player") %>%
+    accumulate_by("Team") %>%
+    # accumulate_session() %>%
+    # accumulate_player() %>%
+    # accumulate_team() %>%
     label_guess_uniqueness() %>%
     label_result_uniqueness() %>%
     label_score() %>%
     select(
       Guess, Result,
       PlayerID, SessionID, SessionIX, TeamID,
-      Strategy, TeamSize, Generation, Exp,
+      Strategy, NumPlayers, Generation, Exp,
       SessionTime, PlayerTime, TeamTime, CalendarTime,
       NumSessionGuess, NumPlayerGuess, NumTeamGuess,
       UniqueSessionGuess, UniquePlayerGuess, UniqueTeamGuess,
@@ -122,7 +108,7 @@ data_inventories <- function() {
       RepeatResults = sum(Result != 0),
       StartTime = min(SessionTime),
       EndTime = max(SessionTime),
-      Duration = EndTime - StartTime,
+      SessionDuration = EndTime - StartTime,
       Result = ifelse(sum(UniqueSessionResult) == 0, 0,
                       Result[UniqueSessionResult == 1])
     ) %>%
@@ -140,7 +126,7 @@ data_team_inventories <- function() {
       TotalUniqueGuesses = sum(UniqueGuesses),
       UniqueGuessesPerPlayer = sum(UniqueGuesses)/NumCurrentPlayers,
       TotalRepeatResults = sum(RepeatResults),
-      TotalTime = sum(Duration)
+      TotalTime = sum(SessionDuration)
     ) %>%
     ungroup() %>%
     join_teams()

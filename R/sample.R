@@ -1,7 +1,7 @@
 
 sample_every <- function(frame, seconds) {
   frame %>%
-    left_join(data_teams()[,c("TeamID", "SessionDuration")])
+    left_join(data_teams()[,c("TeamID", "SessionSessionDuration")])
 
 
 }

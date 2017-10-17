@@ -22,7 +22,7 @@ label_strategy <- function(frame) {
 #' Label the number of current players
 label_current_players <- function(frame) {
   frame %>% mutate(
-    NumCurrentPlayers = ifelse(Strategy == "Diachronic", 1, TeamSize)
+    NumCurrentPlayers = ifelse(Strategy == "Diachronic", 1, NumPlayers)
   )
 }
 
