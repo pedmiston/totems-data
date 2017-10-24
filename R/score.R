@@ -1,4 +1,4 @@
-scores <- readr::read_csv("data-raw/scores.csv") %>%
+scores <- readr::read_csv("data-raw/game/scores.csv") %>%
   select(Guess, Result, Score)
 
 label_score <- function(frame) {

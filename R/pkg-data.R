@@ -1,5 +1,5 @@
 #' Create Teams data.
-data_teams <- function() {
+pkg_data_teams <- function() {
   Teams <- read_table("Table_Group") %>%
     rename(Strategy = Treatment, SessionDuration = BuildingTime) %>%
     replace_id_group() %>%
@@ -15,14 +15,14 @@ data_teams <- function() {
       SessionDuration
     ) %>%
     arrange(TeamID, desc(Exp))
-  Teams
+  devtools::use_data(Teams, overwrite = TRUE)
 }
 
 #' Teams data.
 "Teams"
 
 #' Get Player data.
-data_players <- function() {
+pkg_data_players <- function() {
   Players <- read_table("Table_Player") %>%
     replace_id_group() %>%
     label_strategy() %>%
@@ -43,7 +43,7 @@ data_players <- function() {
       SessionDuration
     ) %>%
     arrange(TeamID, desc(Exp), PlayerIX, SessionIX, Strategy)
-  Players
+  devtools::use_data(Players, overwrite = TRUE)
 }
 
 #' Guesses data.
@@ -57,7 +57,7 @@ data_players <- function() {
 #' The guess and the result can both be unique
 #' or repeated, relative to the current session,
 #' player, or team.
-data_guesses <- function() {
+pkg_data_guesses <- function() {
   Guesses <- read_table("Table_Workshop") %>%
     rename(Guess = WorkShopString, Result = WorkShopResult) %>%
     replace_id_player() %>%
@@ -69,28 +69,27 @@ data_guesses <- function() {
     label_players_per_session() %>%
     label_player_conditions() %>%
     label_time() %>%
-    accumulate_by("Session") %>%
-    accumulate_by("Player") %>%
-    accumulate_by("Team") %>%
-    # accumulate_session() %>%
-    # accumulate_player() %>%
-    # accumulate_team() %>%
+    accumulate_session() %>%
+    accumulate_player() %>%
+    accumulate_team() %>%
     label_guess_uniqueness() %>%
     label_result_uniqueness() %>%
     label_score() %>%
     select(
       Guess, Result,
-      PlayerID, SessionID, SessionIX, TeamID,
+      PlayerID, PlayerIX, SessionID, SessionIX, TeamID,
       Strategy, NumPlayers, Generation, Exp,
       SessionTime, PlayerTime, TeamTime, CalendarTime,
       NumSessionGuess, NumPlayerGuess, NumTeamGuess,
       UniqueSessionGuess, UniquePlayerGuess, UniqueTeamGuess,
       NumUniqueSessionGuesses, NumUniquePlayerGuesses, NumUniqueTeamGuesses,
       UniqueSessionResult, UniquePlayerResult, UniqueTeamResult,
-      SessionInventoryID, PlayerInventoryID, TeamInventoryID,
-      SessionScore, PlayerScore, TeamScore
+      SessionScore, PlayerScore, TeamScore,
+      PrevSessionGuesses, PrevSessionGuessesHash, PrevSessionInventory, PrevSessionInventoryID,
+      PrevPlayerGuesses, PrevPlayerGuessesHash, PrevPlayerInventory, PrevPlayerInventoryID,
+      PrevTeamGuesses, PrevTeamGuessesHash, PrevTeamInventory, PrevTeamInventoryID
     )
-  Guesses
+  devtools::use_data(Guesses, overwrite = TRUE)
 }
 
 #' Get Inventories data.
@@ -102,7 +101,7 @@ data_guesses <- function() {
 #' prior to a new discovery. Of the incorrect guesses,
 #' unique ones are better than repeats.
 data_inventories <- function() {
-  Guesses <- data_guesses()
+  load("data/Guesses.rda")
   Inventories <- Guesses %>%
     group_by(SessionID, SessionInventoryID) %>%
     summarize(
