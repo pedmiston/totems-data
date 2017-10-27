@@ -7,6 +7,14 @@ replace_trial_time <- function(frame) {
     select(-TrialTime)
 }
 
+fix_bug_in_session_time <- function(frame) {
+  session_id <- "S454"
+  session_row <- frame$SessionID == session_id
+  session_times <- frame[session_row, "SessionTime"]
+  frame[session_row, "SessionTime"] <- session_times - min(session_times)
+  frame
+}
+
 label_time <- function(frame) {
   frame %>%
     label_player_time() %>%
