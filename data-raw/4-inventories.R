@@ -1,5 +1,10 @@
+
+# Load prereqs
+# load("data/Guesses.rda")
+# load("data/Players.rda")
+
 Inventories <- Guesses %>%
-  group_by(SessionID, SessionInventoryID) %>%
+  group_by(SessionID, PrevSessionInventoryID) %>%
   summarize(
     NumGuesses = n(),
     UniqueGuesses = sum(UniqueSessionGuess),
@@ -11,5 +16,9 @@ Inventories <- Guesses %>%
     Result = ifelse(sum(UniqueSessionResult) == 0, 0,
                     Result[UniqueSessionResult == 1])
   ) %>%
-  rename(InventoryID = SessionInventoryID) %>%
-  join_players()
+  ungroup() %>%
+  rename(InventoryID = PrevSessionInventoryID) %>%
+  arrange(SessionID, StartTime) %>%
+  left_join(Players)
+
+devtools::use_data(Inventories, overwrite = TRUE)
