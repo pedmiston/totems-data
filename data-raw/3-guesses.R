@@ -30,10 +30,4 @@ Guesses <- read_table("Table_Workshop") %>%
     PrevTeamGuesses, PrevTeamGuessesHash, PrevTeamInventory, PrevTeamInventoryID
   )
 
-# GuessesMap <- Guesses %>%
-#   select(contains("Guesses")) %>%
-#   create_guesses_map()
-#
-# InventoryMap <- Guesses %>%
-#   select(contains("Inventory")) %>%
-#   create_inventory_map()
+devtools::use_data(Guesses, overwrite = TRUE)

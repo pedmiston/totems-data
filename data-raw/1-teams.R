@@ -14,3 +14,4 @@ Teams <- read_table("Table_Group") %>%
   ) %>%
   arrange(TeamID, desc(Exp))
 
+devtools::use_data(Teams, overwrite = TRUE)
