@@ -7,13 +7,15 @@
 #'
 #' @import magrittr
 #' @export
-accumulate <- function(items, default = NA) {
+accumulate <- function(items, default = NA, ignore = NA) {
   results <- list()
   if (length(default) > 1) default <- sort(default)
   for(i in seq_along(items)) {
+    prev_ix <- i - 1
     if (i == 1) results[[i]] <- default
-    else {
-      prev_ix <- i - 1
+    else if (!is.na(ignore) & items[prev_ix] == ignore) {
+      results[[i]] <- results[[prev_ix]]
+    } else {
       results[[i]] <- append(results[[prev_ix]], items[prev_ix])
     }
   }
@@ -48,7 +50,7 @@ accumulate_session <- function(Guesses) {
       NumSessionGuess = 1:n(),
       PrevSessionGuesses = accumulate(Guess),
       PrevSessionGuessesHash = assign_hashes(PrevSessionGuesses),
-      PrevSessionInventory = accumulate(Result, default = 1:6),
+      PrevSessionInventory = accumulate(Result, default = 1:6, ignore = 0),
       PrevSessionInventoryID = assign_ids(PrevSessionInventory)
     ) %>%
     ungroup()
@@ -62,7 +64,7 @@ accumulate_player <- function(Guesses) {
       NumPlayerGuess = 1:n(),
       PrevPlayerGuesses = accumulate(Guess),
       PrevPlayerGuessesHash = assign_hashes(PrevPlayerGuesses),
-      PrevPlayerInventory = accumulate(Result, default = 1:6),
+      PrevPlayerInventory = accumulate(Result, default = 1:6, ignore = 0),
       PrevPlayerInventoryID = assign_ids(PrevPlayerInventory)
     ) %>%
     ungroup()
@@ -76,7 +78,7 @@ accumulate_team <- function(Guesses) {
       NumTeamGuess = 1:n(),
       PrevTeamGuesses = accumulate(Guess),
       PrevTeamGuessesHash = assign_hashes(PrevTeamGuesses),
-      PrevTeamInventory = accumulate(Result, default = 1:6),
+      PrevTeamInventory = accumulate(Result, default = 1:6, ignore = 0),
       PrevTeamInventoryID = assign_ids(PrevTeamInventory)
     ) %>%
     ungroup()

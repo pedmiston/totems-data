@@ -36,6 +36,14 @@ test_that("accumulate with default int items", {
   expect_equal(result, expected)
 })
 
+test_that("accumulate ignores special items", {
+  default <- 1
+  given <- c(2, 0, 3)
+  expected <- list(1, 1:2, 1:2)
+  result <- accumulate(given, default = default, ignore = 0)
+  expect_equal(result, expected)
+})
+
 context("Assign ids")
 
 test_that("assign_ids works for results of accumulate", {

@@ -1,4 +1,4 @@
-context("Save and load tibbles with list columns")
+context("List columns")
 
 test_that("saving a tibble with a list column and reloading it works", {
   contents <- list("a", "b", "c")
