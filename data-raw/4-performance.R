@@ -1,4 +1,5 @@
 # load("data/Guesses.rda")
+# load("data/Teams.rda")
 
 TeamPerformance <- Guesses %>%
   group_by(Exp, TeamID) %>%
@@ -7,4 +8,7 @@ TeamPerformance <- Guesses %>%
     NumGuesses = max(NumTeamGuess),
     NumUniqueGuesses = sum(UniqueTeamGuess)
   ) %>%
-  ungroup()
+  ungroup() %>%
+  left_join(Teams)
+
+devtools::use_data(TeamPerformance, overwrite = TRUE)
