@@ -111,3 +111,17 @@ team_conditions <- function() {
 label_team_conditions <- function(frame) {
   inner_join(frame, team_conditions())
 }
+
+#' Recode Exp as ExpLabel, an ordered factor with pretty labels.
+#' @import dplyr
+#' @export
+recode_experiment <- function(frame) {
+  levels <- c("50LaborMinutes", "100LaborMinutes")
+  labels <- c("50 Labor Minutes", "100 Labor Minutes")
+  map <- data_frame(
+    Exp = levels,
+    ExpLabel = factor(levels, levels = levels, labels = labels)
+  )
+  if(missing(frame)) return(map)
+  left_join(frame, map)
+}
