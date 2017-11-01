@@ -34,7 +34,7 @@ label_unique_team_results <- function(frame) {
     group_by(PrevTeamInventoryID) %>%
     mutate(
       UniqueTeamResult = Result != 0 & !(Result %in% PrevTeamInventory[[1]]),
-      TeamResultsSize = length(PrevTeamInventory[[1]])
+      TeamInventorySize = length(PrevTeamInventory[[1]])
     ) %>%
     ungroup()
 }

@@ -22,8 +22,8 @@ label_unique_player_guesses <- function(frame) {
   frame %>%
     group_by(PrevPlayerGuessesHash) %>%
     mutate(
-      UniquePlayerGuess = !(Guess %in% PrevPlayerGuesses),
-      NumUniquePlayerGuesses = length(PrevPlayerGuesses)
+      UniquePlayerGuess = !(Guess %in% PrevPlayerGuesses[[1]]),
+      NumUniquePlayerGuesses = length(PrevPlayerGuesses[[1]])
     ) %>%
     ungroup()
 }
@@ -33,8 +33,8 @@ label_unique_team_guesses <- function(frame) {
   frame %>%
     group_by(PrevTeamGuessesHash) %>%
     mutate(
-      UniqueTeamGuess = !(Guess %in% PrevTeamGuesses),
-      NumUniqueTeamGuesses = length(PrevTeamGuesses)
+      UniqueTeamGuess = !(Guess %in% PrevTeamGuesses[[1]]),
+      NumUniqueTeamGuesses = length(PrevTeamGuesses[[1]])
     ) %>%
     ungroup()
 }

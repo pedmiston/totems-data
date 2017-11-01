@@ -21,7 +21,7 @@ Guesses <- read_table("Table_Workshop") %>%
 GuessesMap <- create_guesses_map(Guesses)
 InventoryMap <- create_inventory_map(Guesses)
 
-# Select final Guess columns *without* list columns
+# Select final Guess columns excluding list columns for Guesses and Results
 Guesses <- Guesses %>%
   select(
     Guess, Result,
@@ -33,9 +33,9 @@ Guesses <- Guesses %>%
     NumUniqueSessionGuesses, NumUniquePlayerGuesses, NumUniqueTeamGuesses,
     UniqueSessionResult, UniquePlayerResult, UniqueTeamResult,
     SessionScore, PlayerScore, TeamScore,
-    PrevSessionGuessesHash, PrevSessionInventoryID,
-    PrevPlayerGuessesHash, PrevPlayerInventoryID,
-    PrevTeamGuessesHash, PrevTeamInventoryID
+    PrevSessionGuessesHash, NumUniqueSessionGuesses, PrevSessionInventoryID, SessionInventorySize,
+    PrevPlayerGuessesHash, NumUniquePlayerGuesses, PrevPlayerInventoryID, PlayerInventorySize,
+    PrevTeamGuessesHash, NumUniqueTeamGuesses, PrevTeamInventoryID, TeamInventorySize
   )
 
 devtools::use_data(Guesses, GuessesMap, InventoryMap, overwrite = TRUE)
