@@ -19,13 +19,10 @@ label_strategy <- function(frame) {
   left_join(frame, map)
 }
 
-#' Label the number of current players
-label_current_players <- function(frame) {
-  frame %>% mutate(
-    NumCurrentPlayers = ifelse(Strategy == "Diachronic", 1, NumPlayers)
-  )
-}
-
+#' Label the number of current players based on Strategy and NumPlayers.
+#'
+#' For Synchronic players, PlayersPerSession == Size.
+#' For Diachronic and Isolated players, PlayersPerSession == 1.
 label_players_per_session <- function(frame) {
   players_per_session_map <- read_table("Table_Group") %>%
     replace_id_group() %>%
@@ -34,6 +31,15 @@ label_players_per_session <- function(frame) {
     select(TeamID, PlayersPerSession)
   if(missing(frame)) return(players_per_session_map)
   left_join(frame, players_per_session_map)
+}
+
+#' Label the duration of the session for players by TeamID.
+label_session_duration <- function(frame) {
+  session_durations <- read_table("Table_Group") %>%
+    replace_id_group() %>%
+    select(TeamID, SessionDuration = BuildingTime)
+  if(missing(frame)) return(session_durations)
+  left_join(frame, session_durations)
 }
 
 label_valid_teams <- function(frame) {

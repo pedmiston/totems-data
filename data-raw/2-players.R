@@ -1,5 +1,6 @@
 Players <- read_table("Table_Player") %>%
   replace_id_group() %>%
+  label_session_duration() %>%
   label_strategy() %>%
   label_players_per_session() %>%
   replace_id_player() %>%
