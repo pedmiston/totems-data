@@ -45,7 +45,7 @@ assign_hashes <- function(accumulated) {
 accumulate_session <- function(Guesses) {
   Guesses %>%
     arrange(SessionTime) %>%
-    group_by(SessionID) %>%
+    group_by(Exp, SessionID) %>%
     mutate(
       NumSessionGuess = 1:n(),
       PrevSessionGuesses = accumulate(Guess),
@@ -58,8 +58,8 @@ accumulate_session <- function(Guesses) {
 
 accumulate_player <- function(Guesses) {
   Guesses %>%
-    group_by(PlayerID) %>%
     arrange(PlayerTime) %>%
+    group_by(Exp, PlayerID) %>%
     mutate(
       NumPlayerGuess = 1:n(),
       PrevPlayerGuesses = accumulate(Guess),
@@ -72,8 +72,8 @@ accumulate_player <- function(Guesses) {
 
 accumulate_team <- function(Guesses) {
   Guesses %>%
-    group_by(TeamID) %>%
     arrange(TeamTime) %>%
+    group_by(Exp, TeamID) %>%
     mutate(
       NumTeamGuess = 1:n(),
       PrevTeamGuesses = accumulate(Guess),

@@ -1,3 +1,5 @@
+# devtools::load_all()
+
 Guesses <- read_table("Table_Workshop") %>%
   rename(Guess = WorkShopString, Result = WorkShopResult) %>%
   replace_id_player() %>%

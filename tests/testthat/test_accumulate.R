@@ -72,6 +72,7 @@ test_that("assign_hashes is vectorized", {
 context("Accumulate session")
 
 Guesses <- data_frame(
+  Exp = 1,
   SessionID = 1,
   SessionTime = 1:2,
   Guess = 1:2,
