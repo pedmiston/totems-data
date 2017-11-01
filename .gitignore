@@ -1,6 +1,8 @@
-config.yml
 data-raw/tables/
+data-raw/subj-info/
+data-raw/survey/
+man/
+config.yml
+.httr-oauth
 .Rhistory
 .Rproj.user
-man/
-.httr-oauth

@@ -6,6 +6,8 @@ Players <- read_table("Table_Player") %>%
   replace_id_player() %>%
   replace_ancestor() %>%
   label_player_conditions() %>%
+  label_session_status() %>%
+  label_team_status() %>%
   select(
     Exp,
     PlayerID,
@@ -16,7 +18,9 @@ Players <- read_table("Table_Player") %>%
     Strategy,
     NumPlayers,
     Generation,
-    SessionDuration
+    SessionDuration,
+    SessionStatus,
+    TeamStatus
   ) %>%
   arrange(TeamID, desc(Exp), PlayerIX, SessionIX, Strategy)
 

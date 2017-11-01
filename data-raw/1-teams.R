@@ -3,6 +3,7 @@ Teams <- read_table("Table_Group") %>%
   replace_id_group() %>%
   label_players_per_session() %>%
   label_team_conditions() %>%
+  label_team_status() %>%
   select(
     Exp,
     TeamID,
@@ -10,7 +11,8 @@ Teams <- read_table("Table_Group") %>%
     NumPlayers,
     SessionsPerPlayer,
     PlayersPerSession,
-    SessionDuration
+    SessionDuration,
+    TeamStatus
   ) %>%
   arrange(TeamID, desc(Exp))
 
