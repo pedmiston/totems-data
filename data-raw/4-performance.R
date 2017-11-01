@@ -11,4 +11,14 @@ TeamPerformance <- Guesses %>%
   ungroup() %>%
   left_join(Teams)
 
-devtools::use_data(TeamPerformance, overwrite = TRUE)
+PlayerPerformance <- Guesses %>%
+  group_by(Exp, SessionID) %>%
+  summarize(
+    NumInnovations = sum(UniqueSessionResult),
+    NumGuesses = max(NumSessionGuess),
+    NumUniqueGuesses = sum(UniqueSessionGuess)
+  ) %>%
+  ungroup() %>%
+  left_join(Players)
+
+devtools::use_data(TeamPerformance, PlayerPerformance, overwrite = TRUE)
