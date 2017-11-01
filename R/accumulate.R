@@ -1,9 +1,24 @@
 #' Accumulate items over trials, i.e. Guesses and Results.
 #'
+#' Accumulated items are lagged by one trial so that the resulting
+#' item list represents the items that had been discovered up to
+#' that trial.
+#'
+#' @param items The vector of items to accumulate in order.
+#' @param default The default item. Optional. Defaults to NA.
+#' @param ignore Item to ignore during accumulation. Optional.
+#'
 #' @examples
 #' items <- c("a", "b", "b", "c")
-#' rolling(items)
+#'
+#' accumulate(items)
 #' # list(NA, c("a"), c("a", "b"), c("a", "b"))
+#'
+#' accumulate(items, default = "a")
+#' # list(c("a"), c("a"), c("a", "b"), c("a", "b"))
+#'
+#' accumulate(items, ignore = "b")
+#' # list(c("a"), c("a"), c("a"), c("a"))
 #'
 #' @import magrittr
 #' @export
@@ -42,6 +57,7 @@ assign_hashes <- function(accumulated) {
     unlist()
 }
 
+#' Accumulate guesses and inventory items by session.
 accumulate_session <- function(Guesses) {
   Guesses %>%
     arrange(SessionTime) %>%
@@ -56,6 +72,7 @@ accumulate_session <- function(Guesses) {
     ungroup()
 }
 
+#' Accumulate guesses and inventory items by player.
 accumulate_player <- function(Guesses) {
   Guesses %>%
     arrange(PlayerTime) %>%
@@ -70,6 +87,7 @@ accumulate_player <- function(Guesses) {
     ungroup()
 }
 
+#' Accumulate guesses and inventory items by team.
 accumulate_team <- function(Guesses) {
   Guesses %>%
     arrange(TeamTime) %>%
