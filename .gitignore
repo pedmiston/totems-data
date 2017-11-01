@@ -3,3 +3,4 @@ data-raw/tables/
 .Rhistory
 .Rproj.user
 man/
+.httr-oauth

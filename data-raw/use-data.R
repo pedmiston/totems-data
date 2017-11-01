@@ -1,5 +1,6 @@
 devtools::load_all()
 collect_tables()
+get_subj_info()
 source("data-raw/1-teams.R")
 source("data-raw/2-players.R")
 source("data-raw/3-guesses.R")
