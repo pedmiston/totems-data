@@ -58,6 +58,7 @@ replace_ancestor <- function(frame) {
     select(-Ancestor)
 }
 
+#' Label Generation based on Strategy, PlayerIX, and SessionIX.
 label_generation <- function(frame) {
   map <- player_conditions() %>%
     select(Strategy, PlayerIX, SessionIX, Generation) %>%
@@ -66,6 +67,7 @@ label_generation <- function(frame) {
   left_join(frame, map)
 }
 
+#' Label TeamID from PlayerID.
 label_team_id <- function(frame) {
   map <- read_table("Table_Player") %>%
     replace_id_group() %>%
@@ -75,30 +77,3 @@ label_team_id <- function(frame) {
   if(missing(frame)) return(map)
   left_join(frame, map)
 }
-
-
-label_valid_players <- function(frame) {
-  players <- read_table("Table_Player") %>%
-    replace_id_group() %>%
-    label_strategy() %>%
-    replace_id_player() %>%
-    replace_ancestor() %>%
-    label_player_experiment()
-
-  team_players_map <- dplyr::filter(players, Strategy != "Isolated") %>%
-    group_by(Exp, TeamID) %>%
-    mutate(IsPlayerValid = (n() == NumPlayers)) %>%
-    ungroup()
-
-  isolated_players_map <- dplyr::filter(players, Strategy == "Isolated") %>%
-    group_by(Exp, SessionDuration, PlayerID) %>%
-    mutate(IsPlayerValid = (n() == SessionsPerPlayer))
-
-  valid_players_map <- bind_rows(team_players_map, isolated_players_map) %>%
-    select(Exp, TeamID, PlayerID, SessionID, SessionIX, IsPlayerValid)
-
-  if(missing(frame)) return(valid_players_map)
-  left_join(frame, valid_players_map)
-}
-
-join_players <- function(frame) left_join(frame, data_players())

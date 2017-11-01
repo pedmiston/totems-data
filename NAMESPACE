@@ -2,4 +2,5 @@
 
 export(accumulate)
 import(dplyr)
+import(googlesheets)
 import(magrittr)
