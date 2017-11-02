@@ -2,6 +2,7 @@
 
 export(accumulate)
 export(recode_experiment)
+export(recode_strategy)
 import(dplyr)
 import(googlesheets)
 import(magrittr)
