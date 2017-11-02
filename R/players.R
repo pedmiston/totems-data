@@ -54,7 +54,10 @@ replace_id_player <- function(frame) {
 #' For Diachronic and Isolated teams, Generation = Ancestor.
 replace_ancestor <- function(frame) {
   frame %>%
-    mutate(Generation = ifelse(Strategy == "Synchronic", 1, Ancestor)) %>%
+    mutate(Generation = ifelse(Strategy == "Synchronic", 1, Ancestor),
+           # Fix bug in Isolated 50 Minute players where Ancestor is mistakenly coded as 0.
+           # This could be fixed in the DB!
+           Generation = ifelse(Strategy == "Isolated" & SessionDuration == 50, 1, Generation)) %>%
     select(-Ancestor)
 }
 
