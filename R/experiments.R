@@ -125,3 +125,15 @@ recode_experiment <- function(frame) {
   if(missing(frame)) return(map)
   left_join(frame, map)
 }
+
+#' Filter rows from 50 minute experiment.
+#' @export
+filter_50min_exp <- function(frame) {
+  dplyr::filter(Exp == "50LaborMinutes")
+}
+
+#' Filter rows from 100 minute experiment.
+#' @export
+filter_100min_exp <- function(frame) {
+  dplyr::filter(Exp == "100LaborMinutes")
+}
