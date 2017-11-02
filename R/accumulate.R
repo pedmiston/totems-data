@@ -5,7 +5,7 @@
 #' that trial.
 #'
 #' @param items The vector of items to accumulate in order.
-#' @param default The default item. Optional. Defaults to NA.
+#' @param default The default items. Optional. Defaults to NA.
 #' @param ignore Item to ignore during accumulation. Optional.
 #'
 #' @examples

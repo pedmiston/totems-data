@@ -1,3 +1,4 @@
+# unlink("data/", recursive = TRUE)
 devtools::load_all()
 collect_tables()
 get_subj_info()

@@ -1,35 +1,20 @@
 
-sample_every <- function(frame, seconds) {
-  frame %>%
-    left_join(data_teams()[,c("TeamID", "SessionSessionDuration")])
+#' Sample guesses at regular intervals in a session.
+sample_session <- function(session_guesses, default) {
+  session_duration <- session_guesses$SessionDuration[[1]]
+  sampled_times <- seq(1, session_duration, by = 1)
+  indices <- findInterval(sampled_times, session_guesses$SessionTime)
+  sampled_indices <- cbind(sampled_times, indices) %>% as.data.frame()
+  valid_sample_times <- dplyr::filter(sampled_indices, indices != 0)
+  sampled_guesses <- session_guesses[valid_sample_times$indices, ]
+  sampled_guesses$SampledSessionTime <- valid_sample_times$sampled_times
 
-
-}
-
-#' @import dplyr
-get_closest_trials_to_times <- function(trials, times, time_col = "TeamTime") {
-  lapply(times, get_closest_trial_to_time, trials = trials, time_col = time_col) %>%
-    bind_rows()
-}
-
-#' @import magrittr
-get_closest_trial_to_time <- function(time, trials, time_col = "TeamTime",
-                                      sample_time_col = "SampledTime") {
-  trials %<>% arrange_(.dots = time_col)
-  trials_that_have_happened <- trials[[time_col]] <= time
-  trial <- trials[trials_that_have_happened, ] %>% tail(1)
-  if (nrow(trial) == 1) {
-    trial[, sample_time_col] <- time
-  } else if (time == 0) {
-    first_trial <- trials %>%
-      head(1) %>%
-      select(PlayerID, TeamID, Strategy) %>%
-      mutate(
-        NumInnovations = 0,
-        GuessNum = 0,
-        TeamGuessNum = 0
-      )
-    trial %<>% bind_rows(first_trial)
+  if(!missing(default)) {
+    missing_sample_times <- dplyr::filter(sampled_indices, indices == 0) %>%
+      select(SampledSessionTime = sampled_times)
+    missing_samples <- merge(missing_sample_times, default)
+    sampled_guesses <- bind_rows(missing_samples, sampled_guesses)
   }
-  trial
+
+  sampled_guesses
 }
