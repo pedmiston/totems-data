@@ -34,26 +34,29 @@ label_team_status <- function(frame) {
     label_players_per_session() %>%
     replace_id_player() %>%
     replace_ancestor() %>%
-    label_player_conditions()
+    label_player_conditions() %>%
+    label_session_status()
 
   isolated <- sessions %>%
     dplyr::filter(Strategy == "Isolated") %>%
     group_by(Exp, TeamID, SessionsPerPlayer) %>%
     summarize(
-      CompletedSessions = n()
+      CompletedSessions = n(),
+      AllValidSessions = all(SessionStatus == "V")
     ) %>%
     ungroup() %>%
-    mutate(TeamStatus = ifelse(SessionsPerPlayer == CompletedSessions, "V", "I")) %>%
+    mutate(TeamStatus = ifelse(SessionsPerPlayer == CompletedSessions & AllValidSessions, "V", "I")) %>%
     select(Exp, TeamID, TeamStatus)
 
   diachronic <- sessions %>%
     dplyr::filter(Strategy == "Diachronic") %>%
     group_by(Exp, TeamID, NumPlayers) %>%
     summarize(
-      CompletedPlayers = n()
+      CompletedPlayers = n(),
+      AllValidSessions = all(SessionStatus == "V")
     ) %>%
     ungroup() %>%
-    mutate(TeamStatus = ifelse(CompletedPlayers == NumPlayers, "V", "I")) %>%
+    mutate(TeamStatus = ifelse(CompletedPlayers == NumPlayers & AllValidSessions, "V", "I")) %>%
     select(Exp, TeamID, TeamStatus)
 
   # This shouldn't do anything because all synchronic players
@@ -61,13 +64,24 @@ label_team_status <- function(frame) {
   synchronic <- sessions %>%
     dplyr::filter(Strategy == "Synchronic") %>%
     group_by(Exp, TeamID, NumPlayers) %>%
-    summarize(CompletedPlayers = n()) %>%
+    summarize(
+      CompletedPlayers = n(),
+      AllValidSessions = all(SessionStatus == "V")
+    ) %>%
     ungroup() %>%
-    mutate(TeamStatus = ifelse(CompletedPlayers == NumPlayers, "V", "I")) %>%
+    mutate(TeamStatus = ifelse(CompletedPlayers == NumPlayers & AllValidSessions, "V", "I")) %>%
     select(Exp, TeamID, TeamStatus)
 
   team_statuses <- bind_rows(isolated, diachronic, synchronic)
 
   if(missing(frame)) return(team_statuses)
   left_join(frame, team_statuses)
+}
+
+#' Filter valid teams, dropping any data from invalid teams.
+#' @export
+filter_valid_teams <- function(frame) {
+  frame %>%
+    label_team_status() %>%
+    filter(TeamStatus == "V")
 }
