@@ -20,6 +20,28 @@ Guesses <- read_table("Table_Workshop") %>%
   label_session_status() %>%
   label_team_status()
 
+nin <- function(x, y) x[!(x %in% y)]
+
+team_ids <- unique(Teams$TeamID)
+team_ids_in_guesses <- unique(Guesses$TeamID)
+setequal(team_ids, team_ids_in_guesses)
+# FALSE. Should be TRUE
+# Explanation: TeamIDs can be created and the experiment is never run,
+#   e.g., the participant never showed up.
+teams_with_no_guesses <- nin(team_ids, team_ids_in_guesses)
+# Verify that teams without guesses are not included
+# in the experiment conditions.
+teams_expected_to_have_guesses <- Teams %>%
+  dplyr::filter(TeamStatus == "V") %>%
+  .$TeamID %>%
+  unique()
+teams_that_should_have_guesses <- intersect(teams_with_no_guesses, teams_expected_to_have_guesses)
+# [1] "G138" "G153" "G75"
+# Doh!
+# See who these teams are.
+teams_with_errors <- dplyr::filter(Teams, TeamID %in% teams_that_should_have_guesses)
+players_on_teams_with_errors <- dplyr::filter(Players, TeamID %in% teams_that_should_have_guesses)
+
 GuessesMap <- create_guesses_map(Guesses)
 InventoryMap <- create_inventory_map(Guesses)
 
