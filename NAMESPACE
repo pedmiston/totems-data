@@ -3,7 +3,6 @@
 export(accumulate)
 export(filter_100min_exp)
 export(filter_50min_exp)
-export(filter_valid_teams)
 export(recode_experiment)
 export(recode_session_duration)
 export(recode_strategy)

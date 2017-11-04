@@ -19,6 +19,8 @@ Inventories <- Guesses %>%
   ungroup() %>%
   rename(InventoryID = PrevSessionInventoryID) %>%
   arrange(SessionID, StartTime) %>%
-  left_join(Players)
+  left_join(Players) %>%
+  label_team_status() %>%
+  label_session_status()
 
 devtools::use_data(Inventories, overwrite = TRUE)

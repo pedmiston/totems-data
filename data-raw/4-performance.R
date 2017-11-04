@@ -9,7 +9,8 @@ TeamPerformance <- Guesses %>%
     NumUniqueGuesses = sum(UniqueTeamGuess)
   ) %>%
   ungroup() %>%
-  left_join(Teams)
+  left_join(Teams) %>%
+  label_team_status()
 
 PlayerPerformance <- Guesses %>%
   group_by(Exp, SessionID) %>%
@@ -19,6 +20,8 @@ PlayerPerformance <- Guesses %>%
     NumUniqueGuesses = sum(UniqueSessionGuess)
   ) %>%
   ungroup() %>%
-  left_join(Players)
+  left_join(Players) %>%
+  label_team_status() %>%
+  label_session_status()
 
 devtools::use_data(TeamPerformance, PlayerPerformance, overwrite = TRUE)

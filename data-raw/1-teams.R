@@ -16,4 +16,6 @@ Teams <- read_table("Table_Group") %>%
   ) %>%
   arrange(TeamID, desc(Exp))
 
-devtools::use_data(Teams, overwrite = TRUE)
+ValidTeams <- select(Teams, TeamID, TeamStatus)
+
+devtools::use_data(Teams, ValidTeams, overwrite = TRUE)
