@@ -24,6 +24,6 @@ Players <- read_table("Table_Player") %>%
   ) %>%
   arrange(TeamID, desc(Exp), PlayerIX, SessionIX, Strategy)
 
-ValidSessions <- select(Players, PlayerID, SessionID, SessionStatus, TeamStatus)
+ValidSessions <- select(Players, Exp, PlayerID, SessionID, SessionStatus, TeamStatus)
 
 devtools::use_data(Players, ValidSessions, overwrite = TRUE)
