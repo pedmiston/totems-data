@@ -26,6 +26,7 @@ label_session_status <- function(frame) {
 #'
 #' V: Valid session.
 #' I: Incomplete team.
+#' no_guesses: Team has no guesses associated with it.
 label_team_status <- function(frame) {
   sessions <- read_table("Table_Player") %>%
     replace_id_group() %>%
@@ -73,6 +74,10 @@ label_team_status <- function(frame) {
     select(Exp, TeamID, TeamStatus)
 
   team_statuses <- bind_rows(isolated, diachronic, synchronic)
+
+  teams_with_no_guesses <- c("G138", "G153", "G75")
+  team_statuses <- team_statuses %>%
+    mutate(TeamStatus = ifelse(TeamID %in% teams_with_no_guesses, "no_guesses", TeamStatus))
 
   if(missing(frame)) return(team_statuses)
   left_join(frame, team_statuses)
