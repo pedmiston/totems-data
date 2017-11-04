@@ -129,11 +129,11 @@ recode_experiment <- function(frame) {
 #' Filter rows from 50 minute experiment.
 #' @export
 filter_50min_exp <- function(frame) {
-  dplyr::filter(Exp == "50LaborMinutes")
+  dplyr::filter(frame, Exp == "50LaborMinutes")
 }
 
 #' Filter rows from 100 minute experiment.
 #' @export
 filter_100min_exp <- function(frame) {
-  dplyr::filter(Exp == "100LaborMinutes")
+  dplyr::filter(frame, Exp == "100LaborMinutes")
 }

@@ -77,11 +77,3 @@ label_team_status <- function(frame) {
   if(missing(frame)) return(team_statuses)
   left_join(frame, team_statuses)
 }
-
-#' Filter valid teams, dropping any data from invalid teams.
-#' @export
-filter_valid_teams <- function(frame) {
-  frame %>%
-    label_team_status() %>%
-    filter(TeamStatus == "V")
-}
