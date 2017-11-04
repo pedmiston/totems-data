@@ -23,6 +23,10 @@ label_session_status <- function(frame) {
   sessions <- sessions %>%
     mutate(SessionStatus = ifelse(SessionID %in% sessions_with_no_guesses, "no_guesses", SessionStatus))
 
+  sessions_in_subj_info <- all_subjs_in_info_sheets()
+  sessions <- sessions %>%
+    mutate(SessionStatus = ifelse(SessionID %in% sessions_in_subj_info, SessionStatus, "unknown_session"))
+
   invalid_sessions_with_guesses <- "S448"
   sessions <- sessions %>%
     mutate(SessionStatus = ifelse(SessionID %in% invalid_sessions_with_guesses, "unknown_session", SessionStatus))

@@ -12,3 +12,30 @@ get_survey_responses <- function() {
                 to = "data-raw/survey/survey-responses.csv",
                 overwrite = TRUE)
 }
+
+read_subj_info <- function(sheet_name) {
+  name <- paste0("data-raw/subj-info/", sheet_name, ".csv")
+  readr::read_csv(name)
+}
+
+read_survey_responses <- function() {
+  readr::read_csv("data-raw/survey/survey-responses.csv")
+}
+
+all_subjs_in_info_sheets <- function() {
+  tot_toi <- read_subj_info("tot-toi") %>%
+    select(ID_Player = SubjID) %>%
+    replace_id_player()
+
+  tom <- read_subj_info("tom") %>%
+    select(contains("_id")) %>%
+    tidyr::gather(SessionName, ID_Player, -student_id) %>%
+    select(ID_Player) %>%
+    replace_id_player()
+
+  subjs_in_info_sheets <- bind_rows(tot_toi, tom) %>%
+    dplyr::filter(!is.na(SessionID)) %>%
+    .$SessionID
+
+  subjs_in_info_sheets
+}

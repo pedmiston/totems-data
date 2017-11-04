@@ -2,7 +2,8 @@
 # load("data/Teams.rda")
 
 TeamPerformance <- Guesses %>%
-  group_by(Exp, TeamID) %>%
+  label_session_duration() %>%
+  group_by(Exp, Strategy, SessionDuration, TeamID) %>%
   summarize(
     NumInnovations = sum(UniqueTeamResult),
     NumGuesses = max(NumTeamGuess),
