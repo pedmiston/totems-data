@@ -17,3 +17,14 @@ test_that("TeamIDs in Teams are also in Players", {
 test_that("TeamIDs in Teams are also in Guesses", {
   expect_true(setequal(team_ids, team_ids_in_guesses))
 })
+
+context("Verify valid sessions")
+
+filter_valid_sessions <- . %>% dplyr::filter(SessionStatus == "V") %>% .$SessionID %>% unique()
+
+session_ids <- filter_valid_sessions(Players)
+session_ids_in_guesses <- filter_valid_sessions(Guesses)
+
+test_that("SessionIDs in Players are also in Guesses", {
+  expect_true(setequal(session_ids, session_ids_in_guesses))
+})
