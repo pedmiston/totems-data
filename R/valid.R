@@ -23,13 +23,16 @@ label_session_status <- function(frame) {
   sessions <- sessions %>%
     mutate(SessionStatus = ifelse(SessionID %in% sessions_with_no_guesses, "no_guesses", SessionStatus))
 
+  # Identify sessions that are not recoded in subject info sheets
   sessions_in_subj_info <- all_subjs_in_info_sheets()
   sessions <- sessions %>%
     mutate(SessionStatus = ifelse(SessionID %in% sessions_in_subj_info, SessionStatus, "unknown_session"))
 
-  invalid_sessions_with_guesses <- "S448"
+  # Identify sessions with weird experiment bugs
   sessions <- sessions %>%
-    mutate(SessionStatus = ifelse(SessionID %in% invalid_sessions_with_guesses, "unknown_session", SessionStatus))
+    # S454: Player did not inherit tools from previous session,
+    #       and timing variable was weird, indiciating a long, long, long session.
+    mutate(SessionStatus = ifelse(SessionID == "S454", "exp_error", SessionStatus))
 
   valid_sessions_map <- select(sessions, SessionID, SessionStatus)
 
