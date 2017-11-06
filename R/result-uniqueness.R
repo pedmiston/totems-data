@@ -38,4 +38,3 @@ label_unique_team_results <- function(frame) {
     ) %>%
     ungroup()
 }
-
