@@ -3,12 +3,12 @@ context("Calculate time")
 test_that("synchronic team time is calculated based on players per session", {
   Guesses <- data_frame(
     Strategy = "Synchronic",
-    SessionTime = c(1, 5, 10),
+    SessionTime = c(1, 5, 10) * 60,
     PlayersPerSession = c(1, 2, 4)
   )
 
   result <- label_team_time(Guesses)
-  expect_equal(result$TeamTime, c(1, 10, 40))
+  expect_equal(result$TeamTime, c(1, 10, 40) * 60)
 })
 
 test_that("isolated player time is calculated based on session ix", {
@@ -16,11 +16,11 @@ test_that("isolated player time is calculated based on session ix", {
     Strategy = "Isolated",
     SessionDuration = 25,
     SessionIX = c(1, 2),
-    SessionTime = c(1, 1)
+    SessionTime = c(1, 1) * 60
   )
 
   result <- label_player_time(Guesses)
-  expect_equal(result$PlayerTime, c(1, 26))
+  expect_equal(result$PlayerTime, c(1, 26) * 60)
 })
 
 test_that("diachronic/isolated team time is calculated based on generation", {
@@ -28,10 +28,10 @@ test_that("diachronic/isolated team time is calculated based on generation", {
     Strategy = c("Diachronic", "Isolated"),
     Generation = 2,
     SessionDuration = 25,
-    SessionTime = c(1, 1)
+    SessionTime = c(1, 1) * 60
   )
 
   result <- label_team_time(Guesses)
-  expect_equal(result$TeamTime, c(26, 26))
+  expect_equal(result$TeamTime, c(26, 26) * 60)
 })
 

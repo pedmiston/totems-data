@@ -23,12 +23,12 @@ label_time <- function(frame) {
 }
 
 label_player_time <- function(frame) {
-  mutate(frame, PlayerTime = SessionDuration*(SessionIX-1) + SessionTime)
+  mutate(frame, PlayerTime = (SessionDuration*(SessionIX-1)) * 60 + SessionTime)
 }
 
 label_team_time <- function(frame) {
   mutate(frame, TeamTime = ifelse(Strategy == "Synchronic", SessionTime*PlayersPerSession,
-                                  SessionDuration*(Generation-1) + SessionTime))
+                                  (SessionDuration*(Generation-1)) * 60 + SessionTime))
 }
 
 label_calendar_time <- function(frame) {

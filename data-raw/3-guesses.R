@@ -9,6 +9,7 @@ Guesses <- read_table("Table_Workshop") %>%
   label_strategy() %>%
   label_generation() %>%
   label_players_per_session() %>%
+  label_session_duration() %>%
   label_player_conditions() %>%
   label_time() %>%
   accumulate_session() %>%
@@ -28,7 +29,7 @@ Guesses <- Guesses %>%
   select(
     Guess, Result,
     PlayerID, PlayerIX, SessionID, SessionIX, TeamID,
-    Strategy, NumPlayers, Generation, Exp,
+    Strategy, NumPlayers, SessionDuration, Generation, Exp,
     SessionTime, PlayerTime, TeamTime, CalendarTime,
     NumSessionGuess, NumPlayerGuess, NumTeamGuess,
     UniqueSessionGuess, UniquePlayerGuess, UniqueTeamGuess,
