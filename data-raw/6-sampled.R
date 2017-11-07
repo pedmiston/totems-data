@@ -19,6 +19,7 @@ Sampled <- Guesses %>%
   label_session_duration() %>%
   label_players_per_session() %>%
   label_generation() %>%
+  label_player_conditions() %>%
   label_time() %>%
   label_session_status() %>%
   label_team_status()
