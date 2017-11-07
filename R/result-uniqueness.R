@@ -12,7 +12,7 @@ label_unique_session_results <- function(frame) {
     group_by(PrevSessionInventoryID) %>%
     mutate(
       UniqueSessionResult = Result != 0 & !(Result %in% PrevSessionInventory[[1]]),
-      SessionInventorySize = length(PrevSessionInventory[[1]])
+      SessionInventorySize = UniqueSessionResult + length(PrevSessionInventory[[1]])
     ) %>%
     ungroup()
 }
@@ -23,7 +23,7 @@ label_unique_player_results <- function(frame) {
     group_by(PrevPlayerInventoryID) %>%
     mutate(
       UniquePlayerResult = Result != 0 & !(Result %in% PrevPlayerInventory[[1]]),
-      PlayerInventorySize = length(PrevPlayerInventory[[1]])
+      PlayerInventorySize = UniquePlayerResult + length(PrevPlayerInventory[[1]])
     ) %>%
     ungroup()
 }
@@ -34,7 +34,7 @@ label_unique_team_results <- function(frame) {
     group_by(PrevTeamInventoryID) %>%
     mutate(
       UniqueTeamResult = Result != 0 & !(Result %in% PrevTeamInventory[[1]]),
-      TeamInventorySize = length(PrevTeamInventory[[1]])
+      TeamInventorySize = UniqueTeamResult + length(PrevTeamInventory[[1]])
     ) %>%
     ungroup()
 }

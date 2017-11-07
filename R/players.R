@@ -1,4 +1,4 @@
-#' Replace ID_Player with PlayerID, PlayerIX, SessionID, and SessionIX.
+#' Create a map of ID_Player to PlayerID, PlayerIX, SessionID, and SessionIX.
 #'
 #' For Diachronic and Synchronic players:
 #' PlayerID = "P" + ID_Player
@@ -11,7 +11,7 @@
 #' PlayerIX = 1
 #' SessionID = "S" + ID_Player
 #' SessionIX = 1:4?
-replace_id_player <- function(frame) {
+create_player_id_map <- function() {
   players <- read_table("Table_Player") %>%
     replace_id_group() %>%
     label_strategy() %>%
@@ -39,13 +39,26 @@ replace_id_player <- function(frame) {
     )
 
   player_id_map <- bind_rows(
-      team_players,
-      isolated_players
-    ) %>%
+    team_players,
+    isolated_players
+  ) %>%
     select(ID_Player, PlayerID, PlayerIX, SessionID, SessionIX)
 
+  player_id_map
+}
+
+#' Replace ID_Player with PlayerID, PlayerIX, SessionID, and SessionIX.
+replace_id_player <- function(frame) {
+  player_id_map <- create_player_id_map()
   left_join(frame, player_id_map) %>%
     select(-ID_Player)
+}
+
+#' Label PlayerID, PlayerIX, and SessionIX from SessionID
+label_session_player <- function(frame) {
+  player_id_map <- create_player_id_map() %>%
+    select(-ID_Player)
+  left_join(frame, player_id_map)
 }
 
 #' Create Generation from Strategy and Ancestor.
