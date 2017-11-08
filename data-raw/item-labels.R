@@ -1,8 +1,8 @@
 library(devtools)
 library(tidyverse)
 
-ItemLabels <- read_csv("data-raw/answer-key.csv") %>%
-  select(Number, Name) %>%
+ItemLabels <- read_csv("data-raw/game/scores.csv") %>%
+  select(Number = Result, Name) %>%
   unique()
 
 StartingItems <- data_frame(
