@@ -1,5 +1,6 @@
 #' @import googlesheets
 get_subj_info <- function() {
+  dir.create("data-raw/subj-info", recursive = TRUE)
   subj_info <- gs_title("totems-subj-info")
   gs_download(subj_info, ws = "TOT/TOI", to = "data-raw/subj-info/tot-toi.csv", overwrite = TRUE)
   gs_download(subj_info, ws = "TOM", to = "data-raw/subj-info/tom.csv", overwrite = TRUE)
@@ -7,9 +8,10 @@ get_subj_info <- function() {
 
 #' @import googlesheets
 get_survey_responses <- function() {
+  dir.create("data-raw/survey", recursive = TRUE)
   gs_title("totems-survey-responses") %>%
     gs_download(ws = "Form Responses 1",
-                to = "data-raw/survey/survey-responses.csv",
+                to = "data-raw/survey/responses.csv",
                 overwrite = TRUE)
 }
 
@@ -19,7 +21,7 @@ read_subj_info <- function(sheet_name) {
 }
 
 read_survey_responses <- function() {
-  readr::read_csv("data-raw/survey/survey-responses.csv")
+  readr::read_csv("data-raw/survey/responses.csv")
 }
 
 all_subjs_in_info_sheets <- function() {
