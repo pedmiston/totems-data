@@ -6,7 +6,7 @@
 sample_session <- function(session_guesses, default) {
   # Create samples as a map of sampled session times to indices in session guesses
   samples <- data_frame(
-    SampledSessionTime = seq(60, session_guesses$SessionDuration[[1]] * 60, by = 60),
+    SampledSessionTime = seq(0, session_guesses$SessionDuration[[1]] * 60, by = 60),
     SessionGuessesIndex = findInterval(SampledSessionTime, session_guesses$SessionTime)
   )
 
