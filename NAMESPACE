@@ -3,6 +3,7 @@
 export(accumulate)
 export(filter_100min_exp)
 export(filter_50min_exp)
+export(load_totems_theme)
 export(recode_experiment)
 export(recode_session_duration)
 export(recode_strategy)
