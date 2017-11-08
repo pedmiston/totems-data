@@ -1,6 +1,6 @@
 digraph {
   rankdir=LR;
-  label="Experiment 1";
+  label="50 Labor Minutes";
   labelloc=t;
   fontname=helvetica;
   // bgcolor=transparent;
@@ -9,10 +9,10 @@ digraph {
 
   // Set cluster order (top to bottom) by initializing
   // nodes in each cluster starting from bottom to top
-  s1, solo, d1;
+  s1, solo, solo1, solo2, d1;
 
   // Shapes are projects
-  d1, d2, solo, s1, s2[shape=circle];
+  d1, d2, solo, solo1, solo2, s1, s2[shape=circle];
 
   // Colors are people
   s1[fillcolor="#66C2A5"];
@@ -20,10 +20,10 @@ digraph {
   d1[fillcolor="#8DA0CB"];
   d2[fillcolor="#cbd5e8"];
   solo[fillcolor="#FC8D62"];
+  solo1[fillcolor="#FDB69B"];
 
   // Invisible last nodes
-  dinv1, soloinv1, sinv1, sinv2[style=invis, width=0];
-
+  dinv1, soloinv1, solo2, soloinv2, sinv1, sinv2[style=invis, width=0];
 
   subgraph cluster1 {
     label="Diachronic";
@@ -33,6 +33,7 @@ digraph {
   subgraph cluster2 {
     label="Isolated";
     solo -> soloinv1[minlen=2];
+    solo1 -> solo2 -> soloinv2;
   }
 
   subgraph cluster3 {
