@@ -1,6 +1,9 @@
 import tasks
 from tasks.paths import R_PKG, Path
 
+@task
+def draw(ctx, name):
+    """Template out a graphviz file referring to local images."""
 
 @task
 def use_data(ctx, use_data_script=None, clear_data_dir=False):
