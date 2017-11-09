@@ -6,8 +6,10 @@ TeamPerformance <- Guesses %>%
   group_by(Exp, Strategy, SessionDuration, TeamID) %>%
   summarize(
     NumInnovations = sum(UniqueTeamResult),
+    NumRepeatedInnovations = sum(Result != 0) - sum(UniqueTeamResult),
     NumGuesses = max(NumTeamGuess),
-    NumUniqueGuesses = sum(UniqueTeamGuess)
+    NumUniqueGuesses = sum(UniqueTeamGuess),
+    NumRedundantGuesses = sum(Result == 0) - sum(UniqueTeamGuess)
   ) %>%
   ungroup() %>%
   left_join(Teams) %>%
@@ -17,8 +19,10 @@ PlayerPerformance <- Guesses %>%
   group_by(Exp, SessionID) %>%
   summarize(
     NumInnovations = sum(UniqueSessionResult),
+    NumRepeatedInnovations = sum(Result != 0) - sum(UniqueTeamResult),
     NumGuesses = max(NumSessionGuess),
-    NumUniqueGuesses = sum(UniqueSessionGuess)
+    NumUniqueGuesses = sum(UniqueSessionGuess),
+    NumRedundantGuesses = sum(Result == 0) - sum(UniqueTeamGuess)
   ) %>%
   ungroup() %>%
   left_join(Players) %>%
