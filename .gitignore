@@ -1,6 +1,10 @@
 data-raw/tables/
 data-raw/subj-info/
 data-raw/survey/
+
+inst/extdata/landscape*.gv
+inst/extdata/inventory*.gv
+
 man/
 config.yml
 .httr-oauth
