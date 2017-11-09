@@ -4,7 +4,7 @@
 # load("data/Players.rda")
 
 Inventories <- Guesses %>%
-  group_by(SessionID, PrevSessionInventoryID) %>%
+  group_by(Exp, SessionID, SessionDuration, PrevSessionInventoryID) %>%
   summarize(
     NumGuesses = n(),
     UniqueGuesses = sum(UniqueSessionGuess),
@@ -12,15 +12,13 @@ Inventories <- Guesses %>%
     RepeatResults = sum(Result != 0),
     StartTime = min(SessionTime),
     EndTime = max(SessionTime),
-    SessionDuration = EndTime - StartTime,
     Result = ifelse(sum(UniqueSessionResult) == 0, 0,
-                    Result[UniqueSessionResult == 1])
+                    Result[UniqueSessionResult == 1]),
+    ProblemTime = ifelse(Result != 0, EndTime - StartTime, NA)
   ) %>%
   ungroup() %>%
   rename(InventoryID = PrevSessionInventoryID) %>%
   arrange(SessionID, StartTime) %>%
-  left_join(Players) %>%
-  label_team_status() %>%
-  label_session_status()
+  left_join(Players)
 
 devtools::use_data(Inventories, overwrite = TRUE)

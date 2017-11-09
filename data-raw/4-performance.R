@@ -2,27 +2,28 @@
 # load("data/Teams.rda")
 
 TeamPerformance <- Guesses %>%
-  label_session_duration() %>%
+  recode_guess_type("UniqueTeamGuess", "UniqueTeamResult") %>%
   group_by(Exp, Strategy, SessionDuration, TeamID) %>%
   summarize(
-    NumInnovations = sum(UniqueTeamResult),
-    NumRepeatedInnovations = sum(Result != 0) - sum(UniqueTeamResult),
     NumGuesses = max(NumTeamGuess),
+    NumRedundantGuesses = sum(GuessType == "redundant"),
+    NumRepeatedItems = sum(GuessType == "repeat_item"),
     NumUniqueGuesses = sum(UniqueTeamGuess),
-    NumRedundantGuesses = sum(Result == 0) - sum(UniqueTeamGuess)
+    NumInnovations = sum(UniqueTeamResult)
   ) %>%
   ungroup() %>%
   left_join(Teams) %>%
   label_team_status()
 
 PlayerPerformance <- Guesses %>%
+  recode_guess_type("UniqueSessionGuess", "UniqueSessionResult") %>%
   group_by(Exp, SessionID) %>%
   summarize(
-    NumInnovations = sum(UniqueSessionResult),
-    NumRepeatedInnovations = sum(Result != 0) - sum(UniqueTeamResult),
     NumGuesses = max(NumSessionGuess),
+    NumRedundantGuesses = sum(GuessType == "redundant"),
+    NumRepeatedItems = sum(GuessType == "repeat_item"),
     NumUniqueGuesses = sum(UniqueSessionGuess),
-    NumRedundantGuesses = sum(Result == 0) - sum(UniqueTeamGuess)
+    NumInnovations = sum(UniqueSessionResult)
   ) %>%
   ungroup() %>%
   left_join(Players) %>%
