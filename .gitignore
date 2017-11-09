@@ -1,2 +1,8 @@
-.DS_Store
+data-raw/tables/
+data-raw/subj-info/
+data-raw/survey/
+man/
+config.yml
+.httr-oauth
+.Rhistory
 .Rproj.user

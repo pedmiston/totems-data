@@ -1,0 +1,13 @@
+unlink("data/", recursive = TRUE)
+devtools::load_all()
+collect_tables()
+get_subj_info()
+get_survey_responses()
+source("data-raw/1-teams.R")
+source("data-raw/2-players.R")
+source("data-raw/3-guesses.R")
+source("data-raw/4-performance.R")
+source("data-raw/5-inventories.R")
+source("data-raw/6-sampled.R")
+
+source("data-raw/item-labels.R")
