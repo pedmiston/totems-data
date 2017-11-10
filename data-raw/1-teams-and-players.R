@@ -42,7 +42,26 @@ Players <- read_table("Table_Player") %>%
   ) %>%
   arrange(TeamID, desc(Exp), PlayerIX, SessionIX, Strategy)
 
+# Process survey responses
+Survey <- readr::read_csv("data-raw/survey/responses.csv")
+SurveyQuestions <- data_frame(
+  QuestionText = colnames(Survey)[3:length(colnames(Survey))],
+  QuestionID = paste0("Q", seq_along(QuestionText)),
+  QuestionTag = c("recap", "instructions", "familiar", "enjoyable", "difficulty", "strategy", "comments")
+) %>%
+  select(QuestionID, QuestionTag, QuestionText)
+Survey <- readr::read_csv("data-raw/survey/responses.csv") %>%
+  tidyr::gather(QuestionText, Response, -(Timestamp:`Participant ID`)) %>%
+  rename(ID_Participant = `Participant ID`) %>%
+  left_join(SurveyQuestions) %>%
+  select(ID_Participant, QuestionID, QuestionTag, Response, QuestionText, Timestamp)
+
+# Merge survey info with players and teams
+
 ValidSessions <- select(Players, Exp, PlayerID, SessionID, SessionStatus, TeamStatus)
 ValidTeams <- select(Teams, Exp, TeamID, TeamStatus)
 
-devtools::use_data(Teams, Players, ValidSession, ValidTeams, overwrite = TRUE)
+devtools::use_data(Teams, Players,
+                   ValidTeams, ValidSessions,
+                   Survey,
+                   overwrite = TRUE)
