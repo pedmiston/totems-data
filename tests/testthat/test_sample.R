@@ -18,15 +18,15 @@ test_that("sample session works", {
   session <- data_frame(
     SessionID = "S1",
     SessionDuration = 5,
-    SessionTime = seq(1, 5, length.out = 100),
+    SessionTime = seq(0, 5, length.out = 100),
     NumSessionGuess = 1:100,
     PrevSessionInventoryID = "x",
     SessionInventorySize = 10,
     PrevSessionGuessesHash = "y",
     NumUniqueSessionGuesses = 10
   )
-  result <- sample_session(session)
-  expect_equal(nrow(result), 5)
+  result <- sample_session(session, default = starting_inventory)
+  expect_equal(nrow(result), 6)
 })
 
 test_that("sample session handles missing trials", {
@@ -50,7 +50,7 @@ test_that("sample session handles missing trials", {
   )
 
   result <- sample_session(session, default = starting_inventory)
-  expect_equal(nrow(result), 5)
+  expect_equal(nrow(result), 6)
 })
 
 context("Verify sampled inventory sizes")
@@ -70,11 +70,11 @@ test_that("last sampled inventory size equals player performance", {
 
   data("PlayerPerformance")
   G110Players <- PlayerPerformance %>%
-    dplyr::filter(Exp == "100LaborMinutes", TeamID == example_team) %>%
+    dplyr::filter(Exp == "50LaborMinutes", TeamID == example_team) %>%
     select(PlayerID, NumExpectedInnovations = NumInnovations)
 
   G110Sampled <- Sampled %>%
-    dplyr::filter(Exp == "100LaborMinutes", TeamID == example_team) %>%
+    dplyr::filter(Exp == "50LaborMinutes", TeamID == example_team) %>%
     group_by(PlayerID) %>%
     summarize(NumSampledInnovations = max(InventorySize) - 6)
 
