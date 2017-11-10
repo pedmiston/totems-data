@@ -44,12 +44,12 @@ Guesses <- Guesses %>%
   )
 
 # Run python script to identify innovations adjacent to each inventory.
-write.csv(InventoryMap[, "ID"], "data-raw/inventory-ids.csv", row.names = FALSE)
-system("bin/adjacent.py data-raw/inventory-ids.csv")
+write.csv(InventoryMap[, "ID"], "data-raw/adjacent/inventory-ids.csv", row.names = FALSE)
+system("bin/adjacent.py data-raw/adjacent/inventory-ids.csv")
 
-NumAdjacent <- readr::read_csv("data-raw/num-adjacent.csv")
+NumAdjacent <- readr::read_csv("data-raw/adjacent/num-adjacent.csv")
 InventoryMap <- left_join(InventoryMap, NumAdjacent)
 
-AdjacentItems <- readr::read_csv("data-raw/adjacent-items.csv")
+AdjacentItems <- readr::read_csv("data-raw/adjacent/adjacent-items.csv")
 
 devtools::use_data(Guesses, GuessesMap, InventoryMap, AdjacentItems, overwrite = TRUE)
