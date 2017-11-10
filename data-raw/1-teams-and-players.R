@@ -1,3 +1,21 @@
+Teams <- read_table("Table_Group") %>%
+  rename(Strategy = Treatment, SessionDuration = BuildingTime) %>%
+  replace_id_group() %>%
+  label_players_per_session() %>%
+  label_team_conditions() %>%
+  label_team_status() %>%
+  select(
+    Exp,
+    TeamID,
+    Strategy,
+    NumPlayers,
+    SessionsPerPlayer,
+    PlayersPerSession,
+    SessionDuration,
+    TeamStatus
+  ) %>%
+  arrange(TeamID, desc(Exp))
+
 Players <- read_table("Table_Player") %>%
   replace_id_group() %>%
   label_session_duration() %>%
@@ -25,5 +43,6 @@ Players <- read_table("Table_Player") %>%
   arrange(TeamID, desc(Exp), PlayerIX, SessionIX, Strategy)
 
 ValidSessions <- select(Players, Exp, PlayerID, SessionID, SessionStatus, TeamStatus)
+ValidTeams <- select(Teams, Exp, TeamID, TeamStatus)
 
-devtools::use_data(Players, ValidSessions, overwrite = TRUE)
+devtools::use_data(Teams, Players, ValidSession, ValidTeams, overwrite = TRUE)
