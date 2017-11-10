@@ -8,7 +8,7 @@ TeamPerformance <- Guesses %>%
     NumGuesses = max(NumTeamGuess),
     NumRedundantGuesses = sum(GuessType == "redundant"),
     NumRepeatedItems = sum(GuessType == "repeat_item"),
-    NumUniqueGuesses = sum(UniqueTeamGuess),
+    NumUniqueGuesses = sum(GuessType == "unique_guess"),
     NumInnovations = sum(UniqueTeamResult)
   ) %>%
   ungroup() %>%
@@ -22,7 +22,7 @@ PlayerPerformance <- Guesses %>%
     NumGuesses = max(NumSessionGuess),
     NumRedundantGuesses = sum(GuessType == "redundant"),
     NumRepeatedItems = sum(GuessType == "repeat_item"),
-    NumUniqueGuesses = sum(UniqueSessionGuess),
+    NumUniqueGuesses = sum(GuessType == "unique_guess"),
     NumInnovations = sum(UniqueSessionResult)
   ) %>%
   ungroup() %>%
