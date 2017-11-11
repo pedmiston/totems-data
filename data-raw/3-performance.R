@@ -23,7 +23,11 @@ PlayerPerformance <- Guesses %>%
     NumRedundantGuesses = sum(GuessType == "redundant"),
     NumRepeatedItems = sum(GuessType == "repeat_item"),
     NumUniqueGuesses = sum(GuessType == "unique_guess"),
-    NumInnovations = sum(UniqueSessionResult)
+    NumInnovations = sum(UniqueSessionResult),
+    FinalInventoryID = calculate_final_inventory_id(
+      PrevSessionInventoryID[NumSessionGuess == max(NumSessionGuess)],
+      Result[NumSessionGuess == max(NumSessionGuess)]
+    )
   ) %>%
   ungroup() %>%
   left_join(Players) %>%
