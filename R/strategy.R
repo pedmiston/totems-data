@@ -99,3 +99,18 @@ recode_session_type_50 <- function(frame) {
   if(missing(frame)) return(session_type_map)
   left_join(frame, session_type_map)
 }
+
+#' Recode generation type for 50 labor minute teams.
+#' @export
+recode_generation_type <- function(frame) {
+  generation_type_levels <- c("G1", "G2", "S1", "S2")
+  generation_type_labels <- c("Generation 1", "Generation 2", "Session 1", "Session 2")
+  generation_type_map <- data_frame(
+    Strategy = c(rep("Diachronic", 2), rep("Isolated", 2)),
+    Generation = rep(1:2, 2),
+    GenerationType = generation_type_levels,
+    GenerationTypeLabel = factor(generation_type_levels, levels = generation_type_levels, labels = generation_type_labels)
+  )
+  if(missing(frame)) return(generation_type_map)
+  left_join(frame, generation_type_map)
+}
