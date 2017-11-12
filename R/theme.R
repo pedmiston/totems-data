@@ -18,6 +18,10 @@ load_totems_theme <- function() {
 
     # Strategy scales
     scale_x_strategy = ggplot2::scale_x_discrete("Strategy", labels = strategy_levels),
+    scale_y_num_innovations = ggplot2::scale_y_continuous(
+      "Number of innovations",
+      breaks = seq(0, 30, by = 2)
+    ),
     scale_color_strategy = ggplot2::scale_color_manual("Strategy", values = strategy_colors),
     scale_fill_strategy = ggplot2::scale_fill_manual("Strategy", values = strategy_colors)
   )

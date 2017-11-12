@@ -27,25 +27,50 @@ recode_strategy <- function(frame) {
 }
 
 
-#' Create a new column Inheritance that labels G2-G4 Diachronic players
-#' as "diachronic_inheritance" and everyone else as "no_inheritance".
+#' Create a new column Inheritance that labels G2 Diachronic players
+#' in the 50 labor minute experiment.
+#'
+#' Inheritance is "diachronic_inheritance" for the G2 Diachronic player,
+#' and "no_inheritance" for all other session types.
 #'
 #' @export
-highlight_inheritance <- function(frame) {
+highlight_inheritance_50 <- function(frame) {
   highlight_inheritance_map <- expand.grid(
     Strategy = c("Diachronic", "Isolated", "Synchronic"),
-    Generation = 1:4,
+    Generation = 1:2,
     stringsAsFactors = FALSE
   ) %>%
     dplyr::filter(!(Strategy == "Synchronic" & Generation > 1)) %>%
-    dplyr::mutate(Inheritance = ifelse(Strategy == "Diachronic" & Generation > 1,
+    dplyr::mutate(Inheritance = ifelse(Strategy == "Diachronic" & Generation == 2,
                                        "diachronic_inheritance", "no_inheritance")) %>%
     dplyr::arrange(Strategy, Generation)
   if(missing(frame)) return(highlight_inheritance_map)
   left_join(frame, highlight_inheritance_map)
 }
 
-#' Create a session type column that compares individual session types.
+#' Create a new column Inheritance that labels G4 Diachronic players
+#' in the 100 labor minute experiment.
+#'
+#' Inheritance is "diachronic_inheritance" for the G4 Diachronic player,
+#' and "no_inheritance" for all other session types.
+#'
+#' @export
+highlight_inheritance_100 <- function(frame) {
+  highlight_inheritance_map <- expand.grid(
+    Strategy = c("Diachronic", "Isolated", "Synchronic"),
+    Generation = 1:4,
+    stringsAsFactors = FALSE
+  ) %>%
+    dplyr::filter(!(Strategy == "Synchronic" & Generation > 1)) %>%
+    dplyr::mutate(Inheritance = ifelse(Strategy == "Diachronic" & Generation == 4,
+                                       "diachronic_inheritance", "no_inheritance")) %>%
+    dplyr::arrange(Strategy, Generation)
+  if(missing(frame)) return(highlight_inheritance_map)
+  left_join(frame, highlight_inheritance_map)
+}
+
+#' Create a session type column that compares individual session types
+#' for the 50 labor minute experiment.
 #'
 #' Session types are:
 #' - Diachronic G1
@@ -94,6 +119,68 @@ recode_session_type_50 <- function(frame) {
   colnames(session_type_treat_contrasts) <- contrast_names
   session_type_treat_contrasts <- session_type_treat_contrasts %>%
     rownames_to_column("SessionType")
+  session_type_map <- left_join(session_type_map, session_type_treat_contrasts)
+
+  if(missing(frame)) return(session_type_map)
+  left_join(frame, session_type_map)
+}
+
+#' Create a session type column that compares individual session types
+#' for the 100 labor minute experiment.
+#'
+#' Session types are:
+#' - Diachronic G1
+#' - Diachronic G2
+#' - Diachronic G3
+#' - Diachronic G4
+#' - Isolated S1
+#' - Isolated S2
+#' - Isolated S3
+#' - Isolated S4
+#' - Synchronic 4
+#'
+#' @export
+recode_session_type_100 <- function(frame) {
+  session_type_levels <- c(
+    "DG1", "DG2", "DG3", "DG4",
+    "IS1", "IS2", "IS3", "IS4",
+    "S4"
+  )
+
+  session_type_labels <- c(
+    "DG1",
+    "DG2",
+    "DG3",
+    "DG4",
+    "IS1",
+    "IS2",
+    "IS3",
+    "IS4",
+    "S4"
+  )
+
+  session_type_map <- data_frame(
+    Strategy = c(rep("Diachronic", 4), rep("Isolated", 4), "Synchronic"),
+    Generation = c(1:4, 1:4, 1),
+    SessionDuration = 25,
+    NumPlayers = c(rep(4, 4), rep(1, 4), 4),
+    SessionType = session_type_levels,
+    SessionTypeOrdered = factor(session_type_levels, levels = session_type_levels, labels = session_type_labels),
+    SessionTypeTreat = factor(session_type_levels, levels = session_type_levels)
+  )
+
+  # Set treatment contrasts for SessionType with DG4 as base comparison group.
+  session_type_treat_contrasts <- contr.treatment(factor(session_type_levels, levels = session_type_levels),
+                                                  base = 4)
+  contrasts(session_type_map$SessionTypeTreat) <- session_type_treat_contrasts
+
+  session_type_treat_contrasts <- as.data.frame(session_type_treat_contrasts)
+  contrast_names <- colnames(session_type_treat_contrasts) %>%
+    purrr::map(function(x) paste0("DG4_v_", x)) %>%
+    unlist()
+  colnames(session_type_treat_contrasts) <- contrast_names
+  session_type_treat_contrasts <- session_type_treat_contrasts %>%
+    tibble::rownames_to_column("SessionType")
   session_type_map <- left_join(session_type_map, session_type_treat_contrasts)
 
   if(missing(frame)) return(session_type_map)
