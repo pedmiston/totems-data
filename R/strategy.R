@@ -62,8 +62,13 @@ highlight_inheritance_100 <- function(frame) {
     stringsAsFactors = FALSE
   ) %>%
     dplyr::filter(!(Strategy == "Synchronic" & Generation > 1)) %>%
-    dplyr::mutate(Inheritance = ifelse(Strategy == "Diachronic" & Generation == 4,
-                                       "diachronic_inheritance", "no_inheritance")) %>%
+    dplyr::mutate(
+      Inheritance = ifelse(Strategy == "Diachronic" & Generation == 4,
+                          "diachronic_inheritance", "no_inheritance"),
+      AllInheritance = ifelse(Generation == 1, "no_inheritance",
+                       ifelse(Strategy == "Diachronic", "diachronic_inheritance",
+                       ifelse(Strategy == "Isolated", "individual_inheritance", NA)))
+    ) %>%
     dplyr::arrange(Strategy, Generation)
   if(missing(frame)) return(highlight_inheritance_map)
   left_join(frame, highlight_inheritance_map)
