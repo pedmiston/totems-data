@@ -19,7 +19,8 @@ label_time <- function(frame) {
   frame %>%
     label_player_time() %>%
     label_team_time() %>%
-    label_calendar_time()
+    label_calendar_time() %>%
+    label_guess_time()
 }
 
 label_player_time <- function(frame) {
@@ -33,4 +34,11 @@ label_team_time <- function(frame) {
 
 label_calendar_time <- function(frame) {
   mutate(frame, CalendarTime = ifelse(Strategy == "Synchronic", SessionTime, TeamTime))
+}
+
+label_guess_time <- function(frame) {
+  frame %>%
+    group_by(SessionID) %>%
+    mutate(GuessTime = SessionTime - lag(SessionTime, default = 0)) %>%
+    ungroup()
 }

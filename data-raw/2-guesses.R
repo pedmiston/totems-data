@@ -32,7 +32,7 @@ Guesses <- Guesses %>%
     Guess, Result, CreatedItem,
     PlayerID, PlayerIX, SessionID, SessionIX, TeamID,
     Strategy, NumPlayers, SessionDuration, Generation, Exp,
-    SessionTime, PlayerTime, TeamTime, CalendarTime,
+    SessionTime, PlayerTime, TeamTime, CalendarTime, GuessTime,
     NumSessionGuess, NumPlayerGuess, NumTeamGuess,
     UniqueSessionGuess, UniquePlayerGuess, UniqueTeamGuess,
     NumUniqueSessionGuesses, NumUniquePlayerGuesses, NumUniqueTeamGuesses,
