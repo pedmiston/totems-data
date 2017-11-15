@@ -49,7 +49,8 @@ highlight_inheritance_50 <- function(frame) {
       Inheritance = ifelse(Generation == 1, "no_inheritance",
                            ifelse(Strategy == "Diachronic", "diachronic_inheritance",
                                   ifelse(Strategy == "Isolated", "individual_inheritance", NA))),
-      InheritanceOrdered = factor(Inheritance, levels = inheritance_levels, labels = inheritance_labels)
+      InheritanceOrdered = factor(Inheritance, levels = inheritance_levels, labels = inheritance_labels),
+      DiachronicInheritance = Inheritance == "diachronic_inheritance"
     ) %>%
     dplyr::arrange(Strategy, Generation)
 
@@ -85,7 +86,8 @@ highlight_inheritance_100 <- function(frame) {
       Inheritance = ifelse(Generation == 1, "no_inheritance",
                            ifelse(Strategy == "Diachronic", "diachronic_inheritance",
                                   ifelse(Strategy == "Isolated", "individual_inheritance", NA))),
-      InheritanceOrdered = factor(Inheritance, levels = inheritance_levels, labels = inheritance_labels)
+      InheritanceOrdered = factor(Inheritance, levels = inheritance_levels, labels = inheritance_labels),
+      DiachronicInheritance = Inheritance == "diachronic_inheritance"
     ) %>%
     dplyr::arrange(Strategy, Generation)
 
