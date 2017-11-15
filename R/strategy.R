@@ -56,6 +56,8 @@ highlight_inheritance_50 <- function(frame) {
 #'
 #' @export
 highlight_inheritance_100 <- function(frame) {
+  inheritance_levels <- c("diachronic_inheritance", "individual_inheritance", "no_inheritance")
+  inheritance_labels <- c("Diachronic inheritance", "Individual inheritance", "No inheritance")
   highlight_inheritance_map <- expand.grid(
     Strategy = c("Diachronic", "Isolated", "Synchronic"),
     Generation = 1:4,
@@ -63,13 +65,22 @@ highlight_inheritance_100 <- function(frame) {
   ) %>%
     dplyr::filter(!(Strategy == "Synchronic" & Generation > 1)) %>%
     dplyr::mutate(
-      Inheritance = ifelse(Strategy == "Diachronic" & Generation == 4,
-                          "diachronic_inheritance", "no_inheritance"),
-      AllInheritance = ifelse(Generation == 1, "no_inheritance",
-                       ifelse(Strategy == "Diachronic", "diachronic_inheritance",
-                       ifelse(Strategy == "Isolated", "individual_inheritance", NA)))
+      Inheritance = ifelse(Generation == 1, "no_inheritance",
+                           ifelse(Strategy == "Diachronic", "diachronic_inheritance",
+                                  ifelse(Strategy == "Isolated", "individual_inheritance", NA))),
+      InheritanceOrdered = factor(Inheritance, levels = inheritance_levels, labels = inheritance_labels)
     ) %>%
     dplyr::arrange(Strategy, Generation)
+
+  inheritance_treat <- contr.treatment(inheritance_levels)
+  highlight_inheritance_map %<>% mutate(InheritanceTreat = InheritanceOrdered)
+  contrasts(highlight_inheritance_map$InheritanceTreat) <- inheritance_treat
+  inheritance_treat %<>% as.data.frame()
+  colnames(inheritance_treat) <- c("Diachronic_v_Individual", "Diachronic_v_NoInheritance")
+  inheritance_treat %<>% tibble::rownames_to_column("Inheritance")
+
+  highlight_inheritance_map %<>% left_join(inheritance_treat)
+
   if(missing(frame)) return(highlight_inheritance_map)
   left_join(frame, highlight_inheritance_map)
 }
