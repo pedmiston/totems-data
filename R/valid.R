@@ -4,6 +4,7 @@
 #' T: Test session.
 #' no_guesses: Session has no guesses associated with it.
 #' unknown_session: Session is not recorded
+#' didnt_recreate: Player did not recreate ancestral items in current session.
 #'
 #' **NOT IMPLEMENTED**
 #' E: Error in experiment during session.
@@ -33,6 +34,11 @@ label_session_status <- function(frame) {
     # S454: Player did not inherit tools from previous session,
     #       and timing variable was weird, indiciating a long, long, long session.
     mutate(SessionStatus = ifelse(SessionID == "S454", "exp_error", SessionStatus))
+
+  # Sessions who did not recreate the items of the ancestor
+  didnt_recreate <- c("S260", "S271", "S299", "S581", "S594", "S645")
+  sessions <- sessions %>%
+    mutate(SessionStatus = ifelse(SessionID %in% didnt_recreate, "didnt_recreate", SessionStatus))
 
   valid_sessions_map <- select(sessions, SessionID, SessionStatus)
 
