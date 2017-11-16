@@ -226,7 +226,7 @@ recode_session_type_100 <- function(frame) {
 #' @export
 recode_generation_type <- function(frame) {
   generation_type_levels <- c("G1", "G2", "S1", "S2")
-  generation_type_labels <- c("Generation 1", "Generation 2", "Session 1", "Session 2")
+  generation_type_labels <- generation_type_levels
   generation_type_map <- data_frame(
     Strategy = c(rep("Diachronic", 2), rep("Isolated", 2)),
     Generation = rep(1:2, 2),
