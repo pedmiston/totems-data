@@ -28,12 +28,36 @@ player_conditions <- function() {
     Strategy = "Isolated",
     Exp = "50LaborMinutes",
     NumPlayers = 1,
-    SessionsPerPlayer = c(1, 2, 2),
+    SessionsPerPlayer = 1,
     PlayersPerSession = 1,
-    SessionDuration = c(50, 25, 25),
+    SessionDuration = 50,
     PlayerIX = 1,
-    SessionIX = c(1, 1, 2),
-    Generation = c(1, 1, 2)
+    SessionIX = 1,
+    Generation = 1
+  )
+
+  diachronic_100 <- data_frame(
+    Strategy = "Diachronic",
+    Exp = "InheritanceType",
+    NumPlayers = 4,
+    SessionsPerPlayer = 1,
+    PlayersPerSession = 1,
+    SessionDuration = 25,
+    PlayerIX = 1:4,
+    SessionIX = 1,
+    Generation = 1:4
+  )
+
+  isolated_100 <- data_frame(
+    Strategy = "Isolated",
+    Exp = "InheritanceType",
+    NumPlayers = 1,
+    SessionsPerPlayer = 4,
+    PlayersPerSession = 1,
+    SessionDuration = 25,
+    PlayerIX = 1,
+    SessionIX = 1:4,
+    Generation = 1:4
   )
 
   # 100 Labor Minutes

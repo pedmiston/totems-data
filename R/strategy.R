@@ -116,10 +116,10 @@ highlight_inheritance_100 <- function(frame) {
 #' - Synchronic 2
 #'
 #' @export
-recode_session_type_50 <- function(frame) {
+recode_session_type_50min <- function(frame) {
   session_type_levels <- c(
     "DG1", "DG2",
-    "I50", "IS1", "IS2",
+    "I50",
     "S2"
   )
 
@@ -127,18 +127,17 @@ recode_session_type_50 <- function(frame) {
     "Diachronic G1",
     "Diachronic G2",
     "Isolated 50min",
-    "Isolated S1",
-    "Isolated S2",
     "Synchronic 2"
   )
 
   session_type_map <- data_frame(
-    Strategy = c(rep("Diachronic", 2), rep("Isolated", 3), "Synchronic"),
-    Generation = c(1:2, 1, 1:2, 1),
-    SessionDuration = c(rep(25, 2), 50, rep(25, 3)),
-    NumPlayers = c(rep(2, 2), rep(1, 3), 2),
+    Strategy = c(rep("Diachronic", 2), "Isolated", "Synchronic"),
+    Generation = c(1:2, 1, 1),
+    SessionDuration = c(rep(25, 2), 50, 25),
+    NumPlayers = c(rep(2, 2), 1, 2),
     SessionType = session_type_levels,
     SessionTypeOrdered = factor(session_type_levels, levels = session_type_levels, labels = session_type_labels),
+    SessionTypeSimple = factor(session_type_levels, levels = session_type_levels, labels = session_type_levels),
     SessionTypeTreat = factor(session_type_levels, levels = session_type_levels)
   )
 
@@ -153,7 +152,7 @@ recode_session_type_50 <- function(frame) {
     unlist()
   colnames(session_type_treat_contrasts) <- contrast_names
   session_type_treat_contrasts <- session_type_treat_contrasts %>%
-    rownames_to_column("SessionType")
+    tibble::rownames_to_column("SessionType")
   session_type_map <- left_join(session_type_map, session_type_treat_contrasts)
 
   if(missing(frame)) return(session_type_map)
@@ -249,6 +248,21 @@ recode_discovered <- function(frame) {
     DiscoveredLabel = factor(levels, levels = levels, labels = labels),
     DiscoveredLong = factor(levels, levels = levels, labels = long_labels)
   )
+  if(missing(frame)) return(map)
+  left_join(frame, map)
+}
+
+
+#' @export
+recode_inheritance <- function(frame) {
+  inheritance_levels <- c("no_inheritance", "diachronic_inheritance", "individual_inheritance")
+  map <- data_frame(Inheritance = inheritance_levels)
+
+  inheritance_treat <- contr.treatment(inheritance_levels) %>% as.data.frame()
+  colnames(inheritance_treat) <- c("Diachronic_v_Individual", "Diachronic_v_NoInheritance")
+  inheritance_treat %<>% tibble::rownames_to_column("Inheritance")
+
+  map %<>% left_join(inheritance_treat)
   if(missing(frame)) return(map)
   left_join(frame, map)
 }
