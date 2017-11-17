@@ -27,83 +27,6 @@ recode_strategy <- function(frame) {
 }
 
 
-#' Create a new column Inheritance that labels G2 Diachronic players
-#' in the 50 labor minute experiment.
-#'
-#' Inheritance is "diachronic_inheritance" for the G2 Diachronic player,
-#' and "no_inheritance" for all other session types.
-#'
-#' @export
-highlight_inheritance_50 <- function(frame) {
-  inheritance_levels <- c("diachronic_inheritance", "individual_inheritance", "no_inheritance")
-  inheritance_labels <- c("Diachronic inheritance", "Individual inheritance", "No inheritance")
-  highlight_inheritance_map <- expand.grid(
-    Strategy = c("Diachronic", "Isolated", "Synchronic"),
-    SessionDuration = 25,
-    Generation = 1:2,
-    stringsAsFactors = FALSE
-  ) %>%
-    bind_rows(list(Strategy = "Isolated", Generation = 1, SessionDuration = 50)) %>%
-    dplyr::filter(!(Strategy == "Synchronic" & Generation > 1)) %>%
-    dplyr::mutate(
-      Inheritance = ifelse(Generation == 1, "no_inheritance",
-                           ifelse(Strategy == "Diachronic", "diachronic_inheritance",
-                                  ifelse(Strategy == "Isolated", "individual_inheritance", NA))),
-      InheritanceOrdered = factor(Inheritance, levels = inheritance_levels, labels = inheritance_labels),
-      DiachronicInheritance = Inheritance == "diachronic_inheritance"
-    ) %>%
-    dplyr::arrange(Strategy, Generation)
-
-  inheritance_treat <- contr.treatment(inheritance_levels)
-  highlight_inheritance_map %<>% mutate(InheritanceTreat = InheritanceOrdered)
-  contrasts(highlight_inheritance_map$InheritanceTreat) <- inheritance_treat
-  inheritance_treat %<>% as.data.frame()
-  colnames(inheritance_treat) <- c("Diachronic_v_Individual", "Diachronic_v_NoInheritance")
-  inheritance_treat %<>% tibble::rownames_to_column("Inheritance")
-
-  highlight_inheritance_map %<>% left_join(inheritance_treat)
-  if(missing(frame)) return(highlight_inheritance_map)
-  left_join(frame, highlight_inheritance_map)
-}
-
-#' Create a new column Inheritance that labels G4 Diachronic players
-#' in the 100 labor minute experiment.
-#'
-#' Inheritance is "diachronic_inheritance" for the G4 Diachronic player,
-#' and "no_inheritance" for all other session types.
-#'
-#' @export
-highlight_inheritance_100 <- function(frame) {
-  inheritance_levels <- c("diachronic_inheritance", "individual_inheritance", "no_inheritance")
-  inheritance_labels <- c("Diachronic inheritance", "Individual inheritance", "No inheritance")
-  highlight_inheritance_map <- expand.grid(
-    Strategy = c("Diachronic", "Isolated", "Synchronic"),
-    Generation = 1:4,
-    stringsAsFactors = FALSE
-  ) %>%
-    dplyr::filter(!(Strategy == "Synchronic" & Generation > 1)) %>%
-    dplyr::mutate(
-      Inheritance = ifelse(Generation == 1, "no_inheritance",
-                           ifelse(Strategy == "Diachronic", "diachronic_inheritance",
-                                  ifelse(Strategy == "Isolated", "individual_inheritance", NA))),
-      InheritanceOrdered = factor(Inheritance, levels = inheritance_levels, labels = inheritance_labels),
-      DiachronicInheritance = Inheritance == "diachronic_inheritance"
-    ) %>%
-    dplyr::arrange(Strategy, Generation)
-
-  inheritance_treat <- contr.treatment(inheritance_levels)
-  highlight_inheritance_map %<>% mutate(InheritanceTreat = InheritanceOrdered)
-  contrasts(highlight_inheritance_map$InheritanceTreat) <- inheritance_treat
-  inheritance_treat %<>% as.data.frame()
-  colnames(inheritance_treat) <- c("Diachronic_v_Individual", "Diachronic_v_NoInheritance")
-  inheritance_treat %<>% tibble::rownames_to_column("Inheritance")
-
-  highlight_inheritance_map %<>% left_join(inheritance_treat)
-
-  if(missing(frame)) return(highlight_inheritance_map)
-  left_join(frame, highlight_inheritance_map)
-}
-
 #' Create a session type column that compares individual session types
 #' for the 50 labor minute experiment.
 #'
@@ -253,16 +176,3 @@ recode_discovered <- function(frame) {
 }
 
 
-#' @export
-recode_inheritance <- function(frame) {
-  inheritance_levels <- c("no_inheritance", "diachronic_inheritance", "individual_inheritance")
-  map <- data_frame(Inheritance = inheritance_levels)
-
-  inheritance_treat <- contr.treatment(inheritance_levels) %>% as.data.frame()
-  colnames(inheritance_treat) <- c("Diachronic_v_Individual", "Diachronic_v_NoInheritance")
-  inheritance_treat %<>% tibble::rownames_to_column("Inheritance")
-
-  map %<>% left_join(inheritance_treat)
-  if(missing(frame)) return(map)
-  left_join(frame, map)
-}
