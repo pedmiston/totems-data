@@ -23,3 +23,14 @@ test_that("0 doesn't appear in inventory ids", {
   inventory_ids <- PlayerPerformance$FinalInventoryID
   expect_true(!any(grepl("^0-", inventory_ids)))
 })
+
+test_that("I50 players have all inventory types equal", {
+  data("Guesses")
+  I50 <- dplyr::filter(Guesses, Strategy == "Isolated", Exp == "50LaborMinutes", TeamStatus == "V")
+  expect_true(all(
+    with(I50,
+          (PrevSessionInventoryID == PrevPlayerInventoryID) &
+          (PrevPlayerInventoryID == PrevTeamInventoryID)
+         )
+  ))
+})
