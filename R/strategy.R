@@ -26,7 +26,6 @@ recode_strategy <- function(frame) {
   left_join(frame, map)
 }
 
-
 #' Create a session type column that compares individual session types
 #' for the 50 labor minute experiment.
 #'
@@ -169,7 +168,8 @@ recode_discovered <- function(frame) {
     Discovered = levels,
     DiscoveredType = types,
     DiscoveredLabel = factor(levels, levels = levels, labels = labels),
-    DiscoveredLong = factor(levels, levels = levels, labels = long_labels)
+    DiscoveredLong = factor(levels, levels = levels, labels = long_labels),
+    DiscoveredRev = factor(levels, levels = rev(levels), labels = rev(labels))
   )
   if(missing(frame)) return(map)
   left_join(frame, map)

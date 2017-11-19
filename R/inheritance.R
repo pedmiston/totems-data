@@ -11,13 +11,15 @@ label_inheritance <- function(frame) {
 #' @export
 recode_inheritance <- function(frame) {
   inheritance_levels <- c("no_inheritance", "diachronic_inheritance", "individual_inheritance")
+  inheritance_labels <- c("No inheritance", "Diachronic inheritance", "Individual Inheritance")
   map <- data_frame(
     Inheritance = inheritance_levels,
+    InheritanceLabel = factor(inheritance_levels, levels = inheritance_levels, labels = inheritance_labels),
     DiachronicInheritance = Inheritance == "diachronic_inheritance"
   )
 
-  inheritance_treat <- contr.treatment(inheritance_levels) %>% as.data.frame()
-  colnames(inheritance_treat) <- c("Diachronic_v_Individual", "Diachronic_v_NoInheritance")
+  inheritance_treat <- contr.treatment(inheritance_levels, base = 2) %>% as.data.frame()
+  colnames(inheritance_treat) <- c("Diachronic_v_NoInheritance", "Diachronic_v_Individual")
   inheritance_treat %<>% tibble::rownames_to_column("Inheritance")
 
   map %<>% left_join(inheritance_treat)
