@@ -8,6 +8,19 @@ label_stage <- function(Guesses) {
     ungroup()
 }
 
+#' @export
+recode_stage <- function(frame) {
+  stage_levels <- c("learning", "playing")
+  stage_labels <- c("Learning", "Playing")
+  map <- data_frame(
+    Stage = stage_levels,
+    StageC = c(-0.5, 0.5),
+    StageLabel = factor(stage_levels, levels = stage_levels, labels = stage_labels)
+  )
+  if(missing(frame)) return(map)
+  left_join(frame, map)
+}
+
 #' Label stage ix for individual players inheriting either
 #' from self or another teammate.
 #' @export

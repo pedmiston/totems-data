@@ -157,22 +157,3 @@ recode_generation_type <- function(frame) {
   if(missing(frame)) return(generation_type_map)
   left_join(frame, generation_type_map)
 }
-
-#' @export
-recode_discovered <- function(frame) {
-  levels <- c(TRUE, FALSE)
-  types <- c("discovered", "undiscovered")
-  labels <- c("Discovered", "Undiscovered")
-  long_labels <- c("Item discovered", "Item never discovered")
-  map <- data_frame(
-    Discovered = levels,
-    DiscoveredType = types,
-    DiscoveredLabel = factor(levels, levels = levels, labels = labels),
-    DiscoveredLong = factor(levels, levels = levels, labels = long_labels),
-    DiscoveredRev = factor(levels, levels = rev(levels), labels = rev(labels))
-  )
-  if(missing(frame)) return(map)
-  left_join(frame, map)
-}
-
-
