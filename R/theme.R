@@ -4,9 +4,9 @@
 #' @export
 load_totems_theme <- function() {
   strategy_levels = levels(recode_strategy()$StrategyLabel)
-  strategy_colors = RColorBrewer::brewer.pal(length(strategy_levels), "Set2")
+  strategy_colors = RColorBrewer::brewer.pal(4, "Set2")
   strategy_named_colors <- strategy_colors
-  names(strategy_named_colors) <- c("green", "orange", "blue")
+  names(strategy_named_colors) <- c("green", "orange", "blue", "pink")
 
   # Breaks and labels for time scales
   breaks_in_seconds <- seq(0, 50 * 60, by = 25 * 60)
