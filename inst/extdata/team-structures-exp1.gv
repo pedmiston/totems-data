@@ -23,7 +23,8 @@ digraph {
   solo[fillcolor="#FC8D62"]
 
   // Invisible last nodes
-  dinv1, soloinv1, sinv1, sinv2[style=invis, width=0];
+  dinv1, soloinv1[style=invis, width=0];
+  sinv1, sinv2[style=invis, width=0.4];
 
   subgraph cluster1 {
     label="Diachronic";
