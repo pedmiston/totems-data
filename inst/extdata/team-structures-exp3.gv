@@ -10,9 +10,13 @@ digraph {
 
   // Set cluster order (top to bottom) by initializing
   // nodes in each cluster starting from bottom to top
-  solo_s1, d1;
+  s4_1, solo_s1, d1;
 
   // Colors are people
+  s4_1[fillcolor="#549F88"];
+  s4_2[fillcolor="#66C2A5"];
+  s4_3[fillcolor="#81CDB5"];
+  s4_4[fillcolor="#9DD8C5"];
   d1[fillcolor="#7483A7"];
   d2[fillcolor="#8DA0CB"];
   d3[fillcolor="#A1B1D4"];
@@ -21,6 +25,7 @@ digraph {
 
   // Invisible last nodes
   dinv1, soloinv2[style=invis, width=0];
+  s4inv1, s4inv2, s4inv3, s4inv4[style=invis width=0.2];
 
   subgraph cluster1 {
     label="Diachronic";
@@ -38,6 +43,15 @@ digraph {
     solo_s4 -> soloinv2[label="S4"];
 
     solo_s2, solo_s3, solo_s4[style=invis, width=0.2];
+  }
+
+  subgraph cluster3 {
+    label="Synchronic";
+    rankdir=TB;
+    s4_1 -> s4inv1[label="25 min"];
+    s4_2 -> s4inv2;
+    s4_3 -> s4inv3;
+    s4_4 -> s4inv4;
   }
 
 }

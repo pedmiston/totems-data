@@ -6,6 +6,7 @@ digraph {
   // bgcolor=transparent;
 
   node[fontname=helvetica; label=""; style=filled; shape=circle];
+  edge[fontname=helvetica];
 
   // Set cluster order (top to bottom) by initializing
   // nodes in each cluster starting from bottom to top

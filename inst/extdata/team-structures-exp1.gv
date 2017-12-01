@@ -39,7 +39,7 @@ digraph {
 
   subgraph cluster3 {
     label="Synchronic";
-    s1 -> sinv1;
+    s1 -> sinv1[label="25 min"];
     s2 -> sinv2;
   }
 
