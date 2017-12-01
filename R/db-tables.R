@@ -5,6 +5,7 @@
 #'
 #' @return DBI Connection class
 connect_db <- function() {
+  stopifnot(file.exists("config.yml"))
   config <- yaml::yaml.load_file("config.yml")
   DBI::dbConnect(RMySQL::MySQL(),
                  dbname = "Totems",
@@ -29,6 +30,7 @@ collect_table <- function(name, con, save = TRUE) {
   }
   frame <- collect(tbl(con, name))
   if(save) {
+    dir.create("data-raw/tables/", showWarnings = FALSE)
     out <- paste0("data-raw/tables/", name, ".csv")
     write.csv(frame, out, row.names = FALSE)
   }
