@@ -3,7 +3,10 @@
 #' TeamID is a deidentified version of ID_Group
 #' with datetime information removed.
 replace_id_group <- function(frame) {
-  id_groups <- read_table("Table_Group")$ID_Group %>% sort()
+  id_groups <- read_table("Table_Group") %>%
+    mutate(Datetime = parse_date_time_from_id_group(ID_Group)) %>%
+    arrange(Datetime) %>%
+    .$ID_Group
   team_ids <- paste0("G", seq_along(id_groups))
   map <- data_frame(ID_Group = id_groups, TeamID = team_ids)
   if(missing(frame)) return(map)
@@ -50,4 +53,9 @@ label_valid_teams <- function(frame) {
 
   if(missing(frame)) return(valid_team_map)
   left_join(frame, valid_team_map)
+}
+
+parse_date_time_from_id_group <- function(id_group) {
+  id_group <- stringr::str_replace(id_group, "^G_", "")
+  lubridate::parse_date_time(id_group, "m/d/y H:M:S Op!*", tz = "America/Chicago")
 }
