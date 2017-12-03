@@ -22,3 +22,10 @@ test_that("I50 players are only in stage 'playing'", {
   I50 <- dplyr::filter(Guesses, TeamStatus == "V", Exp == "50LaborMinutes", Strategy == "Isolated")
   expect_true(all(I50$Stage == "playing"))
 })
+
+context("Label stage time")
+
+test_that("stage time is centered on stage ix", {
+  result <- guesses %>% label_stage() %>% label_stage_time()
+  expect_equal(result$StageTime, c(0, 1, 2))
+})

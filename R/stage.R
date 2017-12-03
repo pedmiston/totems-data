@@ -41,3 +41,12 @@ label_stage_ix <- function(IndividualGuesses) {
     }) %>%
     ungroup()
 }
+
+#' Label time relative to when learning finished.
+#' @export
+label_stage_time <- function(IndividualGuesses) {
+  IndividualGuesses %>%
+    group_by(SessionID) %>%
+    mutate(StageTime = SessionTime - max(SessionTime[Stage == "learning"])) %>%
+    ungroup()
+}
