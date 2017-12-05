@@ -1,19 +1,18 @@
-session_duration_sec <- 25 * 60
-
-#' Replace TrialTime (msec) with SessionTime (sec)
+#' Replace TrialTime (msec) with SessionTime (min)
 replace_trial_time <- function(frame) {
+  msec_in_min <- 1000 * 60
   frame %>%
-    mutate(SessionTime = TrialTime/1000) %>%
+    mutate(SessionTime = TrialTime/msec_in_min) %>%
     select(-TrialTime)
 }
 
-fix_bug_in_session_time <- function(frame) {
-  session_id <- "S454"
-  session_row <- frame$SessionID == session_id
-  session_times <- frame[session_row, "SessionTime"]
-  frame[session_row, "SessionTime"] <- session_times - min(session_times)
-  frame
-}
+# fix_bug_in_session_time <- function(frame) {
+#   session_id <- "S454"
+#   session_row <- frame$SessionID == session_id
+#   session_times <- frame[session_row, "SessionTime"]
+#   frame[session_row, "SessionTime"] <- session_times - min(session_times)
+#   frame
+# }
 
 label_time <- function(frame) {
   frame %>%
@@ -24,12 +23,12 @@ label_time <- function(frame) {
 }
 
 label_player_time <- function(frame) {
-  mutate(frame, PlayerTime = (SessionDuration*(SessionIX-1)) * 60 + SessionTime)
+  mutate(frame, PlayerTime = (SessionDuration*(SessionIX-1)) + SessionTime)
 }
 
 label_team_time <- function(frame) {
   mutate(frame, TeamTime = ifelse(Strategy == "Synchronic", SessionTime*PlayersPerSession,
-                                  (SessionDuration*(Generation-1)) * 60 + SessionTime))
+                                  (SessionDuration*(Generation-1)) + SessionTime))
 }
 
 label_calendar_time <- function(frame) {

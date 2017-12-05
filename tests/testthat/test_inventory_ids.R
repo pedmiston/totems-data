@@ -17,20 +17,12 @@ test_that("incorrect results are ignored", {
 
 context("Verify inventory ids")
 
-data("PlayerPerformance")
-
-test_that("0 doesn't appear in inventory ids", {
-  inventory_ids <- PlayerPerformance$FinalInventoryID
-  expect_true(!any(grepl("^0-", inventory_ids)))
-})
-
 test_that("I50 players have all inventory types equal", {
   data("Guesses")
-  I50 <- dplyr::filter(Guesses, Strategy == "Isolated", Exp == "50LaborMinutes", TeamStatus == "V")
+  I50 <- dplyr::filter(Guesses, Strategy == "Isolated", SessionDuration == 50)
   expect_true(all(
     with(I50,
-          (PrevSessionInventoryID == PrevPlayerInventoryID) &
-          (PrevPlayerInventoryID == PrevTeamInventoryID)
+          (PrevSessionInventoryID == PrevTeamInventoryID)
          )
   ))
 })

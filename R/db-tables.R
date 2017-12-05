@@ -23,32 +23,28 @@ create_blank_config <- function() {
 }
 
 #' Collect a single table from the db.
-collect_table <- function(name, con, save = TRUE) {
+collect_table <- function(name, con) {
   teardown <- missing(con)
-  if(missing(con)) {
-    con <- connect_db()
-  }
+  if(missing(con)) con <- connect_db()
   frame <- collect(tbl(con, name))
-  if(save) {
-    dir.create("data-raw/tables/", showWarnings = FALSE)
-    out <- paste0("data-raw/tables/", name, ".csv")
-    write.csv(frame, out, row.names = FALSE)
-  }
   if(teardown) RMySQL::dbDisconnect(con)
   return(frame)
 }
 
-#' Collect all tables in the db.
-collect_tables <- function() {
+#' Save all tables in the db.
+save_all_tables <- function(dest = "data-raw/tables/") {
   con <- connect_db()
+  dir.create(dest, showWarnings = FALSE)
   tables <- RMySQL::dbListTables(con)
-  for(table in tables) {
-    collect_table(table, con)
+  for(name in tables) {
+    frame <- collect_table(name, con)
+    out <- file.path(dest, paste0(name, ".csv"))
+    write.csv(frame, out, row.names = FALSE)
   }
   RMySQL::dbDisconnect(con)
 }
 
-#' Read a local version of the table.
+#' Read a local copy of a database table.
 read_table <- function(name) {
   src <- paste0("data-raw/tables/", name, ".csv")
   readr::read_csv(src)

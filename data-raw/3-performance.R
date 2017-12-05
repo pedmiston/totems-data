@@ -52,4 +52,4 @@ Inventories <- Guesses %>%
   arrange(SessionID, StartTime) %>%
   left_join(Players)
 
-devtools::use_data(TeamPerformance, PlayerPerformance, Inventories, overwrite = TRUE)
+devtools::use_data(TeamPerformance, PlayerPerformance, overwrite = TRUE)

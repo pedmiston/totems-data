@@ -1,3 +1,43 @@
+#' Filter observations for the diachronic comparison.
+#' @export
+filter_diachronic_exp <- function(frame) {
+  frame %>% dplyr::filter(Strategy == "Diachronic", SessionStatus == "valid")
+}
+
+#' Filter observations for the 50 labor minute comparison.
+#' @export
+filter_50min_exp <- function(frame) {
+  frame %>%
+    dplyr::filter(
+      SessionStatus == "valid",
+      (Strategy == "Diachronic" & Generation <= 2),
+      (Strategy == "Synchronic" & PlayersPerSession == 2),
+      (Strategy == "Isolated" & SessionDuration == 50)
+    )
+}
+
+#' Filter observations for the inheritance experiment.
+#' @export
+filter_inheritance_exp <- function(frame) {
+  frame %>%
+    dplyr::filter(
+      SessionStatus == "valid",
+      Strategy != "Synchronic",
+      SessionDuration == 25
+    )
+}
+
+#' Filter observations for the 100 labor minute experiment.
+#' @export
+filter_100min_exp <- function(frame) {
+  frame %>%
+    dplyr::filter(
+      SessionStatus == "valid",
+      (Strategy == "Synchronic" & PlayersPerSession == 4),
+      (Strategy == "Isolated" & SessionDuration == 25)
+    )
+}
+
 player_conditions <- function() {
   # 50 Labor Minutes
   diachronic_50 <- data_frame(
@@ -148,16 +188,4 @@ recode_experiment <- function(frame) {
   )
   if(missing(frame)) return(map)
   left_join(frame, map)
-}
-
-#' Filter rows from 50 minute experiment.
-#' @export
-filter_50min_exp <- function(frame) {
-  dplyr::filter(frame, Exp == "50LaborMinutes")
-}
-
-#' Filter rows from 100 minute experiment.
-#' @export
-filter_100min_exp <- function(frame) {
-  dplyr::filter(frame, Exp == "100LaborMinutes")
 }

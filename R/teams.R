@@ -22,7 +22,7 @@ label_strategy <- function(frame) {
   left_join(frame, map)
 }
 
-#' Label the number of current players based on Strategy and NumPlayers.
+#' Label the number of players in a session based on Strategy and Size.
 #'
 #' For Synchronic players, PlayersPerSession == Size.
 #' For Diachronic and Isolated players, PlayersPerSession == 1.
@@ -45,16 +45,7 @@ label_session_duration <- function(frame) {
   left_join(frame, session_durations)
 }
 
-label_valid_teams <- function(frame) {
-  valid_team_map <- label_valid_players() %>%
-    group_by(Exp, TeamID) %>%
-    summarize(IsTeamValid = all(IsPlayerValid)) %>%
-    ungroup()
-
-  if(missing(frame)) return(valid_team_map)
-  left_join(frame, valid_team_map)
-}
-
+#' Extract datetime from ID_Group
 parse_date_time_from_id_group <- function(id_group) {
   id_group <- stringr::str_replace(id_group, "^G_", "")
   lubridate::parse_date_time(id_group, "m/d/y H:M:S Op!*", tz = "America/Chicago")

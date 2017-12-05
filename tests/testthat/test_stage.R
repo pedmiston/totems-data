@@ -19,7 +19,7 @@ context("Verify stage")
 
 test_that("I50 players are only in stage 'playing'", {
   data("Guesses")
-  I50 <- dplyr::filter(Guesses, TeamStatus == "V", Exp == "50LaborMinutes", Strategy == "Isolated")
+  I50 <- dplyr::filter(Guesses, Strategy == "Isolated", SessionDuration == 50)
   expect_true(all(I50$Stage == "playing"))
 })
 

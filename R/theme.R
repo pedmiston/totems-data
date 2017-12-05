@@ -8,9 +8,7 @@ load_totems_theme <- function() {
   strategy_named_colors <- strategy_colors
   names(strategy_named_colors) <- c("green", "orange", "blue", "pink")
 
-  # Breaks and labels for time scales
-  breaks_in_seconds <- seq(0, 50 * 60, by = 25 * 60)
-  labels_in_minutes <- seq(0, 50,      by = 25)
+  breaks_in_minutes <- seq(0, 50, by = 25)
 
   totems_theme <- list(
     # Theme
@@ -30,9 +28,9 @@ load_totems_theme <- function() {
     scale_color_strategy = scale_color_manual("Strategy", values = strategy_colors),
     scale_fill_strategy = scale_fill_manual("Strategy", values = strategy_colors),
 
-    scale_x_calendar_time = scale_x_continuous("Calendar time (min)", breaks = breaks_in_seconds, labels = labels_in_minutes),
-    scale_x_team_time = scale_x_continuous("Labor time (min)", breaks = breaks_in_seconds, labels = labels_in_minutes),
-    scale_x_player_time = scale_x_continuous("Learning time (min)", breaks = breaks_in_seconds, labels = labels_in_minutes)
+    scale_x_calendar_time = scale_x_continuous("Calendar time (min)", breaks = breaks_in_minutes),
+    scale_x_team_time = scale_x_continuous("Labor time (min)", breaks = breaks_in_minutes),
+    scale_x_player_time = scale_x_continuous("Learning time (min)", breaks = breaks_in_minutes)
   )
 
   totems_theme

@@ -1,7 +1,7 @@
 #' Label session status.
 #'
-#' V: Valid session.
-#' T: Test session.
+#' valid: Valid session.
+#' test: Test session.
 #' no_guesses: Session has no guesses associated with it.
 #' unknown_session: Session is not recorded
 #' didnt_recreate: Player did not recreate ancestral items in current session.
@@ -17,7 +17,7 @@ label_session_status <- function(frame) {
     replace_id_player() %>%
     replace_ancestor()
 
-  sessions$SessionStatus <- ifelse(sessions$SessionDuration %in% c(25, 50), "V", "T")
+  sessions$SessionStatus <- ifelse(sessions$SessionDuration %in% c(25, 50), "valid", "test")
 
   # Label sessions with no guesses
   sessions_with_no_guesses <- c("S157", "S158", "S160", "S162", "S202", "S475", "S314", "S315", "S340", "S391", "S599", "S600", "S601", "S168")
@@ -67,7 +67,7 @@ label_team_status <- function(frame) {
     group_by(Exp, TeamID, SessionsPerPlayer) %>%
     summarize(
       CompletedSessions = n(),
-      AllValidSessions = all(SessionStatus == "V")
+      AllValidSessions = all(SessionStatus == "valid")
     ) %>%
     ungroup() %>%
     mutate(TeamStatus = ifelse(SessionsPerPlayer == CompletedSessions & AllValidSessions, "V", "I")) %>%
@@ -78,7 +78,7 @@ label_team_status <- function(frame) {
     group_by(Exp, TeamID, NumPlayers) %>%
     summarize(
       CompletedPlayers = n(),
-      AllValidSessions = all(SessionStatus == "V")
+      AllValidSessions = all(SessionStatus == "valid")
     ) %>%
     ungroup() %>%
     mutate(TeamStatus = ifelse(CompletedPlayers == NumPlayers & AllValidSessions, "V", "I")) %>%
@@ -91,7 +91,7 @@ label_team_status <- function(frame) {
     group_by(Exp, TeamID, NumPlayers) %>%
     summarize(
       CompletedPlayers = n(),
-      AllValidSessions = all(SessionStatus == "V")
+      AllValidSessions = all(SessionStatus == "valid")
     ) %>%
     ungroup() %>%
     mutate(TeamStatus = ifelse(CompletedPlayers == NumPlayers & AllValidSessions, "V", "I")) %>%

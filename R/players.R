@@ -1,17 +1,18 @@
-#' Create a map of ID_Player to PlayerID, PlayerIX, SessionID, and SessionIX.
+#' Replace ID_Player with PlayerID, PlayerIX, SessionID, and SessionIX.
+#'
+#' For all players:
+#' SessionID = "S" + ID_Player
 #'
 #' For Diachronic and Synchronic players:
 #' PlayerID = "P" + ID_Player
 #' PlayerIX = 1:4?
-#' SessionID = "S" + ID_Player
 #' SessionIX = 1
 #'
 #' For Isolated players, who are assigned multiple values for ID_Player:
 #' PlayerID = "P" + max(ID_Player)
 #' PlayerIX = 1
-#' SessionID = "S" + ID_Player
 #' SessionIX = 1:4?
-create_player_id_map <- function() {
+replace_id_player <- function(frame) {
   players <- read_table("Table_Player") %>%
     replace_id_group() %>%
     label_strategy() %>%
@@ -23,14 +24,14 @@ create_player_id_map <- function() {
       SessionID = paste0("S", ID_Player),
       SessionIX = 1
     ) %>%
-    arrange(ID_Player) %>%
     group_by(TeamID) %>%
+    arrange(ID_Player) %>%
     mutate(PlayerIX = 1:n()) %>%
     ungroup()
 
   isolated_players <- dplyr::filter(players, Strategy == "Isolated") %>%
-    arrange(ID_Player) %>%
     group_by(TeamID) %>%
+    arrange(ID_Player) %>%
     mutate(
       PlayerID = paste0("P", max(ID_Player)),
       PlayerIX = 1,
@@ -38,27 +39,12 @@ create_player_id_map <- function() {
       SessionIX = 1:n()
     )
 
-  player_id_map <- bind_rows(
-    team_players,
-    isolated_players
-  ) %>%
+  player_id_map <- bind_rows(team_players, isolated_players) %>%
     select(ID_Player, PlayerID, PlayerIX, SessionID, SessionIX)
 
-  player_id_map
-}
-
-#' Replace ID_Player with PlayerID, PlayerIX, SessionID, and SessionIX.
-replace_id_player <- function(frame) {
-  player_id_map <- create_player_id_map()
+  if(missing(frame)) return(player_id_map)
   left_join(frame, player_id_map) %>%
     select(-ID_Player)
-}
-
-#' Label PlayerID, PlayerIX, and SessionIX from SessionID
-label_session_player <- function(frame) {
-  player_id_map <- create_player_id_map() %>%
-    select(-ID_Player)
-  left_join(frame, player_id_map)
 }
 
 #' Create Generation from Strategy and Ancestor.
@@ -93,3 +79,11 @@ label_team_id <- function(frame) {
   if(missing(frame)) return(map)
   left_join(frame, map)
 }
+
+#' Label PlayerID, PlayerIX, and SessionIX from SessionID
+label_session_player <- function(frame) {
+  player_id_map <- replace_id_player() %>%
+    select(-ID_Player)
+  left_join(frame, player_id_map)
+}
+

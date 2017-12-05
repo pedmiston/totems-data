@@ -1,13 +1,3 @@
-#' Label the stage of the guesser's inventory relative to the team inventory.
-label_stage <- function(Guesses) {
-  Guesses %>%
-    arrange(SessionTime) %>%
-    group_by(SessionID) %>%
-    mutate(Stage = ifelse(nchar(PrevTeamInventoryID) > nchar(PrevSessionInventoryID),
-                          "learning", "playing")) %>%
-    ungroup()
-}
-
 #' @export
 recode_stage <- function(frame) {
   stage_levels <- c("learning", "playing")

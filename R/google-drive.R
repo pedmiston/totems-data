@@ -1,14 +1,18 @@
+#' Save subject info from Google Drive spreadsheet.
+#'
 #' @import googlesheets
-get_subj_info <- function() {
-  dir.create("data-raw/subj-info", recursive = TRUE)
+save_subj_info <- function() {
+  dir.create("data-raw/subj-info", showWarnings = FALSE)
   subj_info <- gs_title("totems-subj-info")
   gs_download(subj_info, ws = "TOT/TOI", to = "data-raw/subj-info/tot-toi.csv", overwrite = TRUE)
   gs_download(subj_info, ws = "TOM", to = "data-raw/subj-info/tom.csv", overwrite = TRUE)
 }
 
+#' Save survey responses from Google Drive spreadsheet.
+#'
 #' @import googlesheets
-get_survey_responses <- function() {
-  dir.create("data-raw/survey", recursive = TRUE)
+save_survey_responses <- function() {
+  dir.create("data-raw/survey", showWarnings = FALSE)
   gs_title("totems-survey-responses") %>%
     gs_download(ws = "Form Responses 1",
                 to = "data-raw/survey/responses.csv",
