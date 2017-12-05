@@ -26,3 +26,35 @@ recode_guess_type <- function(frame, unique_guess, unique_result) {
 
   left_join(frame, guess_type_map)
 }
+
+#' @export
+recode_guess_type_total <- function(frame) {
+  guess_type_total_map <- data_frame(
+    GuessTypeTotal = c("NumRedundantGuesses", "NumRepeatedItems", "NumUniqueGuesses", "NumInnovations"),
+    GuessType = c("redundant", "repeat_item", "unique_guess", "unique_result")
+  )
+  if(missing(frame)) return(guess_type_total_map)
+  left_join(frame, guess_type_total_map)
+}
+
+#' @export
+recode_prop_guess_type_total <- function(frame) {
+  prop_guess_type_total_map <- data_frame(
+    PropGuessType = c("PropRedundantGuesses", "PropRepeatedItems", "PropUniqueGuesses", "PropUniqueItems"),
+    PropGuessTypeLabel = c("Redundant", "Repeat item", "Unique guess", "Unique item"),
+    GuessType = c("redundant", "repeat_item", "unique_guess", "unique_result")
+  )
+  if(missing(frame)) return(prop_guess_type_total_map)
+  left_join(frame, prop_guess_type_total_map)
+}
+
+#' @export
+recode_strategy_by_session_duration <- function(frame) {
+  strategy_by_session_duration_map <- data_frame(
+    Strategy = c("Diachronic", "Synchronic", "Isolated", "Isolated"),
+    SessionDuration = c(25, 25, 25, 50),
+    StrategyBySessionDuration = c("Diachronic-25", "Synchronic-25", "Isolated-25", "Isolated-50")
+  )
+  if(missing(frame)) return(strategy_by_session_duration_map)
+  left_join(frame, strategy_by_session_duration_map)
+}

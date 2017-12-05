@@ -1,14 +1,14 @@
 #' Information about teams.
 #'
 #' @docType data
-#' @usage data("TeamInfo")
+#' @usage data("Teams")
 "Teams"
 
-#' Information about players
+#' Information about player sessions
 #'
 #' @docType data
-#' @usage data("PlayerInfo")
-"Players"
+#' @usage data("Sessions")
+"Sessions"
 
 #' Workshop guesses made by players in the Totems experiment.
 #'
@@ -20,12 +20,6 @@
 #' @docType data
 #' @usage data("Guesses")
 "Guesses"
-
-#' Inventories uncovered by teams in the Totems experiment.
-#'
-#' @docType data
-#' @usage data("Inventories")
-"Inventories"
 
 #' Cumulative performance sampled at a regular interval.
 #'
