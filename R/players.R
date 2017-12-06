@@ -84,6 +84,7 @@ label_team_id <- function(frame) {
 label_session_player <- function(frame) {
   player_id_map <- replace_id_player() %>%
     select(-ID_Player)
+  if(missing(frame)) return(player_id_map)
   left_join(frame, player_id_map)
 }
 

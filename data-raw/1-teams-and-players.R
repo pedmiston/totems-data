@@ -30,5 +30,4 @@ Sessions <- read_table("Table_Player") %>%
   ) %>%
   arrange(TeamID, PlayerIX, SessionIX)
 
-devtools::use_data(Teams, Sessions,
-                   overwrite = TRUE)
+devtools::use_data(Teams, Sessions, overwrite = TRUE)
