@@ -1,5 +1,6 @@
 # devtools::load_all()
 
+# Guesses, GuessesMap, and InventoryMap ----
 Guesses <- read_table("Table_Workshop") %>%
   rename(Guess = WorkShopString, Result = WorkShopResult) %>%
   mutate(CreatedItem = (Result != 0)) %>%
@@ -39,6 +40,14 @@ Guesses <- Guesses %>%
     SessionStatus
   )
 
+devtools::use_data(
+  Guesses,
+  # GuessesMap,
+  InventoryMap,
+  overwrite = TRUE
+)
+
+# Sampled ----
 starting_inventory <- data_frame(
   NumGuesses = 0,
   InventoryID = "1-2-3-4-5-6",
@@ -61,6 +70,10 @@ Sampled <- Guesses %>%
   label_time() %>%
   label_session_status()
 
+devtools::use_data(Sampled, overwrite = TRUE)
+
+# AdjacentItems ----
+
 # Run python script to identify innovations adjacent to each inventory.
 write.csv(InventoryMap[, "ID"], "data-raw/adjacent/inventory-ids.csv", row.names = FALSE)
 system("bin/adjacent.py data-raw/adjacent/inventory-ids.csv")
@@ -70,4 +83,4 @@ InventoryMap <- left_join(InventoryMap, NumAdjacent)
 
 AdjacentItems <- readr::read_csv("data-raw/adjacent/adjacent-items.csv")
 
-devtools::use_data(Guesses, GuessesMap, InventoryMap, Sampled, AdjacentItems, overwrite = TRUE)
+devtools::use_data(AdjacentItems, overwrite = TRUE)

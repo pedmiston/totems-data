@@ -17,10 +17,16 @@ test_that("label synchronic stage", {
 
 context("Verify stage")
 
+data("Guesses")
+
 test_that("I50 players are only in stage 'playing'", {
-  data("Guesses")
   I50 <- dplyr::filter(Guesses, Strategy == "Isolated", SessionDuration == 50)
   expect_true(all(I50$Stage == "playing"))
+})
+
+test_that("DG1 players are only in stage 'playing'", {
+  DG1 <- dplyr::filter(Guesses, Strategy == "Diachronic", Generation == 1)
+  expect_true(all(DG1$Stage == "playing"))
 })
 
 context("Label stage time")
