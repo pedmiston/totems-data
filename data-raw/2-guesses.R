@@ -77,10 +77,25 @@ devtools::use_data(Sampled, overwrite = TRUE)
 # Run python script to identify innovations adjacent to each inventory.
 write.csv(InventoryMap[, "ID"], "data-raw/adjacent/inventory-ids.csv", row.names = FALSE)
 system("bin/adjacent.py data-raw/adjacent/inventory-ids.csv")
+# creates num-adjacent.csv and adjacent-items.csv
+# requires totems venv to be active!
 
 NumAdjacent <- readr::read_csv("data-raw/adjacent/num-adjacent.csv")
-InventoryMap <- left_join(InventoryMap, NumAdjacent)
-
 AdjacentItems <- readr::read_csv("data-raw/adjacent/adjacent-items.csv")
 
-devtools::use_data(AdjacentItems, overwrite = TRUE)
+InventoryInfo <- left_join(InventoryMap, NumAdjacent) %>%
+  mutate(InventorySize = purrr::map_int(Inventory, length)) %>%
+  # Drop the list column
+  select(-Inventory)
+
+UniqueGuessesMap <- data_frame(InventorySize = unique(InventoryInfo$InventorySize)) %>%
+  mutate(UniqueGuesses = purrr::map_int(InventorySize, count_unique_guesses_with_replacement))
+
+InventoryInfo <- left_join(InventoryInfo, UniqueGuessesMap) %>%
+  mutate(
+    Difficulty = 1 - NumAdjacent/UniqueGuesses,
+    Difficulty = (Difficulty - mean(Difficulty))/sd(Difficulty),
+    Difficulty = Difficulty - min(Difficulty)
+  )
+
+devtools::use_data(InventoryInfo, AdjacentItems, overwrite = TRUE)

@@ -2,6 +2,7 @@ from unipath import Path
 from invoke import task
 
 import graphdb
+from bin.adjacent import analyze_inventory_ids
 
 
 R_PKG = Path(__file__).absolute().parent
@@ -75,6 +76,10 @@ def tree(ctx, max_number=None, max_generation=None, name=None, view_off=False):
     output = Path(R_PKG, 'inst/extdata/', name+'.gv')
     viz.render(output, view=not view_off)
 
+@task
+def adjacent(ctx, inventory_ids_csv='data-raw/adjacent/inventory-ids.csv'):
+    """Analyze the items adjacent to a list of inventory ids."""
+    analyze_inventory_ids(inventory_ids_csv)
 
 @task
 def inventory(ctx, item_numbers=None, name=None, view_off=False):
