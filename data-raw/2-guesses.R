@@ -88,14 +88,22 @@ InventoryInfo <- left_join(InventoryMap, NumAdjacent) %>%
   # Drop the list column
   select(-Inventory)
 
-UniqueGuessesMap <- data_frame(InventorySize = unique(InventoryInfo$InventorySize)) %>%
-  mutate(UniqueGuesses = purrr::map_int(InventorySize, count_unique_guesses_with_replacement))
-
-InventoryInfo <- left_join(InventoryInfo, UniqueGuessesMap) %>%
+Combinatorics <- data_frame(InventorySize = unique(InventoryInfo$InventorySize)) %>%
   mutate(
-    Difficulty = 1 - NumAdjacent/UniqueGuesses,
-    Difficulty = (Difficulty - mean(Difficulty))/sd(Difficulty),
-    Difficulty = Difficulty - min(Difficulty)
+    UniqueGuesses = purrr::map_dbl(InventorySize, count_unique_guesses),
+    UniqueCombinations = purrr::map_dbl(InventorySize, count_unique_combinations)
   )
 
-devtools::use_data(InventoryInfo, AdjacentItems, overwrite = TRUE)
+z_score <- function(x) (x - mean(x))/sd(x)
+
+InventoryInfo <- left_join(InventoryInfo, Combinatorics) %>%
+  mutate(
+    GuessDifficulty = NumAdjacent/GuessDifficulty,
+    CombnDifficulty = NumAdjacent/CombnDifficulty
+  )
+
+InventoriesPerItem <- AdjacentItems %>%
+  group_by(Adjacent) %>%
+  summarize(NumInventories = n())
+
+devtools::use_data(InventoryInfo, AdjacentItems, InventoriesPerItem, Combinatorics, overwrite = TRUE)

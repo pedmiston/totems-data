@@ -2,6 +2,8 @@
 
 export(accumulate)
 export(calculate_final_inventory_id)
+export(count_unique_combinations)
+export(count_unique_guesses)
 export(filter_100min_exp)
 export(filter_50min_exp)
 export(filter_diachronic_exp)
