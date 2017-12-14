@@ -98,8 +98,8 @@ z_score <- function(x) (x - mean(x))/sd(x)
 
 InventoryInfo <- left_join(InventoryInfo, Combinatorics) %>%
   mutate(
-    GuessDifficulty = NumAdjacent/GuessDifficulty,
-    CombnDifficulty = NumAdjacent/CombnDifficulty
+    GuessDifficulty = UniqueGuesses/NumAdjacent,
+    CombinationDifficulty = UniqueCombinations/NumAdjacent
   )
 
 InventoriesPerItem <- AdjacentItems %>%
