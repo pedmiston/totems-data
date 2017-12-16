@@ -16,7 +16,6 @@ Sessions <- read_table("Table_Player") %>%
   label_strategy() %>%
   label_session_duration() %>%
   replace_ancestor() %>%
-  label_session_status() %>%
   select(
     PlayerID,
     PlayerIX,
@@ -25,8 +24,7 @@ Sessions <- read_table("Table_Player") %>%
     SessionDuration,
     TeamID,
     Strategy,
-    Generation,
-    SessionStatus
+    Generation
   ) %>%
   arrange(TeamID, PlayerIX, SessionIX)
 

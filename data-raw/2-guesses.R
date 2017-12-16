@@ -17,8 +17,7 @@ Guesses <- read_table("Table_Workshop") %>%
   label_guess_uniqueness() %>%
   label_result_uniqueness() %>%
   label_score() %>%
-  label_stage() %>%
-  label_session_status()
+  label_stage()
 
 GuessesMap <- create_guesses_map(Guesses)
 InventoryMap <- create_inventory_map(Guesses)
@@ -36,13 +35,12 @@ Guesses <- Guesses %>%
     SessionScore, TeamScore,
     PrevSessionGuessesHash, NumUniqueSessionGuesses, PrevSessionInventoryID, SessionInventorySize,
     PrevTeamGuessesHash, NumUniqueTeamGuesses, PrevTeamInventoryID, TeamInventorySize,
-    Stage,
-    SessionStatus
+    Stage
   )
 
 devtools::use_data(
   Guesses,
-  # GuessesMap,
+  # GuessesMap,  # Hasn't been needed yet, and it's big.
   InventoryMap,
   overwrite = TRUE
 )
@@ -67,12 +65,11 @@ Sampled <- Guesses %>%
   label_session_duration() %>%
   label_players_per_session() %>%
   label_generation() %>%
-  label_time() %>%
-  label_session_status()
+  label_time()
 
 devtools::use_data(Sampled, overwrite = TRUE)
 
-# AdjacentItems ----
+# InventoryInfo, AdjacentItems, InventoriesPerItem, Combinatorics ----
 
 # Run python script to identify innovations adjacent to each inventory.
 write.csv(InventoryMap[, "ID"], "data-raw/adjacent/inventory-ids.csv", row.names = FALSE)
