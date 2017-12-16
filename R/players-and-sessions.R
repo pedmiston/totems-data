@@ -62,9 +62,32 @@ replace_ancestor <- function(frame) {
 
 #' Label Generation based on Strategy, PlayerIX, and SessionIX.
 label_generation <- function(frame) {
-  map <- player_conditions() %>%
-    select(Strategy, PlayerIX, SessionIX, Generation) %>%
-    unique()
+  diachronic <- data_frame(
+    Strategy = "Diachronic",
+    PlayerIX = 1:4,
+    SessionIX = 1,
+    Generation = 1:4
+  )
+
+  isolated <- data_frame(
+    Strategy = "Isolated",
+    PlayerIX = 1,
+    SessionIX = 1:4,
+    Generation = 1:4
+  )
+
+  synchronic <- data_frame(
+    Strategy = "Synchronic",
+    PlayerIX = 1:4,
+    SessionIX = 1,
+    Generation = 1
+  )
+
+  map <- bind_rows(
+    diachronic,
+    isolated,
+    synchronic
+  )
   if(missing(frame)) return(map)
   left_join(frame, map)
 }
