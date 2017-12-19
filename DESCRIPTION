@@ -1,5 +1,5 @@
 Package: totems
-Title: Investigating the Impact of Inheritance on Problem Solving
+Title: Researching the Impact of Inheritance on Problem Solving
 Version: 0.1
 Authors@R: person("Pierce", "Edmiston", email = "pedmiston@wisc.edu", role = c("aut", "cre"))
 Description: This package contains the data and the analysis procedures
