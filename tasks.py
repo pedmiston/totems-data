@@ -26,8 +26,7 @@ def install(ctx, use_data_too=False, make_trees=False,
         ctx.run(cmd.format(R_pkg=R_PKG, R_cmds=crotchet_prereq))
 
     if use_data_too or use_data_script or clear_data_dir:
-        use_data(ctx, use_data_script=use_data_script,
-                 clear_data_dir=clear_data_dir)
+        use_data(ctx, clear_data_dir=clear_data_dir)
 
     if make_trees:
         tree(ctx, view_off=True)
@@ -43,20 +42,13 @@ def install(ctx, use_data_too=False, make_trees=False,
 
 
 @task
-def use_data(ctx, use_data_script=None, clear_data_dir=False):
+def use_data(ctx, clear_data_dir=False):
     """Compile data to .rda in totems R pkg."""
-    if use_data_script is None:
-        use_data_scripts = Path(R_PKG, 'data-raw/').listdir('use-data*.R')
-    else:
-        use_data_scripts = [Path(R_PKG, 'data-raw/', use_data_script + '.R')]
-
     if clear_data_dir:
         ctx.run('cd {R_pkg} && rm -rf data/*.rda'.format(R_pkg=R_PKG), echo=True)
 
-    cmd = 'cd {R_pkg} && Rscript {use_data_script}'
-    for use_data_script in use_data_scripts:
-        ctx.run(cmd.format(R_pkg=R_PKG, use_data_script=use_data_script),
-                echo=True)
+    cmd = 'cd {R_pkg} && Rscript make-data.R'
+    ctx.run(cmd.format(R_pkg=R_PKG), echo=True)
 
 @task
 def tree(ctx, max_number=None, max_generation=None, name=None, view_off=False):
