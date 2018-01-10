@@ -91,13 +91,7 @@ Combinatorics <- data_frame(InventorySize = unique(InventoryInfo$InventorySize))
     UniqueCombinations = purrr::map_dbl(InventorySize, count_unique_combinations)
   )
 
-z_score <- function(x) (x - mean(x))/sd(x)
-
-InventoryInfo <- left_join(InventoryInfo, Combinatorics) %>%
-  mutate(
-    GuessDifficulty = UniqueGuesses/NumAdjacent,
-    CombinationDifficulty = UniqueCombinations/NumAdjacent
-  )
+InventoryInfo <- left_join(InventoryInfo, Combinatorics)
 
 InventoriesPerItem <- AdjacentItems %>%
   group_by(Adjacent) %>%
