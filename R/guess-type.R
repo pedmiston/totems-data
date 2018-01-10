@@ -7,7 +7,7 @@
 #' @param unique_guess str Name of column in frame containing uniqueness of
 #'          the guess, e.g., "UniqueSessionGuess"
 #' @param unique_result str Name of column in frame containing uniqueness of
-#'          result, e.g., "UniqueTeamResult"
+#'          result, e.g., "UniqueSessionResult"
 #'
 #' @return Same as input with new columns GuessType and GuessTypeLabel.
 #'
@@ -36,7 +36,7 @@ recode_guess_type <- function(frame, unique_guess, unique_result, suffix) {
   guess_type_map[, unique_guess] <- guess_type_map$UniqueGuess
   guess_type_map[, unique_result] <- guess_type_map$UniqueResult
   guess_type_map <- guess_type_map %>%
-    select(-UniqueGuess, UniqueResult)
+    select(-UniqueGuess, -UniqueResult)
 
   left_join(frame, guess_type_map)
 }
