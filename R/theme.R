@@ -21,6 +21,7 @@ load_totems_theme <- function() {
 
     # Strategy scales
     scale_x_strategy = scale_x_discrete("Strategy", labels = strategy_levels),
+    scale_y_num_tools = scale_y_continuous("Tools created", breaks = seq(0, 30, by = 2)),
     scale_y_num_innovations = scale_y_continuous(
       "Number of innovations",
       breaks = seq(0, 30, by = 2)
