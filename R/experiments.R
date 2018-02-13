@@ -11,14 +11,14 @@ filter_from_manifest <- function(manifest_data, frame = NULL) {
 #' @export
 filter_exp1 <- function(frame = NULL) filter_from_manifest("Exp1Manifest", frame)
 
-#' Filter valid sessions and teams for Experiment 2.
+#' Filter valid sessions and teams for the 50 minute experiment.
 #' @export
-filter_exp2 <- function(frame = NULL) filter_from_manifest("Exp2Manifest", frame)
+filter_50min <- function(frame = NULL) filter_from_manifest("Exp2Manifest", frame)
 
-#' Filter valid sessions and teams for Experiment 3.
+#' Filter valid sessions and teams for the i
 #' @export
-filter_exp3 <- function(frame = NULL) filter_from_manifest("Exp3Manifest", frame)
+filter_selfother <- function(frame = NULL) filter_from_manifest("Exp3Manifest", frame)
 
 #' Filter valid sessions and teams for Experiment 4.
 #' @export
-filter_exp4 <- function(frame = NULL) filter_from_manifest("Exp4Manifest", frame)
+filter_teamsize <- function(frame = NULL) filter_from_manifest("Exp4Manifest", frame)
