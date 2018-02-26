@@ -4,7 +4,6 @@ digraph {
   rankdir=LR;
   labelloc=t;
   node[fontname=Helvetica shape=circle label=""];
-  g0 -> g1 -> g2 -> g3 -> g4 -> g5 -> g6 -> g7 -> gn;
+  g0 -> g1 -> g2 -> g3 -> gn;
   gn[style=invis];
-  
 }
