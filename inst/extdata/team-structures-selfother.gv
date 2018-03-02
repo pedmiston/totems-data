@@ -1,6 +1,6 @@
 digraph {
   rankdir=LR;
-  label="100 Labor Minutes";
+  label="Types of inheritance";
   labelloc=t;
   fontname=helvetica;
   // bgcolor=transparent;
@@ -31,7 +31,7 @@ digraph {
   }
 
   subgraph cluster2 {
-    label="Isolated";
+    label="Individual";
     solo_s1 -> solo_s2[label="S1"];
     solo_s2 -> solo_s3[label="S2"];
     solo_s3 -> solo_s4[label="S3"];

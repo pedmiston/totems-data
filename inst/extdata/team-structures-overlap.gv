@@ -42,7 +42,7 @@ digraph {
   }
 
   subgraph cluster4 {
-    label="Full";
+    label="Overlapping";
     k1a -> kinva[minlen=2];
     kinv -> k2b [style=invis minlen=1]
     k2b -> kinvb[minlen=2];

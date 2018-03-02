@@ -1,6 +1,6 @@
 digraph {
   rankdir=LR;
-  label="100 Labor Minutes";
+  label="";
   labelloc=t;
   fontname=helvetica;
   // bgcolor=transparent;
@@ -10,9 +10,11 @@ digraph {
 
   // Set cluster order (top to bottom) by initializing
   // nodes in each cluster starting from bottom to top
-  s4_1, d1;
+  s4_1, s2_1, d1;
 
   // Colors are people
+  s2_1[fillcolor="#549F88"];
+  s2_2[fillcolor="#66C2A5"];
   s4_1[fillcolor="#549F88"];
   s4_2[fillcolor="#66C2A5"];
   s4_3[fillcolor="#81CDB5"];
@@ -24,23 +26,31 @@ digraph {
 
   // Invisible last nodes
   dinv1, soloinv2[style=invis, width=0];
-  s4inv1, s4inv2, s4inv3, s4inv4[style=invis width=0.2];
+  s4inv1, s4inv2, s4inv3, s4inv4, s2inv1, s2inv2[style=invis width=0.2];
 
   subgraph cluster1 {
+    rankdir=LR;
     label="Diachronic";
-    d1 -> d2[label="G1"];
-    d2 -> d3[label="G2"];
-    d3 -> d4[label="G3"];
-    d4 -> dinv1[label="G4"];
+    d1 -> d2;
+    d2 -> d3;
+    d3 -> d4;
+    d4 -> dinv1;
   }
 
   subgraph cluster {
-    label="Synchronic";
-    rankdir=TB;
-    s4_1 -> s4inv1[label="25 min"];
+    label="4 person";
+    s4_1 -> s4inv1;
     s4_2 -> s4inv2;
     s4_3 -> s4inv3;
     s4_4 -> s4inv4;
+    { rank=same; d3, s4_1, s4_2, s4_3, s4_4 }
+  }
+
+  subgraph clusterS2 {
+    label="2 person";
+    s2_1 -> s2inv1;
+    s2_2 -> s2inv2;
+    { rank=same; d1, s2_1, s2_2 }
   }
 
 }
