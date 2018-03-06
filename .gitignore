@@ -6,7 +6,6 @@ data-raw/bots/
 inst/extdata/landscape*.gv
 inst/extdata/inventory*.gv
 
-man/
 config.yml
 .httr-oauth
 .Rhistory
