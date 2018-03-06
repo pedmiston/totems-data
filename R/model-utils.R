@@ -129,17 +129,21 @@ jitter_team_generation <- function(frame) {
 
 #' Recode Generation poly.
 #' @export
-recode_generation_quad <- . %>%
-  mutate(
-    GenerationSqr = Generation^2,
-    Generation0Sqr = Generation0^2
-  )
+recode_generation_quad <- function(frame) {
+  frame %>%
+    mutate(
+      GenerationSqr = Generation^2,
+      Generation0Sqr = Generation0^2
+    )
+}
 
 
 #' Recode generation with base 0
 #' @export
-recode_generation_base0 <- . %>%
-  mutate(Generation0 = Generation - 1)
+recode_generation_base0 <- function(frame) {
+  frame %>%
+    mutate(Generation0 = Generation - 1)
+}
 
 
 #' Recode team size
