@@ -12,7 +12,5 @@ Session types are:
 - Diachronic G1
 - Diachronic G2
 - Isolated 50min
-- Isolated S1
-- Isolated S2
 - Synchronic 2
 }

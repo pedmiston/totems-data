@@ -2,10 +2,10 @@
 % Please edit documentation in R/combinatorics.R
 \name{count_unique_combinations}
 \alias{count_unique_combinations}
-\title{Count unique combinations of items.}
+\title{Count unique combinations of items (with replacement).}
 \usage{
 count_unique_combinations(n_items)
 }
 \description{
-Count unique combinations of items.
+Count unique combinations of items (with replacement).
 }
