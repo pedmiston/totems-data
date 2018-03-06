@@ -33,8 +33,6 @@ recode_strategy <- function(frame) {
 #' - Diachronic G1
 #' - Diachronic G2
 #' - Isolated 50min
-#' - Isolated S1
-#' - Isolated S2
 #' - Synchronic 2
 #'
 #' @export
@@ -60,22 +58,40 @@ recode_session_type_50min <- function(frame) {
     SessionType = session_type_levels,
     SessionTypeOrdered = factor(session_type_levels, levels = session_type_levels, labels = session_type_labels),
     SessionTypeSimple = factor(session_type_levels, levels = session_type_levels, labels = session_type_levels),
-    SessionTypeTreat = factor(session_type_levels, levels = session_type_levels)
+    DG2Treat = factor(session_type_levels, levels = session_type_levels),
+    S2Treat = factor(session_type_levels, levels = session_type_levels)
   )
 
-  # Set treatment contrasts for SessionType with D-G2 as base comparison group.
-  session_type_treat_contrasts <- contr.treatment(factor(session_type_levels, levels = session_type_levels),
+  # DG2 contrasts
+  DG2_treat_contrasts <- contr.treatment(factor(session_type_levels, levels = session_type_levels),
                                                   base = 2)
-  contrasts(session_type_map$SessionTypeTreat) <- session_type_treat_contrasts
+  contrasts(session_type_map$DG2Treat) <- DG2_treat_contrasts
 
-  session_type_treat_contrasts <- as.data.frame(session_type_treat_contrasts)
-  contrast_names <- colnames(session_type_treat_contrasts) %>%
+  DG2_treat_contrasts <- as.data.frame(DG2_treat_contrasts)
+  DG2_contrast_names <- colnames(DG2_treat_contrasts) %>%
     purrr::map(function(x) paste0("DG2_v_", x)) %>%
     unlist()
-  colnames(session_type_treat_contrasts) <- contrast_names
-  session_type_treat_contrasts <- session_type_treat_contrasts %>%
+  colnames(DG2_treat_contrasts) <- DG2_contrast_names
+  DG2_treat_contrasts <- DG2_treat_contrasts %>%
     tibble::rownames_to_column("SessionType")
-  session_type_map <- left_join(session_type_map, session_type_treat_contrasts)
+
+  # S2 contrasts
+  S2_treat_contrasts <- contr.treatment(factor(session_type_levels, levels = session_type_levels),
+                                         base = 4)
+  contrasts(session_type_map$S2Treat) <- S2_treat_contrasts
+
+  S2_treat_contrasts <- as.data.frame(S2_treat_contrasts)
+  S2_contrast_names <- colnames(S2_treat_contrasts) %>%
+    purrr::map(function(x) paste0("S2_v_", x)) %>%
+    unlist()
+  colnames(S2_treat_contrasts) <- S2_contrast_names
+  S2_treat_contrasts <- S2_treat_contrasts %>%
+    tibble::rownames_to_column("SessionType")
+
+  # Merge treatment contrasts in with session type map
+  session_type_map <- session_type_map %>%
+    left_join(DG2_treat_contrasts) %>%
+    left_join(S2_treat_contrasts)
 
   if(missing(frame)) return(session_type_map)
   left_join(frame, session_type_map)
