@@ -1,5 +1,4 @@
 digraph {
-  label="Diachronic collaboration"
   fontname=Helvetica;
   rankdir=LR;
   labelloc=t;
