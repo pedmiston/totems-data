@@ -1,6 +1,5 @@
 digraph {
   rankdir=LR;
-  label="Strategies";
   labelloc=t;
   fontname=helvetica;
   // bgcolor=transparent;
@@ -12,13 +11,15 @@ digraph {
   // nodes in each cluster starting from bottom to top
   s1, solo, d1;
 
+  s4_1, s4_2, s4_3, s4_4;
+
   // Colors are people
-  s4_1[fillcolor="#549F88"];
-  s4_2[fillcolor="#66C2A5"];
+  s4_2[fillcolor="#549F88"];
+  s4_1[fillcolor="#66C2A5"];
   s4_3[fillcolor="#81CDB5"];
   s4_4[fillcolor="#9DD8C5"];
-  s1[fillcolor="#66C2A5"];
-  s2[fillcolor="#81CDB5"];
+  s2[fillcolor="#549F88"];
+  s1[fillcolor="#81CDB5"];
   d1[fillcolor="#7483A7"];
   d2[fillcolor="#8DA0CB"];
   d3[fillcolor="#A1B1D4"];
@@ -31,13 +32,21 @@ digraph {
 
   subgraph cluster1 {
     label="Diachronic";
-    d1 -> d2 -> d3 -> d4 -> dinv1;
+    { edge[label="     "];
+    d1 -> d2[label="25 min" xlabel="G1"]
+    d2 -> d3[xlabel="G2"]
+    d3 -> d4[xlabel="G3"]
+    d4 -> dinv1[xlabel="G4"];
+    }
   }
 
   subgraph cluster2 {
     label="Isolated";
-    solo -> soloinv1[minlen=2];
-    solo_s1 -> solo_s2 -> solo_s3 -> solo_s4 -> soloinv2;
+    solo -> soloinv1[minlen=2 label="50 min"];
+    solo_s1 -> solo_s2[xlabel="S1"]
+    solo_s2 -> solo_s3[xlabel="S2"]
+    solo_s3 -> solo_s4[xlabel="S3"]
+    solo_s4 -> soloinv2[xlabel="S4"];
 
     solo_s2, solo_s3, solo_s4[style=invis, width=0.2];
   }
@@ -50,22 +59,26 @@ digraph {
       label="";
       margin = 0;
       style = invis;
-      s1 -> sinv1;
-      s2 -> sinv2;
+      s1 -> sinv1
+      s2 -> sinv2[label="25 min"];
     }
 
     subgraph cluster3b {
       label="";
       style = invis;
       s4_1 -> s4inv1;
-      s4_2 -> s4inv2;
+      s4_2 -> s4inv2[label="25 min"];
       s4_3 -> s4inv3;
       s4_4 -> s4inv4;
     }
 
     {edge[style=invis]
-      {sinv1 sinv2} -> {s4_1 s4_2}
+      {sinv1 sinv2} -> {s4_1 s4_2}[minlen=1]
     }
+
+    {rank=same; s4_1, s4_2, s4_3, s4_4}
+    {rank=same; sinv1, sinv2}
+    {rank=same; s4inv1, s4inv2, s4inv3, s4inv4}
 
 
   }
