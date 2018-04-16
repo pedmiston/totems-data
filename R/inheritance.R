@@ -12,9 +12,11 @@ label_inheritance <- function(frame) {
 recode_inheritance <- function(frame) {
   inheritance_levels <- c("no_inheritance", "diachronic_inheritance", "individual_inheritance")
   inheritance_labels <- c("No inheritance", "Diachronic inheritance", "Individual Inheritance")
+  inheritance_short <- c("None", "Diachronic", "Individual")
   map <- data_frame(
     Inheritance = inheritance_levels,
     InheritanceLabel = factor(inheritance_levels, levels = inheritance_levels, labels = inheritance_labels),
+    InheritanceShort = factor(inheritance_levels, levels = inheritance_levels, labels = inheritance_short),
     DiachronicInheritance = Inheritance == "diachronic_inheritance"
   )
 

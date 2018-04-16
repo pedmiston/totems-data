@@ -1,6 +1,6 @@
 digraph {
   rankdir=LR;
-  label="Strategies";
+  // label="Strategies";
   labelloc=t;
   fontname=helvetica;
   // bgcolor=transparent;

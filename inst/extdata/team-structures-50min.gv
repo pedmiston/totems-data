@@ -1,6 +1,6 @@
 digraph {
   rankdir=LR;
-  label="50 Labor Minutes";
+  // label="50 Labor Minutes";
   labelloc=t;
   fontname=helvetica;
   // bgcolor=transparent;
