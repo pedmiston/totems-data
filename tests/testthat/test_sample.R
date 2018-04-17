@@ -57,9 +57,6 @@ context("Verify sampled inventory sizes")
 
 data("Sampled")
 
-Sampled <- Sampled %>%
-  dplyr::filter(SessionStatus == "valid")
-
 test_that("sampled guesses are a single row per sampled time", {
   samples_per_time <- count(Sampled, SessionID, SessionTime)
   expect_true(all(samples_per_time$n == 1))
