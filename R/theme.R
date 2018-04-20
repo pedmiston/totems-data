@@ -24,7 +24,7 @@ load_totems_theme <- function() {
     scale_y_num_tools = scale_y_continuous("Tools created", breaks = seq(0, 30, by = 2)),
     scale_y_num_innovations = scale_y_continuous(
       "Number of innovations",
-      breaks = seq(0, 30, by = 2)
+      breaks = seq(0, 60, by = 2)
     ),
     scale_color_strategy = scale_color_manual("Strategy", values = strategy_colors),
     scale_fill_strategy = scale_fill_manual("Strategy", values = strategy_colors),
