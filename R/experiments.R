@@ -2,7 +2,8 @@ filter_from_manifest <- function(manifest_data, frame = NULL) {
   e <- new.env()
   data(list = manifest_data, envir = e)
   valid <- dplyr::filter(e[[manifest_data]], TeamStatus == "valid", SessionStatus == "valid") %>%
-    select(PlayerID, TeamID)
+    select(PlayerID, TeamID) %>%
+    unique()
   if(is.null(frame)) return(valid)
   dplyr::inner_join(frame, valid)
 }

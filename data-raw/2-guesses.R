@@ -87,7 +87,7 @@ InventoryInfo <- left_join(InventoryMap, NumAdjacent) %>%
 
 Combinatorics <- data_frame(InventorySize = unique(InventoryInfo$InventorySize)) %>%
   mutate(
-    UniqueGuesses = purrr::map_dbl(InventorySize, count_unique_guesses),
+    UniqueGuesses = purrr::map_dbl(InventorySize, count_unique_permutations),
     UniqueCombinations = purrr::map_dbl(InventorySize, count_unique_combinations)
   )
 
