@@ -1,8 +1,28 @@
 digraph {
-  fontname=Helvetica;
   rankdir=LR;
-  labelloc=t;
-  node[fontname=Helvetica shape=circle label=""];
-  g0 -> g1 -> g2 -> g3 -> gn;
-  gn[style=invis];
+  fontname=helvetica;
+  label = "Diachronic collaboration"
+  labelloc = "top"
+  // bgcolor=transparent;
+
+  node[fontname=helvetica; label=""; style=filled; shape=circle];
+  edge[fontname=helvetica];
+
+  subgraph cluster0 {
+    label = ""
+
+    // Colors are people
+    d1[fillcolor="#7483A7"];
+    d2[fillcolor="#8DA0CB"];
+    d3[fillcolor="#A1B1D4"];
+    d4[fillcolor="#B6C2DD"];
+
+    // Invisible last nodes
+    dinv1[style=invis, width=0];
+
+    d1 -> d2
+    d2 -> d3
+    d3 -> d4
+    d4 -> dinv1
+  }
 }
