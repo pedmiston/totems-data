@@ -1,0 +1,39 @@
+digraph {
+	graph [rankdir=LR]
+	node [fontname=Helvetica shape=none label=""]
+
+	Stick, Stone_Tool2, Stone_Tool1, Bough, Antler_Refined, Small_Stone
+
+	  Stone1 [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Stone.jpg"]
+	  Stone2 [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Stone.jpg"]
+	  Small_Stone [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Small_Stone.jpg"]
+	  Stone1 -> Stone2[penwidth=0 dir=none label="+"]
+	  Stone2 -> Small_Stone
+
+		Stone3 [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Stone.jpg"]
+		Antler [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Antler.jpg"]
+		Antler_Refined [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Antler_Refined.jpg"]
+		Stone3 -> Antler[penwidth=0 dir=none label="+"]
+		Antler -> Antler_Refined
+
+		Tree [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Tree.jpg"]
+		Bough [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Bough.jpg"]
+		Tree -> Bough[minlen=2]
+
+		Small_Stone1 [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Small_Stone.jpg"]
+		Small_Stone2 [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Small_Stone.jpg"]
+		Stone_Tool1 [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Stone_Tool1.jpg"]
+		Small_Stone1 -> Small_Stone2[penwidth=0 dir=none label="+"]
+		Small_Stone2 -> Stone_Tool1
+
+		Stone_Tool2 [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Stone_Tool2.jpg"]
+		Antler_Refined1 [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Antler_Refined.jpg"]
+		Small_Stone3 [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Small_Stone.jpg"]
+		Small_Stone3 -> Antler_Refined1[penwidth=0 dir=none label="+"]
+		Antler_Refined1 -> Stone_Tool2
+
+		Bough2 [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Bough.jpg"]
+		Stick [label="" image="/Users/pierce/PhD/totems/data/inst/extdata/items/Stick.jpg"]
+		Bough2 -> Stick[minlen=2]
+
+}
