@@ -1,8 +1,3 @@
-data-raw/tables/
-data-raw/subj-info/
-data-raw/survey/
-data-raw/bots/
-
 inst/extdata/landscape*.gv
 inst/extdata/inventory*.gv
 

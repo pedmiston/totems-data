@@ -1,0 +1,61 @@
+N,treatment,duration,part1_date,part1_id,part2_date,part2_id,part3_date,part3_id,part4_date,part4_id,notes
+1,Isolated - Split,25,10/2,346,10/4,365,10/9,398,10/11,415,"no show for part3 on 10/6, showed up for part4 appointment on 10/9, completed part3 appointment on 10/9, rescheduled part4 for 10/13?"
+2,Isolated - Split,25,10/2,347,10/4,366,10/6,379,10/9,391,"took survey, but survey id may be incorrect; no guesses for 391"
+3,Isolated - Split,25,10/2,348,10/4,368,10/6,383,10/11,416,exp error in part4
+4,Isolated - Split,25,10/2,349,10/4,373,10/6,380,10/11,419,exp error in part4
+5,Isolated - Split,25,10/2,351,10/4,374,10/6,385,10/9,401,
+6,Isolated - Split,25,10/2,350,10/4,372,10/6,378,10/9,397,
+7,Isolated - Split,25,10/2,352,10/4,371,,,,,"no show for part3, emailed to reschedule, then didn't show up for part4"
+8,Isolated - Split,25,10/2,353,10/4,370,10/6,381,10/9,399,no survey
+9,Isolated - Split,25,10/2,354,10/4,367,10/6,382,10/9,400,
+10,Isolated - Split,25,10/2,355,10/4,375,10/6,384,10/9,405,left early forgot they had to be somewhere
+11,Isolated - Split,25,10/9,386,10/11,421,10/13,436,10/16,455,
+12,Isolated - Split,25,10/9,387,10/11,417,10/13,437,10/16,449,
+13,Isolated - Split,25,10/9,388,10/13,447,10/17,474,10/19,508,"Part 4 scheduled for Thursday at 4:05PM. Part 3 on Monday: Did not show, run as 3 if shows on Wednesday; Part 2: Power went out after 15 min and experiment was restarted with the previous ID "
+14,Isolated - Split,25,10/9,396,10/11,418,10/13,438,10/16,450,
+15,Isolated - Split,25,10/9,402,10/11,420,10/13,,10/16,,Part 2 was only present for about 15 minutes 
+16,Isolated - Split,25,10/9,403,10/11,427,10/16,454,10/17,473,"Part 3: Did not inherit data from Part 2. Time is weird, indicated a continued session. Part 2: Had power go out after 15 min. "
+17,Isolated - Split,25,10/9,404,10/11,428,10/13,448,10/16,464,Power went out after 15 min and experiment was restarted with previous ID; Session 448 had the wrong Ancestor.
+18,Isolated - Split,25,10/9,406,10/11,426,10/13,441,10/16,457,
+19,Isolated - Split,25,10/9,407,10/11,425,10/13,442,10/16,458,
+20,Isolated - Split,25,10/9,408,10/11,429,10/16,470,10/23,525,No show for part 3
+21,Isolated - Split,25,10/9,409,10/11,424,10/13,443,10/16,460,Part 3 tired and gave up
+22,Isolated - Split,25,10/9,410,10/11,423,10/13,440,10/16,456,
+23,Isolated - Split,25,10/9,411,10/11,422,10/13,439,10/16,452,
+24,Isolated - Split,25,10/16,451,10/18,486,10/20,509,10/23,521,student id is 7930 not 6531. already corrected
+25,Isolated - Split,25,10/16,453,10/18,487,10/23,510,10/23,523,
+26,Isolated - Split,25,10/16,463,10/18,488,10/20,511,10/23,530,left part 1 early 
+27,Isolated - Split,25,10/16,462,10/18,490,10/20,519,10/23,527,left part 1 early 
+28,Isolated - Split,25,10/16,461,10/18,491,10/20,514,10/23,529,
+29,Isolated - Split,25,10/16,465,10/18,492,10/20,515,10/23,533,id is 0090 but it wont let me put 00 down
+30,Isolated - Split,25,10/16,466,10/18,484,10/20,513,10/23,531,
+31,Isolated - Split,25,10/16,467,10/18,493,10/20,518,10/23,532,
+32,Isolated - Split,25,10/16,468,10/18,494,10/20,517,10/23,534,
+33,Isolated - Split,25,10/16,469,10/18,495,10/20,516,10/23,520,
+34,Isolated - Split,25,10/16,472,10/18,485,10/20,512,10/23,522,
+35,Isolated - Split,25,10/23,524,10/25,548,10/27,553,10/30,569,
+36,Isolated - Split,25,10/25,547,10/26,550,10/30,567,11/1,585,got frustrated at part1
+37,Isolated - Split,25,10/23,526,10/25,546,10/27,552,10/30,570,
+38,Isolated - Split,25,10/23,528,10/25,549,10/27,554,10/30,571,
+39,Isolated - Split,25,10/23,535,10/30,572,11/3,597,11/6,617,no show for part2
+40,Isolated - Split,25,10/23,536,10/25,545,10/27,551,10/30,568,
+,,,12/4,730,12/6,759,12/8,814,12/11,818,
+,,,12/4,731,12/6,756,12/8,815,12/11,819,
+,,,12/4,729,12/6,760,12/8,801,12/11,816,
+,,,12/4,728,12/6,757,12/8,800,12/11,817,
+,,,12/6,764,12/8,808,12/11,823,12/13,840,On her phone in Pt 4
+,,,12/4,732,12/6,761,12/8,803,12/11,820,
+,,,12/4,733,12/6,767,12/11,,?,,Emailed about absence on 12/8. 
+,,,12/4,746,12/6,766,12/11,821,12/13,839,"Sick on 12/8, but said she'd reschedule a Part 4 for Wednesday. Needs to be scheduled!"
+,,,12/4,734,12/6,763,12/8,805,12/11,824,Will be a few minutes late for part 2
+,,,12/4,735,12/6,774,12/8,812,12/11,827,
+,,,12/4,737,12/6,765,12/8,806,12/11,825,Said he didn't inherit the correct items
+,,,12/4,736,12/6,768,12/8,807,12/11,826,
+,,,12/4,738,12/6,769,12/8,810,12/11,829,Seemed to give up
+,,,12/4,739,12/6,771,12/8,804,12/11,822,On her phone periodically in Part 3.
+,,,12/4,741,12/6,772,12/8,811,12/11,,On part three was extremely tired
+,,,12/4,740,12/6,762,12/11,,?,,"Left pt 1 early for class; Sick on 12/8 for Part 3. Run Part 3 on Monday if he shows. If he's interested, schedule a Part 4 for Wednesday; Canceled 12/11's appointment too, so I cut him off"
+,,,12/4,744,12/6,775,12/8,813,12/11,832,
+,,,12/4,742,12/6,776,12/8,809,12/11,831,
+,,,12/4,745,12/6,773,12/8,802,12/11,830,
+,,,12/4,743,12/6,770,12/11,828,12/13,,"Sick on 12/8 for Part 3. Run Part 3 on Monday if he shows. If he's interested, schedule a Part 4 for Wednesday."

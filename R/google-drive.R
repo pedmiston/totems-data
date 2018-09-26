@@ -4,6 +4,8 @@
 save_subj_info <- function() {
   dir.create("data-raw/subj-info", showWarnings = FALSE)
   subj_info <- gs_title("totems-subj-info")
+  gs_download(subj_info, ws = "TTP (Fall '18)", to = "data-raw/subj-info/ttp.csv", overwrite = TRUE)
+  gs_download(subj_info, ws = "TOT (Fall '18)", to = "data-raw/subj-info/tot-fall-18.csv", overwrite = TRUE)
   gs_download(subj_info, ws = "TOT/TOI", to = "data-raw/subj-info/tot-toi.csv", overwrite = TRUE)
   gs_download(subj_info, ws = "TOM", to = "data-raw/subj-info/tom.csv", overwrite = TRUE)
 }
@@ -16,6 +18,11 @@ save_survey_responses <- function() {
   gs_title("totems-survey-responses") %>%
     gs_download(ws = "Form Responses 1",
                 to = "data-raw/survey/responses.csv",
+                overwrite = TRUE)
+
+  gs_title("totems-survey-instructions-responses") %>%
+    gs_download(ws = "Form Responses 1",
+                to = "data-raw/survey/instructions.csv",
                 overwrite = TRUE)
 }
 
