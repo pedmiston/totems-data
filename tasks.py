@@ -2,7 +2,7 @@ from unipath import Path
 from invoke import task
 
 import graphdb
-from bin.adjacent import analyze_inventory_ids
+from .bin.adjacent import analyze_inventory_ids
 
 
 R_PKG = Path(__file__).absolute().parent
@@ -40,6 +40,10 @@ def install(ctx, use_data_too=False, make_trees=False,
 
     ctx.run(cmd.format(R_pkg=R_PKG, R_cmds=';'.join(R_cmds)))
 
+@task
+def get_raw_data(ctx):
+    """Download the raw data as csvs in the R pkg."""
+    ctx.run(f'cd {R_pkg} && Rscript make-data-raw.R', echo=True)
 
 @task
 def use_data(ctx, clear_data_dir=False):
