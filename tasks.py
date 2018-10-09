@@ -5,8 +5,8 @@ import graphdb
 from .bin.adjacent import analyze_inventory_ids
 
 
-R_PKG = Path(__file__).absolute().parent
-ITEM_IMAGES = Path(R_PKG, 'inst/extdata/items')
+R_pkg = Path(__file__).absolute().parent
+ITEM_IMAGES = Path(R_pkg, 'inst/extdata/items')
 
 
 @task
@@ -23,7 +23,7 @@ def install(ctx, use_data_too=False, make_trees=False,
 
     if not ignore_prereqs:
         crotchet_prereq = "devtools::install_github('pedmiston/crotchet')"
-        ctx.run(cmd.format(R_pkg=R_PKG, R_cmds=crotchet_prereq))
+        ctx.run(cmd.format(R_pkg=R_pkg, R_cmds=crotchet_prereq))
 
     if use_data_too or use_data_script or clear_data_dir:
         use_data(ctx, clear_data_dir=clear_data_dir)
@@ -38,7 +38,7 @@ def install(ctx, use_data_too=False, make_trees=False,
     if document_only:
         R_cmds = ["devtools::document()"]
 
-    ctx.run(cmd.format(R_pkg=R_PKG, R_cmds=';'.join(R_cmds)))
+    ctx.run(cmd.format(R_pkg=R_pkg, R_cmds=';'.join(R_cmds)))
 
 @task
 def get_raw_data(ctx):
@@ -49,10 +49,10 @@ def get_raw_data(ctx):
 def use_data(ctx, clear_data_dir=False):
     """Compile data to .rda in totems R pkg."""
     if clear_data_dir:
-        ctx.run('cd {R_pkg} && rm -rf data/*.rda'.format(R_pkg=R_PKG), echo=True)
+        ctx.run('cd {R_pkg} && rm -rf data/*.rda'.format(R_pkg=R_pkg), echo=True)
 
     cmd = 'cd {R_pkg} && Rscript make-data.R'
-    ctx.run(cmd.format(R_pkg=R_PKG), echo=True)
+    ctx.run(cmd.format(R_pkg=R_pkg), echo=True)
 
 @task
 def tree(ctx, max_number=None, max_generation=None, name=None, view_off=False):
@@ -69,7 +69,7 @@ def tree(ctx, max_number=None, max_generation=None, name=None, view_off=False):
                                  max_generation=max_generation)
     viz.format = 'png'
     name = name or 'landscape'
-    output = Path(R_PKG, 'inst/extdata/', name+'.gv')
+    output = Path(R_pkg, 'inst/extdata/', name+'.gv')
     viz.render(output, view=not view_off)
 
 @task
@@ -89,5 +89,5 @@ def inventory(ctx, item_numbers=None, name=None, view_off=False):
     viz = graphdb.make_inventory(image_dir=ITEM_IMAGES, item_numbers=item_numbers)
     viz.format = 'png'
     name = name or 'inventory'
-    output = Path(R_PKG, 'inst/extdata/', name+'.gv')
+    output = Path(R_pkg, 'inst/extdata/', name+'.gv')
     viz.render(output, view=not view_off)

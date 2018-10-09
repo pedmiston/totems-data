@@ -23,3 +23,7 @@ filter_selfother <- function(frame = NULL) filter_from_manifest("ManifestSelfOth
 #' Filter valid sessions and teams for the scalability experiment.
 #' @export
 filter_teamsize <- function(frame = NULL) filter_from_manifest("ManifestScalability", frame)
+
+#' Filter valid sessions and teams for the inherited instructions experiment.
+#' @export
+filter_instructions <- function(frame = NULL) filter_from_manifest("ManifestInstructions", frame)

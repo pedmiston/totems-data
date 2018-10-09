@@ -4,7 +4,8 @@
 \alias{report_glm_mod}
 \title{Report the results of a glm model.}
 \usage{
-report_glm_mod(glm_mod, term, min_p_value = 0.001, p_value_only = FALSE)
+report_glm_mod(glm_mod, term, min_p_value = 0.001,
+  p_value_only = FALSE)
 }
 \description{
 Report the results of a glm model.
