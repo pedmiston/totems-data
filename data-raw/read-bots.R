@@ -7,8 +7,6 @@ read_bots_experiment <- function(stem) {
   readr::read_csv(csv)
 }
 
-BotsStrategy <- read_bots_experiment("strategy")
 BotsPlayers <- read_bots_experiment("players")
-BotsMemory <- read_bots_experiment("memory")
 
-use_data(BotsStrategy, BotsPlayers, BotsMemory, overwrite = TRUE)
+use_data(BotsPlayers, overwrite = TRUE)
