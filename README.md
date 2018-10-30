@@ -1,9 +1,22 @@
 # totems
 
 `totems` is an R package containing the data and helper functions
-for analyzing the results of the Totems experiment.
+for analyzing the results of experiments using the Totem game.
+
+## Installing the data in an R package
+
+You can install the "totems" package directly from GitHub using
+the "remotes" package.
+
+```R
+remotes::install_github("pedmiston/totems-data")
+```
 
 ## Downloading database tables
+
+To download the database tables as csvs, you need to create
+a "config.yml" file with the correct authentication information
+for connecting to the database.
 
 ```R
 devtools::load_all()
