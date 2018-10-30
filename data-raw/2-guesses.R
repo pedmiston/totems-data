@@ -17,7 +17,8 @@ Guesses <- read_table("Table_Workshop") %>%
   label_guess_uniqueness() %>%
   label_result_uniqueness() %>%
   label_score() %>%
-  label_stage()
+  label_stage() %>%
+  accumulate_session_score()
 
 GuessesMap <- create_guesses_map(Guesses)
 InventoryMap <- create_inventory_map(Guesses)
@@ -32,7 +33,7 @@ Guesses <- Guesses %>%
     NumSessionGuess, NumTeamGuess,
     UniqueSessionGuess, UniqueTeamGuess,
     UniqueSessionResult, UniqueTeamResult,
-    SessionScore, TeamScore,
+    SessionScore, TeamScore, TotalSessionScore,
     PrevSessionGuessesHash, NumUniqueSessionGuesses, PrevSessionInventoryID, SessionInventorySize,
     PrevTeamGuessesHash, NumUniqueTeamGuesses, PrevTeamInventoryID, TeamInventorySize,
     Stage

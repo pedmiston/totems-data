@@ -72,6 +72,7 @@ accumulate_session <- function(Guesses) {
     ungroup()
 }
 
+
 #' Accumulate guesses and inventory items by team.
 accumulate_team <- function(Guesses) {
   Guesses %>%
@@ -207,6 +208,7 @@ sample_session <- function(session_guesses, default, interval = 1) {
       NumGuesses = NumSessionGuess,
       InventoryID = PrevSessionInventoryID,       # INVALID in case where sampled guess result != 0
       InventorySize = SessionInventorySize,
+      Score = TotalSessionScore,
       GuessesHash = PrevSessionGuessesHash,       # INVALID in case where sampled guess uniqueness != FALSE
       NumUniqueGuesses = NumUniqueSessionGuesses  # INVALID in case where sampled guess uniqueness != FALSE
     )
@@ -262,5 +264,15 @@ label_stage <- function(Guesses) {
     group_by(SessionID) %>%
     mutate(Stage = ifelse(nchar(PrevTeamInventoryID) > nchar(PrevSessionInventoryID),
                           "learning", "playing")) %>%
+    ungroup()
+}
+
+
+accumulate_session_score <- function(Guesses) {
+  Guesses %>%
+    arrange(SessionTime) %>%
+    group_by(SessionID) %>%
+    mutate(TotalSessionScore = cumsum(SessionScore)) %>%
+    replace_na(list(TotalSessionScore = 0)) %>%
     ungroup()
 }
