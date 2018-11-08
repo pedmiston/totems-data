@@ -12,33 +12,31 @@ Groups <- read_table("Table_Group") %>%
   )
 write.csv(Groups, "data-raw/tables/Table_Group.csv", row.names = FALSE)
 
-# Take the TOP subjects,
-# Create a new group for them and who they inherited from
-top_map <- read_subj_info("tot-fall-18") %>%
-  dplyr::filter(SubjID > 900) %>%
-  select(SubjID, InheritedID)
+# Identify TOT subjects who inherited from TOM subjects
+tot_subj_info <- read_subj_info("tot-fall-18") %>%
+  dplyr::filter(SubjID > 900)
 
-top_groups <- read_table("Table_Player") %>%
-  dplyr::filter(ID_Player %in% top_map$SubjID) %>%
-  select(SubjID = ID_Player, ID_Group) %>%
-  mutate(ID_Group_New = paste0(ID_Group, "-", SubjID))
+tot_map <- tot_subj_info %>%
+  select(ID_Player = SubjID, InheritedID)
+
+tot_groups <- read_table("Table_Player") %>%
+  dplyr::filter(ID_Player %in% tot_map$ID_Player) %>%
+  dplyr::left_join(tot_map) %>%
+  mutate(ID_Group_New = paste0(ID_Group, "-", InheritedID)) %>%
+  select(ID_Player, ID_Group, InheritedID, ID_Group_New)
+
+# Take the TOP subjects who inherited from TOM subjects and move them to new groups.
+new_tot_groups <- select(tot_groups, ID_Group = ID_Group_New) %>%
+  mutate(Size = 2, Open = 0, Treatment = "Diachronic", BuildingTime = 25, Status = "E")
+read_table("Table_Group") %>%
+  bind_rows(new_tot_groups) %>%
+  write.csv("data-raw/tables/Table_Group.csv", row.names = FALSE)
 
 # Change group in Table_Player
-top_group_map <- top_groups$ID_Group_New
-names(top_group_map) <- top_groups$SubjID
+tot_group_map <- tot_groups$ID_Group_New
+names(tot_group_map) <- tot_groups$ID_Player
 
 read_table("Table_Player") %>%
-  dplyr::mutate(ID_Group = ifelse(ID_Player %in% top_map$SubjID, top_group_names[as.character(top_map$SubjID)], ID_Group))
-
-left_join(top_map, top_groups)
-
-
-top_inherited_ids <- read_subj_info("tot-fall-18") %>%
-  dplyr::filter(SubjID > 900) %>%
-  select(SessionID = InheritedID) %>%
-  .$SessionID %>%
-  .[!is.na(.)]
-
-Players <- read_table("Table_Player") %>%
-  dplyr::filter(ID_Player %in% top_subj_ids) %>%
-  mutate(ID_Group = paste0(ID_Group, "-", ID_Player))
+  dplyr::mutate(ID_Group = ifelse(ID_Player %in% names(tot_group_map),
+                                  tot_group_map[as.character(ID_Player)], ID_Group)) %>%
+  write.csv("data-raw/tables/Table_Player.csv", row.names = FALSE)

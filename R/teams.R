@@ -47,6 +47,7 @@ label_session_duration <- function(frame) {
 
 #' Extract datetime from ID_Group
 parse_date_time_from_id_group <- function(id_group) {
-  id_group <- stringr::str_replace(id_group, "^G_", "")
+  id_group <- stringr::str_replace(id_group, "^G_", "") %>%
+    stringr::str_replace("-\\d*$", "")
   lubridate::parse_date_time(id_group, "m/d/y H:M:S Op!*", tz = "America/Chicago")
 }
