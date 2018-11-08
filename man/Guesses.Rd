@@ -4,7 +4,7 @@
 \name{Guesses}
 \alias{Guesses}
 \title{Workshop guesses made by players in the Totems experiment.}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 174746 rows and 35 columns.}
+\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 188109 rows and 35 columns.}
 \usage{
 data("Guesses")
 }

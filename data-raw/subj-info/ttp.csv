@@ -8,7 +8,7 @@ SubjNum,Sona,Duration,Strategy,InheritedID,Datetime,Experimenter,Room,SubjID,Com
 7,TTP,25,Isolated - Split,0,9/18/2018 12:30PM,SF,Elaine,872,5,
 8,TTP,25,Isolated - Split,0,9/18/2018 12:30PM,SF,Jerry,873,5,
 9,TTP,25,Isolated - Split,0,9/18/2018 4:15PM,EG,Kramer,874,5,
-10,TTP,25,Isolated - Split,0,9/18/2018 4:15PM,EG,George,875,5,Wrote one sentence in their instructions to the next participant.
+10,TTP,25,Isolated - Split,0,9/18/2018 4:15PM,EG,George,875,3,Wrote one sentence in their instructions to the next participant.
 11,TTP,25,Isolated - Split,0,9/18/2018 4:15PM,EG,Elaine,876,5,
 12,TTP,25,Isolated - Split,0,9/18/2018 4:15PM,EG,Jerry,877,5,
 13,TTP,25,Isolated - Split,0,9/19/2018 12:20PM,SF,Kramer,878,5,
@@ -43,16 +43,17 @@ SubjNum,Sona,Duration,Strategy,InheritedID,Datetime,Experimenter,Room,SubjID,Com
 42,TTP,25,Isolated - Split,883,10/2/2018 4:20PM,EG,George,909,5,
 43,TTP,25,Isolated - Split,884,10/2/2018 4:20PM,EG,Elaine,910,5,
 44,TTP,25,Isolated - Split,0,10/5/2018 1:00PM,HB,Kramer,911,5,"(had to use ctrl-alt-del to get out of program, so there may be issues with using data for next generation)"
-45,TTP,25,Isolated - Split,0,10/5/2018 1:00PM,HB,George,912,3,"(had to use ctrl-alt-del to get out of program, so there may be issues with using data for next generation) didn't goof off, but long periods of not trying any combinations"
+45,TTP,25,Isolated - Split,0,10/5/2018 1:00PM,HB,George,912,3,"(had to use ctrl-alt-del to get out of program, so there may be issues with using data for next generation); didn't goof off, but long periods of not trying any combinations"
 46,TTP,25,Isolated - Split,0,10/5/2018 1:00PM,HB,Elaine,913,5,"(had to use ctrl-alt-del to get out of program, so there may be issues with using data for next generation)"
 47,TTP,25,Isolated - Split,0,10/5/2018 1:50PM,HB,Kramer,914,5,
 48,TTP,25,Isolated - Split,0,10/5/2018 1:50PM,HB,George,915,5,
 49,TTP,25,Isolated - Split,0,10/5/2018 1:50PM,HB,Elaine,916,5,
 50,TTP,25,Isolated - Split,0,10/5/2018 1:50PM,HB,Jerry,917,5,
-51,TTP,25,Isolated - Split,911,,,,,,
-52,TTP,25,Isolated - Split,912,,,,,,
-53,TTP,25,Isolated - Split,913,,,,,,
-54,TTP,25,Isolated - Split,914,,,,,,
-55,TTP,25,Isolated - Split,915,,,,,,
-56,TTP,25,Isolated - Split,916,,,,,,
-57,TTP,25,Isolated - Split,917,,,,,,
+51,TTP,25,Isolated - Split,911,10/6/2018 12:30PM,SF,Kramer,980,5,
+52,TTP,25,Isolated - Split,912,10/6/2018 12:30PM,SF,George,981,5,
+53,TTP,25,Isolated - Split,913,10/6/2018 12:30PM,SF,Elaine,982,3,gave up toward the end
+54,TTP,25,Isolated - Split,914,10/6/2018 12:30PM,SF,Jerry,983,5,
+55,TTP,25,Isolated - Split,915,10/6/2018 1:15PM,SF,Kramer,984,5,
+56,TTP,25,Isolated - Split,916,10/6/2018 1:15PM,SF,George,985,5,
+57,TTP,25,Isolated - Split,917,10/6/2018 1:15PM,SF,Elaine,986,5,
+58,TTP,25,Isolated - Split,885,10/6/2018 1:15PM,SF,Jerry,987,5,

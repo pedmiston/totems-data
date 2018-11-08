@@ -1,8 +1,7 @@
-from unipath import Path
+from pathlib import Path
 from invoke import task
-
 import graphdb
-from .bin.adjacent import analyze_inventory_ids
+import pandas
 
 
 R_pkg = Path(__file__).absolute().parent
@@ -91,3 +90,35 @@ def inventory(ctx, item_numbers=None, name=None, view_off=False):
     name = name or 'inventory'
     output = Path(R_pkg, 'inst/extdata/', name+'.gv')
     viz.render(output, view=not view_off)
+
+def analyze_inventory_ids(inventory_ids_csv):
+    inventory_ids_csv = Path(inventory_ids_csv)
+    adjacent_dir = inventory_ids_csv.parent
+
+    inventories = pandas.read_csv(inventory_ids_csv)
+
+    def id_to_numbers(inventory_id):
+        return list(map(int, inventory_id.split('-')))
+
+    inventories['Inventory'] = inventories.ID.apply(id_to_numbers)
+
+    landscape = graphdb.Landscape()
+    inventories['Adjacent'] = inventories.Inventory.apply(landscape.adjacent_possible)
+
+    inventories['NumAdjacent'] = inventories.Adjacent.apply(len)
+    inventories[['ID', 'NumAdjacent']].to_csv(
+      Path(adjacent_dir, 'num-adjacent.csv'),
+      index=False
+    )
+
+    def melt_adjacent(inventory):
+        return pandas.DataFrame({'Adjacent': inventory.Adjacent.iloc[0]})
+
+    adjacent_inventories = (inventories.groupby('ID')
+                                       .apply(melt_adjacent)
+                                       .reset_index())
+
+    adjacent_inventories[['ID', 'Adjacent']].to_csv(
+      Path(adjacent_dir, 'adjacent-items.csv'),
+      index=False
+    )
