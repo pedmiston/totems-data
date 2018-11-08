@@ -1,453 +1,453 @@
-Strategy,TeamID,PlayerID,SessionID,Generation,TeamStatus,SessionStatus,Notes
-Diachronic,G10,P28,S28,1,bad_ancestor,bad_compliance,Got frustrated and started using cell phone during experiment
-Diachronic,G10,P35,S35,2,bad_ancestor,valid,NA
-Diachronic,G10,P544,S544,3,bad_ancestor,valid,NA
-Diachronic,G10,P591,S591,4,bad_ancestor,valid,NA
-Diachronic,G133,P313,S313,1,bad_ancestor,valid,NA
-Diachronic,G133,P316,S316,2,bad_ancestor,valid,NA
-Diachronic,G133,P317,S317,3,bad_ancestor,bad_compliance,"Got frustrated at first, and playing phones during the break. He was guessing during last 10 min, and showed impatience."
-Diachronic,G133,P336,S336,4,bad_ancestor,valid,NA
-Diachronic,G141,P337,S337,1,incomplete_team,valid,NA
-Diachronic,G142,P338,S338,1,valid,valid,NA
-Diachronic,G142,P343,S343,2,valid,valid,NA
-Diachronic,G142,P357,S357,3,valid,valid,NA
-Diachronic,G142,P363,S363,4,valid,valid,NA
-Diachronic,G143,P339,S339,1,bad_ancestor,valid,NA
-Diachronic,G143,P356,S356,2,bad_ancestor,valid,NA
-Diachronic,G143,P362,S362,3,bad_ancestor,valid,NA
-Diachronic,G143,P377,S377,4,bad_ancestor,bad_compliance,"got frustrated, put head on desk"
-Diachronic,G158,P364,S364,1,bad_ancestor,bad_compliance,got frustrated but participant fully
-Diachronic,G158,P376,S376,2,bad_ancestor,bad_compliance,"got frustrated, asked for help"
-Diachronic,G158,P412,S412,3,bad_ancestor,valid,NA
-Diachronic,G158,P431,S431,4,bad_ancestor,valid,NA
-Diachronic,G16,P36,S36,1,valid,valid,NA
-Diachronic,G16,P39,S39,2,valid,valid,NA
-Diachronic,G16,P559,S559,3,valid,valid,NA
-Diachronic,G16,P592,S592,4,valid,valid,NA
-Diachronic,G174,P413,S413,1,valid,valid,NA
-Diachronic,G174,P414,S414,2,valid,valid,NA
-Diachronic,G174,P430,S430,3,valid,valid,NA
-Diachronic,G174,P434,S434,4,valid,valid,NA
-Diachronic,G175,P432,S432,1,valid,valid,NA
-Diachronic,G175,P433,S433,2,valid,valid,NA
-Diachronic,G175,P560,S560,3,valid,valid,NA
-Diachronic,G175,P593,S593,4,valid,valid,NA
-Diachronic,G176,P435,S435,1,incomplete_team,valid,NA
-Diachronic,G18,P40,S40,1,valid,valid,NA
-Diachronic,G18,P53,S53,2,valid,valid,NA
-Diachronic,G18,P575,S575,3,valid,valid,NA
-Diachronic,G18,P595,S595,4,valid,valid,NA
-Diachronic,G2,P14,S14,1,valid,valid,NA
-Diachronic,G2,P17,S17,2,valid,valid,NA
-Diachronic,G2,P584,S584,3,valid,valid,NA
-Diachronic,G2,P589,S589,4,valid,valid,NA
-Diachronic,G208,P618,S618,1,valid,valid,NA
-Diachronic,G208,P620,S620,2,valid,valid,NA
-Diachronic,G208,P628,S628,3,valid,valid,NA
-Diachronic,G208,P643,S643,4,valid,valid,NA
-Diachronic,G209,P619,S619,1,valid,valid,NA
-Diachronic,G209,P621,S621,2,valid,valid,NA
-Diachronic,G209,P631,S631,3,valid,valid,NA
-Diachronic,G209,P644,S644,4,valid,valid,NA
-Diachronic,G210,P622,S622,1,valid,valid,NA
-Diachronic,G210,P627,S627,2,valid,valid,NA
-Diachronic,G210,P640,S640,3,valid,valid,NA
-Diachronic,G210,P645,S645,4,valid,valid,NA
-Diachronic,G217,P646,S646,1,valid,valid,NA
-Diachronic,G217,P657,S657,2,valid,valid,NA
-Diachronic,G217,P668,S668,3,valid,valid,NA
-Diachronic,G217,P675,S675,4,valid,valid,NA
-Diachronic,G221,P658,S658,1,valid,valid,NA
-Diachronic,G221,P660,S660,2,valid,valid,NA
-Diachronic,G221,P666,S666,3,valid,valid,NA
-Diachronic,G221,P671,S671,4,valid,valid,NA
-Diachronic,G222,P659,S659,1,valid,valid,NA
-Diachronic,G222,P665,S665,2,valid,valid,NA
-Diachronic,G222,P667,S667,3,valid,valid,NA
-Diachronic,G222,P672,S672,4,valid,valid,NA
-Diachronic,G227,P676,S676,1,valid,valid,NA
-Diachronic,G227,P679,S679,2,valid,valid,NA
-Diachronic,G227,P682,S682,3,valid,valid,NA
-Diachronic,G227,P690,S690,4,valid,valid,NA
-Diachronic,G230,P683,S683,1,valid,valid,NA
-Diachronic,G230,P686,S686,2,valid,valid,NA
-Diachronic,G230,P687,S687,3,valid,valid,NA
-Diachronic,G230,P691,S691,4,valid,valid,NA
-Diachronic,G233,P692,S692,1,valid,valid,NA
-Diachronic,G233,P695,S695,2,valid,valid,NA
-Diachronic,G233,P704,S704,3,valid,valid,NA
-Diachronic,G233,P715,S715,4,valid,valid,NA
-Diachronic,G237,P705,S705,1,bad_ancestor,bad_compliance,was sleepy and yawning alot
-Diachronic,G237,P707,S707,2,bad_ancestor,valid,NA
-Diachronic,G237,P713,S713,3,bad_ancestor,valid,NA
-Diachronic,G237,P723,S723,4,bad_ancestor,valid,NA
-Diachronic,G238,P706,S706,1,valid,valid,NA
-Diachronic,G238,P708,S708,2,valid,valid,NA
-Diachronic,G238,P714,S714,3,valid,valid,NA
-Diachronic,G238,P724,S724,4,valid,valid,NA
-Diachronic,G241,P716,S716,1,bad_ancestor,valid,NA
-Diachronic,G241,P717,S717,2,bad_ancestor,valid,NA
-Diachronic,G241,P722,S722,3,bad_ancestor,bad_compliance,very tired and sleepy
-Diachronic,G241,P725,S725,4,bad_ancestor,valid,NA
-Diachronic,G243,P726,S726,1,bad_ancestor,bad_compliance,got frustrated and was tired
-Diachronic,G243,P747,S747,2,bad_ancestor,valid,NA
-Diachronic,G243,P751,S751,3,bad_ancestor,valid,NA
-Diachronic,G243,P754,S754,4,bad_ancestor,valid,NA
-Diachronic,G244,P727,S727,1,valid,valid,NA
-Diachronic,G244,P748,S748,2,valid,valid,NA
-Diachronic,G244,P752,S752,3,valid,valid,NA
-Diachronic,G244,P755,S755,4,valid,valid,NA
-Diachronic,G264,P749,S749,1,valid,valid,NA
-Diachronic,G264,P750,S750,2,valid,valid,NA
-Diachronic,G264,P753,S753,3,valid,valid,NA
-Diachronic,G264,P779,S779,4,valid,valid,NA
-Diachronic,G268,P780,S780,1,incomplete_team,valid,NA
-Diachronic,G268,P789,S789,2,incomplete_team,valid,NA
-Diachronic,G271,P790,S790,1,incomplete_team,valid,NA
-Diachronic,G271,P833,S833,2,incomplete_team,valid,NA
-Diachronic,G272,P791,S791,1,incomplete_team,valid,NA
-Diachronic,G272,P834,S834,2,incomplete_team,valid,NA
-Diachronic,G30,P54,S54,1,valid,valid,NA
-Diachronic,G30,P55,S55,2,valid,valid,NA
-Diachronic,G30,P581,S581,3,valid,valid,NA
-Diachronic,G30,P605,S605,4,valid,valid,NA
-Diachronic,G31,P56,S56,1,valid,valid,NA
-Diachronic,G31,P61,S61,2,valid,valid,NA
-Diachronic,G31,P580,S580,3,valid,valid,NA
-Diachronic,G31,P606,S606,4,valid,valid,NA
-Diachronic,G36,P66,S66,1,valid,valid,NA
-Diachronic,G36,P200,S200,2,valid,valid,NA
-Diachronic,G36,P214,S214,3,valid,valid,NA
-Diachronic,G36,P271,S271,4,valid,valid,NA
-Diachronic,G38,P71,S71,1,valid,valid,NA
-Diachronic,G38,P155,S155,2,valid,valid,NA
-Diachronic,G38,P203,S203,3,valid,valid,NA
-Diachronic,G38,P235,S235,4,valid,valid,NA
-Diachronic,G4,P18,S18,1,valid,valid,NA
-Diachronic,G4,P27,S27,2,valid,valid,NA
-Diachronic,G4,P537,S537,3,valid,valid,NA
-Diachronic,G4,P590,S590,4,valid,valid,NA
-Diachronic,G41,P75,S75,1,valid,valid,NA
-Diachronic,G41,P159,S159,2,valid,valid,NA
-Diachronic,G41,P206,S206,3,valid,valid,NA
-Diachronic,G41,P236,S236,4,valid,valid,NA
-Diachronic,G43,P81,S81,1,valid,valid,NA
-Diachronic,G43,P167,S167,2,valid,valid,NA
-Diachronic,G43,P207,S207,3,valid,valid,NA
-Diachronic,G43,P239,S239,4,valid,valid,NA
-Diachronic,G47,P86,S86,1,incomplete_team,valid,NA
-Diachronic,G47,P573,S573,3,experiment_error,experiment_error,Experiment went long. Possibly ran as Isolated by accident?
-Diachronic,G48,P88,S88,1,valid,valid,NA
-Diachronic,G48,P171,S171,2,valid,valid,NA
-Diachronic,G48,P208,S208,3,valid,valid,NA
-Diachronic,G48,P240,S240,4,valid,valid,NA
-Diachronic,G49,P90,S90,1,valid,valid,NA
-Diachronic,G49,P172,S172,2,valid,valid,NA
-Diachronic,G49,P209,S209,3,valid,valid,NA
-Diachronic,G49,P254,S254,4,valid,valid,NA
-Diachronic,G50,P92,S92,1,valid,valid,NA
-Diachronic,G50,P173,S173,2,valid,valid,NA
-Diachronic,G50,P210,S210,3,valid,valid,NA
-Diachronic,G50,P260,S260,4,valid,valid,NA
-Diachronic,G51,P95,S95,1,bad_ancestor,bad_compliance,visibly frustrated but fully participated
-Diachronic,G51,P178,S178,2,bad_ancestor,valid,NA
-Diachronic,G51,P213,S213,3,bad_ancestor,valid,NA
-Diachronic,G51,P262,S262,4,bad_ancestor,valid,NA
-Diachronic,G52,P97,S97,1,valid,valid,NA
-Diachronic,G52,P98,S98,2,valid,valid,NA
-Diachronic,G52,P574,S574,3,valid,valid,NA
-Diachronic,G52,P594,S594,4,valid,valid,NA
-Diachronic,G54,P101,S101,1,valid,valid,NA
-Diachronic,G54,P106,S106,2,valid,valid,NA
-Diachronic,G54,P507,S507,3,valid,valid,NA
-Diachronic,G54,P596,S596,4,valid,valid,NA
-Diachronic,G57,P107,S107,1,valid,valid,NA
-Diachronic,G57,P109,S109,2,valid,valid,NA
-Diachronic,G57,P505,S505,3,valid,valid,NA
-Diachronic,G57,P588,S588,4,valid,valid,NA
-Diachronic,G59,P111,S111,1,valid,valid,NA
-Diachronic,G59,P113,S113,2,valid,valid,NA
-Diachronic,G59,P504,S504,3,valid,valid,NA
-Diachronic,G59,P586,S586,4,valid,valid,NA
-Diachronic,G62,P117,S117,1,valid,valid,NA
-Diachronic,G62,P118,S118,2,valid,valid,NA
-Diachronic,G62,P506,S506,3,valid,valid,NA
-Diachronic,G62,P587,S587,4,valid,valid,NA
-Diachronic,G63,P119,S119,1,bad_ancestor,bad_compliance,Needed instructions given to him a second time after game started
-Diachronic,G63,P120,S120,2,bad_ancestor,valid,NA
-Diachronic,G63,P583,S583,3,bad_ancestor,valid,NA
-Diachronic,G63,P598,S598,4,bad_ancestor,valid,NA
-Diachronic,G64,P121,S121,1,valid,valid,NA
-Diachronic,G64,P124,S124,2,valid,valid,NA
-Diachronic,G64,P582,S582,3,valid,valid,NA
-Diachronic,G64,P604,S604,4,valid,valid,NA
-Diachronic,G65,P125,S125,1,valid,valid,NA
-Diachronic,G65,P126,S126,2,valid,valid,NA
-Diachronic,G65,P562,S562,3,valid,valid,NA
-Diachronic,G65,P607,S607,4,valid,valid,NA
-Diachronic,G66,P128,S128,1,bad_ancestor,valid,NA
-Diachronic,G66,P194,S194,2,bad_ancestor,valid,NA
-Diachronic,G66,P215,S215,3,bad_ancestor,bad_compliance,"Stopped trying after he finished making the items the ancestor made (ancestor had 1199 points, so that took up most of his time)"
-Diachronic,G66,P272,S272,4,bad_ancestor,valid,NA
-Diachronic,G67,P130,S130,1,valid,valid,NA
-Diachronic,G67,P132,S132,2,valid,valid,NA
-Diachronic,G67,P561,S561,3,valid,valid,NA
-Diachronic,G67,P608,S608,4,valid,valid,NA
-Diachronic,G68,P135,S135,1,bad_ancestor,valid,NA
-Diachronic,G68,P195,S195,2,bad_ancestor,valid,NA
-Diachronic,G68,P216,S216,3,bad_ancestor,bad_compliance,Didn't get up to the same level as her ancestor
-Diachronic,G68,P279,S279,4,bad_ancestor,valid,NA
-Diachronic,G69,P137,S137,1,valid,valid,NA
-Diachronic,G69,P196,S196,2,valid,valid,NA
-Diachronic,G69,P217,S217,3,valid,valid,NA
-Diachronic,G69,P280,S280,4,valid,valid,NA
-Diachronic,G70,P139,S139,1,valid,valid,NA
-Diachronic,G70,P197,S197,2,valid,valid,NA
-Diachronic,G70,P222,S222,3,valid,valid,NA
-Diachronic,G70,P297,S297,4,valid,valid,NA
-Diachronic,G71,P147,S147,1,valid,valid,NA
-Diachronic,G71,P148,S148,2,valid,valid,NA
-Diachronic,G71,P539,S539,3,valid,valid,NA
-Diachronic,G71,P609,S609,4,valid,valid,NA
-Diachronic,G72,P149,S149,1,valid,valid,NA
-Diachronic,G72,P150,S150,2,valid,valid,NA
-Diachronic,G72,P538,S538,3,valid,valid,NA
-Diachronic,G72,P616,S616,4,valid,valid,NA
-Diachronic,G74,P153,S153,1,valid,valid,NA
-Diachronic,G74,P198,S198,2,valid,valid,NA
-Diachronic,G74,P223,S223,3,valid,valid,NA
-Diachronic,G74,P298,S298,4,valid,valid,NA
-Diachronic,G75,P154,S154,1,valid,valid,NA
-Diachronic,G75,P199,S199,2,valid,valid,NA
-Diachronic,G75,P224,S224,3,valid,valid,NA
-Diachronic,G75,P299,S299,4,valid,valid,NA
-Isolated,G153,P371,S352,1,incomplete_sessions,valid,NA
-Isolated,G153,P371,S371,2,incomplete_sessions,valid,NA
-Isolated,G148,P389,S347,1,valid,valid,NA
-Isolated,G148,P389,S366,2,valid,valid,NA
-Isolated,G148,P389,S379,3,valid,valid,NA
-Isolated,G163,P391,S391,4,valid,valid,NA
-Isolated,G151,P397,S350,1,valid,valid,NA
-Isolated,G151,P397,S372,2,valid,valid,NA
-Isolated,G151,P397,S378,3,valid,valid,NA
-Isolated,G151,P397,S397,4,valid,valid,NA
-Isolated,G154,P399,S353,1,valid,valid,NA
-Isolated,G154,P399,S370,2,valid,valid,NA
-Isolated,G154,P399,S381,3,valid,valid,NA
-Isolated,G154,P399,S399,4,valid,valid,NA
-Isolated,G155,P400,S354,1,valid,valid,NA
-Isolated,G155,P400,S367,2,valid,valid,NA
-Isolated,G155,P400,S382,3,valid,valid,NA
-Isolated,G155,P400,S400,4,valid,valid,NA
-Isolated,G152,P401,S351,1,valid,valid,NA
-Isolated,G152,P401,S374,2,valid,valid,NA
-Isolated,G152,P401,S385,3,valid,valid,NA
-Isolated,G152,P401,S401,4,valid,valid,NA
-Isolated,G156,P405,S355,1,bad_compliance,bad_compliance,left early forgot they had to be somewhere
-Isolated,G156,P405,S375,2,bad_compliance,bad_compliance,left early forgot they had to be somewhere
-Isolated,G156,P405,S384,3,bad_compliance,bad_compliance,left early forgot they had to be somewhere
-Isolated,G156,P405,S405,4,bad_compliance,bad_compliance,left early forgot they had to be somewhere
-Isolated,G147,P415,S346,1,valid,valid,
-Isolated,G147,P415,S365,2,valid,valid,
-Isolated,G147,P415,S398,3,valid,valid,
-Isolated,G147,P415,S415,4,valid,valid,
-Isolated,G149,P416,S348,1,experiment_error,valid,exp error in part4
-Isolated,G149,P416,S368,2,experiment_error,valid,exp error in part4
-Isolated,G149,P416,S383,3,experiment_error,valid,exp error in part4
-Isolated,G149,P416,S416,4,experiment_error,experiment_error,exp error in part4
-Isolated,G150,P419,S349,1,experiment_error,valid,exp error in part4
-Isolated,G150,P419,S373,2,experiment_error,valid,exp error in part4
-Isolated,G150,P419,S380,3,experiment_error,valid,exp error in part4
-Isolated,G150,P419,S419,4,experiment_error,experiment_error,exp error in part4
-Isolated,G165,P420,S402,1,incomplete_sessions,valid,NA
-Isolated,G165,P420,S420,2,incomplete_sessions,bad_compliance,Part 2 was only present for about 15 minutes
-Isolated,G161,P449,S387,1,valid,valid,NA
-Isolated,G161,P449,S417,2,valid,valid,NA
-Isolated,G161,P449,S437,3,valid,valid,NA
-Isolated,G161,P449,S449,4,valid,valid,NA
-Isolated,G164,P450,S396,1,valid,valid,NA
-Isolated,G164,P450,S418,2,valid,valid,NA
-Isolated,G164,P450,S438,3,valid,valid,NA
-Isolated,G164,P450,S450,4,valid,valid,NA
-Isolated,G173,P452,S411,1,valid,valid,NA
-Isolated,G173,P452,S422,2,valid,valid,NA
-Isolated,G173,P452,S439,3,valid,valid,NA
-Isolated,G173,P452,S452,4,valid,valid,NA
-Isolated,G160,P455,S386,1,valid,valid,NA
-Isolated,G160,P455,S421,2,valid,valid,NA
-Isolated,G160,P455,S436,3,valid,valid,NA
-Isolated,G160,P455,S455,4,valid,valid,NA
-Isolated,G172,P456,S410,1,valid,valid,NA
-Isolated,G172,P456,S423,2,valid,valid,NA
-Isolated,G172,P456,S440,3,valid,valid,NA
-Isolated,G172,P456,S456,4,valid,valid,NA
-Isolated,G168,P457,S406,1,valid,valid,NA
-Isolated,G168,P457,S426,2,valid,valid,NA
-Isolated,G168,P457,S441,3,valid,valid,NA
-Isolated,G168,P457,S457,4,valid,valid,NA
-Isolated,G169,P458,S407,1,valid,valid,NA
-Isolated,G169,P458,S425,2,valid,valid,NA
-Isolated,G169,P458,S442,3,valid,valid,NA
-Isolated,G169,P458,S458,4,valid,valid,NA
-Isolated,G171,P460,S409,1,bad_compliance,valid,NA
-Isolated,G171,P460,S424,2,bad_compliance,valid,NA
-Isolated,G171,P460,S443,3,bad_compliance,bad_compliance,Part 3 tired and gave up
-Isolated,G171,P460,S460,4,bad_compliance,valid,NA
-Isolated,G167,P464,S404,1,experiment_error,valid,NA
-Isolated,G167,P464,S428,2,experiment_error,experiment_error,Power went out after 15 min
-Isolated,G167,P464,S448,3,experiment_error,experiment_error,NA
-Isolated,G167,P464,S464,4,experiment_error,valid,NA
-Isolated,G166,P473,S403,1,experiment_error,valid,NA
-Isolated,G166,P473,S427,2,experiment_error,experiment_error,Power went out after 15 min
-Isolated,G166,P473,S454,3,experiment_error,experiment_error,Did not inherit data from Part 2
-Isolated,G166,P473,S473,4,experiment_error,experiment_error,valid
-Isolated,G162,P508,S388,1,experiment_error,valid,NA
-Isolated,G162,P508,S447,2,experiment_error,experiment_error,Power went out after 15 min
-Isolated,G162,P508,S474,3,experiment_error,valid,NA
-Isolated,G162,P508,S508,4,experiment_error,valid,NA
-Isolated,G184,P520,S469,1,valid,valid,NA
-Isolated,G184,P520,S495,2,valid,valid,NA
-Isolated,G184,P520,S516,3,valid,valid,NA
-Isolated,G184,P520,S520,4,valid,valid,NA
-Isolated,G181,P521,S451,1,valid,valid,NA
-Isolated,G181,P521,S486,2,valid,valid,NA
-Isolated,G181,P521,S509,3,valid,valid,NA
-Isolated,G181,P521,S521,4,valid,valid,NA
-Isolated,G187,P522,S472,1,valid,valid,NA
-Isolated,G187,P522,S485,2,valid,valid,NA
-Isolated,G187,P522,S512,3,valid,valid,NA
-Isolated,G187,P522,S522,4,valid,valid,NA
-Isolated,G185,P523,S453,1,valid,valid,NA
-Isolated,G185,P523,S487,2,valid,valid,NA
-Isolated,G185,P523,S510,3,valid,valid,NA
-Isolated,G185,P523,S523,4,valid,valid,NA
-Isolated,G170,P525,S408,1,valid,valid,NA
-Isolated,G170,P525,S429,2,valid,valid,NA
-Isolated,G170,P525,S470,3,valid,valid,NA
-Isolated,G170,P525,S525,4,valid,valid,NA
-Isolated,G186,P527,S462,1,bad_compliance,bad_compliance,left part 1 early
-Isolated,G186,P527,S490,2,bad_compliance,valid,NA
-Isolated,G186,P527,S519,3,bad_compliance,valid,NA
-Isolated,G186,P527,S527,4,bad_compliance,valid,NA
-Isolated,G182,P529,S461,1,valid,valid,NA
-Isolated,G182,P529,S491,2,valid,valid,NA
-Isolated,G182,P529,S514,3,valid,valid,NA
-Isolated,G182,P529,S529,4,valid,valid,NA
-Isolated,G177,P530,S463,1,bad_compliance,bad_compliance,left part 1 early
-Isolated,G177,P530,S488,2,bad_compliance,valid,left part 1 early
-Isolated,G177,P530,S511,3,bad_compliance,valid,left part 1 early
-Isolated,G177,P530,S530,4,bad_compliance,valid,left part 1 early
-Isolated,G183,P531,S466,1,valid,valid,NA
-Isolated,G183,P531,S484,2,valid,valid,NA
-Isolated,G183,P531,S513,3,valid,valid,NA
-Isolated,G183,P531,S531,4,valid,valid,NA
-Isolated,G178,P532,S467,1,valid,valid,NA
-Isolated,G178,P532,S493,2,valid,valid,NA
-Isolated,G178,P532,S518,3,valid,valid,NA
-Isolated,G178,P532,S532,4,valid,valid,NA
-Isolated,G180,P534,S468,1,valid,valid,NA
-Isolated,G180,P534,S494,2,valid,valid,NA
-Isolated,G180,P534,S517,3,valid,valid,NA
-Isolated,G180,P534,S534,4,valid,valid,NA
-Isolated,G197,P568,S536,1,valid,valid,NA
-Isolated,G197,P568,S545,2,valid,valid,NA
-Isolated,G197,P568,S551,3,valid,valid,NA
-Isolated,G197,P568,S568,4,valid,valid,NA
-Isolated,G193,P569,S524,1,valid,valid,NA
-Isolated,G193,P569,S548,2,valid,valid,NA
-Isolated,G193,P569,S553,3,valid,valid,NA
-Isolated,G193,P569,S569,4,valid,valid,NA
-Isolated,G194,P570,S526,1,valid,valid,NA
-Isolated,G194,P570,S546,2,valid,valid,NA
-Isolated,G194,P570,S552,3,valid,valid,NA
-Isolated,G194,P570,S570,4,valid,valid,NA
-Isolated,G195,P571,S528,1,valid,valid,NA
-Isolated,G195,P571,S549,2,valid,valid,NA
-Isolated,G195,P571,S554,3,valid,valid,NA
-Isolated,G195,P571,S571,4,valid,valid,NA
-Isolated,G199,P585,S547,1,bad_compliance,bad_compliance,got frustrated at part1
-Isolated,G199,P585,S550,2,bad_compliance,valid,got frustrated at part1
-Isolated,G199,P585,S567,3,bad_compliance,valid,got frustrated at part1
-Isolated,G199,P585,S585,4,bad_compliance,valid,got frustrated at part1
-Isolated,G196,P617,S535,1,valid,valid,NA
-Isolated,G196,P617,S572,2,valid,valid,NA
-Isolated,G196,P617,S597,3,valid,valid,NA
-Isolated,G196,P617,S617,4,valid,valid,NA
-Isolated,G257,P762,S740,1,incomplete_sessions,bad_compliance,Left pt 1 early for class
-Isolated,G257,P762,S762,2,incomplete_sessions,valid,NA
-Isolated,G254,P765,S737,1,experiment_error,valid,NA
-Isolated,G254,P765,S765,2,experiment_error,experiment_error,Said he didn't inherit the correct items
-Isolated,G179,P825,S806,3,experiment_error,valid,NA
-Isolated,G179,P825,S825,4,experiment_error,valid,NA
-Isolated,G250,P767,S733,1,incomplete_sessions,valid,NA
-Isolated,G250,P767,S767,2,incomplete_sessions,valid,NA
-Isolated,G258,P811,S741,1,incomplete_sessions,valid,NA
-Isolated,G258,P811,S772,2,incomplete_sessions,valid,NA
-Isolated,G258,P811,S811,3,incomplete_sessions,bad_compliance,On part three was extremely tired
-Isolated,G246,P816,S729,1,valid,valid,NA
-Isolated,G246,P816,S760,2,valid,valid,NA
-Isolated,G246,P816,S801,3,valid,valid,NA
-Isolated,G246,P816,S816,4,valid,valid,NA
-Isolated,G245,P817,S728,1,valid,valid,NA
-Isolated,G245,P817,S757,2,valid,valid,NA
-Isolated,G245,P817,S800,3,valid,valid,NA
-Isolated,G245,P817,S817,4,valid,valid,NA
-Isolated,G247,P818,S730,1,valid,valid,NA
-Isolated,G247,P818,S759,2,valid,valid,NA
-Isolated,G247,P818,S814,3,valid,valid,NA
-Isolated,G247,P818,S818,4,valid,valid,NA
-Isolated,G248,P819,S731,1,valid,valid,NA
-Isolated,G248,P819,S756,2,valid,valid,NA
-Isolated,G248,P819,S815,3,valid,valid,NA
-Isolated,G248,P819,S819,4,valid,valid,NA
-Isolated,G249,P820,S732,1,valid,valid,NA
-Isolated,G249,P820,S761,2,valid,valid,NA
-Isolated,G249,P820,S803,3,valid,valid,NA
-Isolated,G249,P820,S820,4,valid,valid,NA
-Isolated,G256,P822,S739,1,bad_compliance,valid,NA
-Isolated,G256,P822,S771,2,bad_compliance,valid,NA
-Isolated,G256,P822,S804,3,bad_compliance,bad_compliance,On her phone periodically in Part 3.
-Isolated,G256,P822,S822,4,bad_compliance,valid,NA
-Isolated,G251,P824,S734,1,valid,valid,NA
-Isolated,G251,P824,S763,2,valid,valid,NA
-Isolated,G251,P824,S805,3,valid,valid,NA
-Isolated,G251,P824,S824,4,valid,valid,NA
-Isolated,G179,P825,S465,1,valid,valid,NA
-Isolated,G179,P825,S492,2,valid,valid,NA
-Isolated,G179,P825,S515,3,valid,valid,NA
-Isolated,G179,P825,S533,4,valid,valid,NA
-Isolated,G253,P826,S736,1,valid,valid,NA
-Isolated,G253,P826,S768,2,valid,valid,NA
-Isolated,G253,P826,S807,3,valid,valid,NA
-Isolated,G253,P826,S826,4,valid,valid,NA
-Isolated,G252,P827,S735,1,valid,valid,NA
-Isolated,G252,P827,S774,2,valid,valid,NA
-Isolated,G252,P827,S812,3,valid,valid,NA
-Isolated,G252,P827,S827,4,valid,valid,NA
-Isolated,G260,P828,S743,1,incomplete_sessions,valid,NA
-Isolated,G260,P828,S770,2,incomplete_sessions,valid,NA
-Isolated,G260,P828,S828,3,incomplete_sessions,valid,NA
-Isolated,G255,P829,S738,1,bad_compliance,bad_compliance,Seemed to give up
-Isolated,G255,P829,S769,2,bad_compliance,bad_compliance,Seemed to give up
-Isolated,G255,P829,S810,3,bad_compliance,bad_compliance,Seemed to give up
-Isolated,G255,P829,S829,4,bad_compliance,bad_compliance,Seemed to give up
-Isolated,G262,P830,S745,1,valid,valid,NA
-Isolated,G262,P830,S773,2,valid,valid,NA
-Isolated,G262,P830,S802,3,valid,valid,NA
-Isolated,G262,P830,S830,4,valid,valid,NA
-Isolated,G259,P831,S742,1,valid,valid,NA
-Isolated,G259,P831,S776,2,valid,valid,NA
-Isolated,G259,P831,S809,3,valid,valid,NA
-Isolated,G259,P831,S831,4,valid,valid,NA
-Isolated,G261,P832,S744,1,valid,valid,NA
-Isolated,G261,P832,S775,2,valid,valid,NA
-Isolated,G261,P832,S813,3,valid,valid,NA
-Isolated,G261,P832,S832,4,valid,valid,NA
-Isolated,G263,P839,S746,1,valid,valid,NA
-Isolated,G263,P839,S766,2,valid,valid,NA
-Isolated,G263,P839,S821,3,valid,valid,NA
-Isolated,G263,P839,S839,4,valid,valid,NA
-Isolated,G266,P840,S764,1,bad_compliance,valid,NA
-Isolated,G266,P840,S808,2,bad_compliance,valid,NA
-Isolated,G266,P840,S823,3,bad_compliance,valid,NA
-Isolated,G266,P840,S840,4,bad_compliance,bad_compliance,On her phone in Pt 4
+Strategy,PlayerID,SessionID,Generation,TeamStatus,SessionStatus,Notes
+Diachronic,P28,S28,1,bad_ancestor,bad_compliance,Got frustrated and started using cell phone during experiment
+Diachronic,P35,S35,2,bad_ancestor,valid,NA
+Diachronic,P544,S544,3,bad_ancestor,valid,NA
+Diachronic,P591,S591,4,bad_ancestor,valid,NA
+Diachronic,P313,S313,1,bad_ancestor,valid,NA
+Diachronic,P316,S316,2,bad_ancestor,valid,NA
+Diachronic,P317,S317,3,bad_ancestor,bad_compliance,"Got frustrated at first, and playing phones during the break. He was guessing during last 10 min, and showed impatience."
+Diachronic,P336,S336,4,bad_ancestor,valid,NA
+Diachronic,P337,S337,1,incomplete_team,valid,NA
+Diachronic,P338,S338,1,valid,valid,NA
+Diachronic,P343,S343,2,valid,valid,NA
+Diachronic,P357,S357,3,valid,valid,NA
+Diachronic,P363,S363,4,valid,valid,NA
+Diachronic,P339,S339,1,bad_ancestor,valid,NA
+Diachronic,P356,S356,2,bad_ancestor,valid,NA
+Diachronic,P362,S362,3,bad_ancestor,valid,NA
+Diachronic,P377,S377,4,bad_ancestor,bad_compliance,"got frustrated, put head on desk"
+Diachronic,P364,S364,1,bad_ancestor,bad_compliance,got frustrated but participant fully
+Diachronic,P376,S376,2,bad_ancestor,bad_compliance,"got frustrated, asked for help"
+Diachronic,P412,S412,3,bad_ancestor,valid,NA
+Diachronic,P431,S431,4,bad_ancestor,valid,NA
+Diachronic,P36,S36,1,valid,valid,NA
+Diachronic,P39,S39,2,valid,valid,NA
+Diachronic,P559,S559,3,valid,valid,NA
+Diachronic,P592,S592,4,valid,valid,NA
+Diachronic,P413,S413,1,valid,valid,NA
+Diachronic,P414,S414,2,valid,valid,NA
+Diachronic,P430,S430,3,valid,valid,NA
+Diachronic,P434,S434,4,valid,valid,NA
+Diachronic,P432,S432,1,valid,valid,NA
+Diachronic,P433,S433,2,valid,valid,NA
+Diachronic,P560,S560,3,valid,valid,NA
+Diachronic,P593,S593,4,valid,valid,NA
+Diachronic,P435,S435,1,incomplete_team,valid,NA
+Diachronic,P40,S40,1,valid,valid,NA
+Diachronic,P53,S53,2,valid,valid,NA
+Diachronic,P575,S575,3,valid,valid,NA
+Diachronic,P595,S595,4,valid,valid,NA
+Diachronic,P14,S14,1,valid,valid,NA
+Diachronic,P17,S17,2,valid,valid,NA
+Diachronic,P584,S584,3,valid,valid,NA
+Diachronic,P589,S589,4,valid,valid,NA
+Diachronic,P618,S618,1,valid,valid,NA
+Diachronic,P620,S620,2,valid,valid,NA
+Diachronic,P628,S628,3,valid,valid,NA
+Diachronic,P643,S643,4,valid,valid,NA
+Diachronic,P619,S619,1,valid,valid,NA
+Diachronic,P621,S621,2,valid,valid,NA
+Diachronic,P631,S631,3,valid,valid,NA
+Diachronic,P644,S644,4,valid,valid,NA
+Diachronic,P622,S622,1,valid,valid,NA
+Diachronic,P627,S627,2,valid,valid,NA
+Diachronic,P640,S640,3,valid,valid,NA
+Diachronic,P645,S645,4,valid,valid,NA
+Diachronic,P646,S646,1,valid,valid,NA
+Diachronic,P657,S657,2,valid,valid,NA
+Diachronic,P668,S668,3,valid,valid,NA
+Diachronic,P675,S675,4,valid,valid,NA
+Diachronic,P658,S658,1,valid,valid,NA
+Diachronic,P660,S660,2,valid,valid,NA
+Diachronic,P666,S666,3,valid,valid,NA
+Diachronic,P671,S671,4,valid,valid,NA
+Diachronic,P659,S659,1,valid,valid,NA
+Diachronic,P665,S665,2,valid,valid,NA
+Diachronic,P667,S667,3,valid,valid,NA
+Diachronic,P672,S672,4,valid,valid,NA
+Diachronic,P676,S676,1,valid,valid,NA
+Diachronic,P679,S679,2,valid,valid,NA
+Diachronic,P682,S682,3,valid,valid,NA
+Diachronic,P690,S690,4,valid,valid,NA
+Diachronic,P683,S683,1,valid,valid,NA
+Diachronic,P686,S686,2,valid,valid,NA
+Diachronic,P687,S687,3,valid,valid,NA
+Diachronic,P691,S691,4,valid,valid,NA
+Diachronic,P692,S692,1,valid,valid,NA
+Diachronic,P695,S695,2,valid,valid,NA
+Diachronic,P704,S704,3,valid,valid,NA
+Diachronic,P715,S715,4,valid,valid,NA
+Diachronic,P705,S705,1,bad_ancestor,bad_compliance,was sleepy and yawning alot
+Diachronic,P707,S707,2,bad_ancestor,valid,NA
+Diachronic,P713,S713,3,bad_ancestor,valid,NA
+Diachronic,P723,S723,4,bad_ancestor,valid,NA
+Diachronic,P706,S706,1,valid,valid,NA
+Diachronic,P708,S708,2,valid,valid,NA
+Diachronic,P714,S714,3,valid,valid,NA
+Diachronic,P724,S724,4,valid,valid,NA
+Diachronic,P716,S716,1,bad_ancestor,valid,NA
+Diachronic,P717,S717,2,bad_ancestor,valid,NA
+Diachronic,P722,S722,3,bad_ancestor,bad_compliance,very tired and sleepy
+Diachronic,P725,S725,4,bad_ancestor,valid,NA
+Diachronic,P726,S726,1,bad_ancestor,bad_compliance,got frustrated and was tired
+Diachronic,P747,S747,2,bad_ancestor,valid,NA
+Diachronic,P751,S751,3,bad_ancestor,valid,NA
+Diachronic,P754,S754,4,bad_ancestor,valid,NA
+Diachronic,P727,S727,1,valid,valid,NA
+Diachronic,P748,S748,2,valid,valid,NA
+Diachronic,P752,S752,3,valid,valid,NA
+Diachronic,P755,S755,4,valid,valid,NA
+Diachronic,P749,S749,1,valid,valid,NA
+Diachronic,P750,S750,2,valid,valid,NA
+Diachronic,P753,S753,3,valid,valid,NA
+Diachronic,P779,S779,4,valid,valid,NA
+Diachronic,P780,S780,1,incomplete_team,valid,NA
+Diachronic,P789,S789,2,incomplete_team,valid,NA
+Diachronic,P790,S790,1,incomplete_team,valid,NA
+Diachronic,P833,S833,2,incomplete_team,valid,NA
+Diachronic,P791,S791,1,incomplete_team,valid,NA
+Diachronic,P834,S834,2,incomplete_team,valid,NA
+Diachronic,P54,S54,1,valid,valid,NA
+Diachronic,P55,S55,2,valid,valid,NA
+Diachronic,P581,S581,3,valid,valid,NA
+Diachronic,P605,S605,4,valid,valid,NA
+Diachronic,P56,S56,1,valid,valid,NA
+Diachronic,P61,S61,2,valid,valid,NA
+Diachronic,P580,S580,3,valid,valid,NA
+Diachronic,P606,S606,4,valid,valid,NA
+Diachronic,P66,S66,1,valid,valid,NA
+Diachronic,P200,S200,2,valid,valid,NA
+Diachronic,P214,S214,3,valid,valid,NA
+Diachronic,P271,S271,4,valid,valid,NA
+Diachronic,P71,S71,1,valid,valid,NA
+Diachronic,P155,S155,2,valid,valid,NA
+Diachronic,P203,S203,3,valid,valid,NA
+Diachronic,P235,S235,4,valid,valid,NA
+Diachronic,P18,S18,1,valid,valid,NA
+Diachronic,P27,S27,2,valid,valid,NA
+Diachronic,P537,S537,3,valid,valid,NA
+Diachronic,P590,S590,4,valid,valid,NA
+Diachronic,P75,S75,1,valid,valid,NA
+Diachronic,P159,S159,2,valid,valid,NA
+Diachronic,P206,S206,3,valid,valid,NA
+Diachronic,P236,S236,4,valid,valid,NA
+Diachronic,P81,S81,1,valid,valid,NA
+Diachronic,P167,S167,2,valid,valid,NA
+Diachronic,P207,S207,3,valid,valid,NA
+Diachronic,P239,S239,4,valid,valid,NA
+Diachronic,P86,S86,1,incomplete_team,valid,NA
+Diachronic,P573,S573,3,experiment_error,experiment_error,Experiment went long. Possibly ran as Isolated by accident?
+Diachronic,P88,S88,1,valid,valid,NA
+Diachronic,P171,S171,2,valid,valid,NA
+Diachronic,P208,S208,3,valid,valid,NA
+Diachronic,P240,S240,4,valid,valid,NA
+Diachronic,P90,S90,1,valid,valid,NA
+Diachronic,P172,S172,2,valid,valid,NA
+Diachronic,P209,S209,3,valid,valid,NA
+Diachronic,P254,S254,4,valid,valid,NA
+Diachronic,P92,S92,1,valid,valid,NA
+Diachronic,P173,S173,2,valid,valid,NA
+Diachronic,P210,S210,3,valid,valid,NA
+Diachronic,P260,S260,4,valid,valid,NA
+Diachronic,P95,S95,1,bad_ancestor,bad_compliance,visibly frustrated but fully participated
+Diachronic,P178,S178,2,bad_ancestor,valid,NA
+Diachronic,P213,S213,3,bad_ancestor,valid,NA
+Diachronic,P262,S262,4,bad_ancestor,valid,NA
+Diachronic,P97,S97,1,valid,valid,NA
+Diachronic,P98,S98,2,valid,valid,NA
+Diachronic,P574,S574,3,valid,valid,NA
+Diachronic,P594,S594,4,valid,valid,NA
+Diachronic,P101,S101,1,valid,valid,NA
+Diachronic,P106,S106,2,valid,valid,NA
+Diachronic,P507,S507,3,valid,valid,NA
+Diachronic,P596,S596,4,valid,valid,NA
+Diachronic,P107,S107,1,valid,valid,NA
+Diachronic,P109,S109,2,valid,valid,NA
+Diachronic,P505,S505,3,valid,valid,NA
+Diachronic,P588,S588,4,valid,valid,NA
+Diachronic,P111,S111,1,valid,valid,NA
+Diachronic,P113,S113,2,valid,valid,NA
+Diachronic,P504,S504,3,valid,valid,NA
+Diachronic,P586,S586,4,valid,valid,NA
+Diachronic,P117,S117,1,valid,valid,NA
+Diachronic,P118,S118,2,valid,valid,NA
+Diachronic,P506,S506,3,valid,valid,NA
+Diachronic,P587,S587,4,valid,valid,NA
+Diachronic,P119,S119,1,bad_ancestor,bad_compliance,Needed instructions given to him a second time after game started
+Diachronic,P120,S120,2,bad_ancestor,valid,NA
+Diachronic,P583,S583,3,bad_ancestor,valid,NA
+Diachronic,P598,S598,4,bad_ancestor,valid,NA
+Diachronic,P121,S121,1,valid,valid,NA
+Diachronic,P124,S124,2,valid,valid,NA
+Diachronic,P582,S582,3,valid,valid,NA
+Diachronic,P604,S604,4,valid,valid,NA
+Diachronic,P125,S125,1,valid,valid,NA
+Diachronic,P126,S126,2,valid,valid,NA
+Diachronic,P562,S562,3,valid,valid,NA
+Diachronic,P607,S607,4,valid,valid,NA
+Diachronic,P128,S128,1,bad_ancestor,valid,NA
+Diachronic,P194,S194,2,bad_ancestor,valid,NA
+Diachronic,P215,S215,3,bad_ancestor,bad_compliance,"Stopped trying after he finished making the items the ancestor made (ancestor had 1199 points, so that took up most of his time)"
+Diachronic,P272,S272,4,bad_ancestor,valid,NA
+Diachronic,P130,S130,1,valid,valid,NA
+Diachronic,P132,S132,2,valid,valid,NA
+Diachronic,P561,S561,3,valid,valid,NA
+Diachronic,P608,S608,4,valid,valid,NA
+Diachronic,P135,S135,1,bad_ancestor,valid,NA
+Diachronic,P195,S195,2,bad_ancestor,valid,NA
+Diachronic,P216,S216,3,bad_ancestor,bad_compliance,Didn't get up to the same level as her ancestor
+Diachronic,P279,S279,4,bad_ancestor,valid,NA
+Diachronic,P137,S137,1,valid,valid,NA
+Diachronic,P196,S196,2,valid,valid,NA
+Diachronic,P217,S217,3,valid,valid,NA
+Diachronic,P280,S280,4,valid,valid,NA
+Diachronic,P139,S139,1,valid,valid,NA
+Diachronic,P197,S197,2,valid,valid,NA
+Diachronic,P222,S222,3,valid,valid,NA
+Diachronic,P297,S297,4,valid,valid,NA
+Diachronic,P147,S147,1,valid,valid,NA
+Diachronic,P148,S148,2,valid,valid,NA
+Diachronic,P539,S539,3,valid,valid,NA
+Diachronic,P609,S609,4,valid,valid,NA
+Diachronic,P149,S149,1,valid,valid,NA
+Diachronic,P150,S150,2,valid,valid,NA
+Diachronic,P538,S538,3,valid,valid,NA
+Diachronic,P616,S616,4,valid,valid,NA
+Diachronic,P153,S153,1,valid,valid,NA
+Diachronic,P198,S198,2,valid,valid,NA
+Diachronic,P223,S223,3,valid,valid,NA
+Diachronic,P298,S298,4,valid,valid,NA
+Diachronic,P154,S154,1,valid,valid,NA
+Diachronic,P199,S199,2,valid,valid,NA
+Diachronic,P224,S224,3,valid,valid,NA
+Diachronic,P299,S299,4,valid,valid,NA
+Isolated,P371,S352,1,incomplete_sessions,valid,NA
+Isolated,P371,S371,2,incomplete_sessions,valid,NA
+Isolated,P389,S347,1,valid,valid,NA
+Isolated,P389,S366,2,valid,valid,NA
+Isolated,P389,S379,3,valid,valid,NA
+Isolated,P391,S391,4,valid,valid,NA
+Isolated,P397,S350,1,valid,valid,NA
+Isolated,P397,S372,2,valid,valid,NA
+Isolated,P397,S378,3,valid,valid,NA
+Isolated,P397,S397,4,valid,valid,NA
+Isolated,P399,S353,1,valid,valid,NA
+Isolated,P399,S370,2,valid,valid,NA
+Isolated,P399,S381,3,valid,valid,NA
+Isolated,P399,S399,4,valid,valid,NA
+Isolated,P400,S354,1,valid,valid,NA
+Isolated,P400,S367,2,valid,valid,NA
+Isolated,P400,S382,3,valid,valid,NA
+Isolated,P400,S400,4,valid,valid,NA
+Isolated,P401,S351,1,valid,valid,NA
+Isolated,P401,S374,2,valid,valid,NA
+Isolated,P401,S385,3,valid,valid,NA
+Isolated,P401,S401,4,valid,valid,NA
+Isolated,P405,S355,1,bad_compliance,bad_compliance,left early forgot they had to be somewhere
+Isolated,P405,S375,2,bad_compliance,bad_compliance,left early forgot they had to be somewhere
+Isolated,P405,S384,3,bad_compliance,bad_compliance,left early forgot they had to be somewhere
+Isolated,P405,S405,4,bad_compliance,bad_compliance,left early forgot they had to be somewhere
+Isolated,P415,S346,1,valid,valid,
+Isolated,P415,S365,2,valid,valid,
+Isolated,P415,S398,3,valid,valid,
+Isolated,P415,S415,4,valid,valid,
+Isolated,P416,S348,1,experiment_error,valid,exp error in part4
+Isolated,P416,S368,2,experiment_error,valid,exp error in part4
+Isolated,P416,S383,3,experiment_error,valid,exp error in part4
+Isolated,P416,S416,4,experiment_error,experiment_error,exp error in part4
+Isolated,P419,S349,1,experiment_error,valid,exp error in part4
+Isolated,P419,S373,2,experiment_error,valid,exp error in part4
+Isolated,P419,S380,3,experiment_error,valid,exp error in part4
+Isolated,P419,S419,4,experiment_error,experiment_error,exp error in part4
+Isolated,P420,S402,1,incomplete_sessions,valid,NA
+Isolated,P420,S420,2,incomplete_sessions,bad_compliance,Part 2 was only present for about 15 minutes
+Isolated,P449,S387,1,valid,valid,NA
+Isolated,P449,S417,2,valid,valid,NA
+Isolated,P449,S437,3,valid,valid,NA
+Isolated,P449,S449,4,valid,valid,NA
+Isolated,P450,S396,1,valid,valid,NA
+Isolated,P450,S418,2,valid,valid,NA
+Isolated,P450,S438,3,valid,valid,NA
+Isolated,P450,S450,4,valid,valid,NA
+Isolated,P452,S411,1,valid,valid,NA
+Isolated,P452,S422,2,valid,valid,NA
+Isolated,P452,S439,3,valid,valid,NA
+Isolated,P452,S452,4,valid,valid,NA
+Isolated,P455,S386,1,valid,valid,NA
+Isolated,P455,S421,2,valid,valid,NA
+Isolated,P455,S436,3,valid,valid,NA
+Isolated,P455,S455,4,valid,valid,NA
+Isolated,P456,S410,1,valid,valid,NA
+Isolated,P456,S423,2,valid,valid,NA
+Isolated,P456,S440,3,valid,valid,NA
+Isolated,P456,S456,4,valid,valid,NA
+Isolated,P457,S406,1,valid,valid,NA
+Isolated,P457,S426,2,valid,valid,NA
+Isolated,P457,S441,3,valid,valid,NA
+Isolated,P457,S457,4,valid,valid,NA
+Isolated,P458,S407,1,valid,valid,NA
+Isolated,P458,S425,2,valid,valid,NA
+Isolated,P458,S442,3,valid,valid,NA
+Isolated,P458,S458,4,valid,valid,NA
+Isolated,P460,S409,1,bad_compliance,valid,NA
+Isolated,P460,S424,2,bad_compliance,valid,NA
+Isolated,P460,S443,3,bad_compliance,bad_compliance,Part 3 tired and gave up
+Isolated,P460,S460,4,bad_compliance,valid,NA
+Isolated,P464,S404,1,experiment_error,valid,NA
+Isolated,P464,S428,2,experiment_error,experiment_error,Power went out after 15 min
+Isolated,P464,S448,3,experiment_error,experiment_error,NA
+Isolated,P464,S464,4,experiment_error,valid,NA
+Isolated,P473,S403,1,experiment_error,valid,NA
+Isolated,P473,S427,2,experiment_error,experiment_error,Power went out after 15 min
+Isolated,P473,S454,3,experiment_error,experiment_error,Did not inherit data from Part 2
+Isolated,P473,S473,4,experiment_error,experiment_error,valid
+Isolated,P508,S388,1,experiment_error,valid,NA
+Isolated,P508,S447,2,experiment_error,experiment_error,Power went out after 15 min
+Isolated,P508,S474,3,experiment_error,valid,NA
+Isolated,P508,S508,4,experiment_error,valid,NA
+Isolated,P520,S469,1,valid,valid,NA
+Isolated,P520,S495,2,valid,valid,NA
+Isolated,P520,S516,3,valid,valid,NA
+Isolated,P520,S520,4,valid,valid,NA
+Isolated,P521,S451,1,valid,valid,NA
+Isolated,P521,S486,2,valid,valid,NA
+Isolated,P521,S509,3,valid,valid,NA
+Isolated,P521,S521,4,valid,valid,NA
+Isolated,P522,S472,1,valid,valid,NA
+Isolated,P522,S485,2,valid,valid,NA
+Isolated,P522,S512,3,valid,valid,NA
+Isolated,P522,S522,4,valid,valid,NA
+Isolated,P523,S453,1,valid,valid,NA
+Isolated,P523,S487,2,valid,valid,NA
+Isolated,P523,S510,3,valid,valid,NA
+Isolated,P523,S523,4,valid,valid,NA
+Isolated,P525,S408,1,valid,valid,NA
+Isolated,P525,S429,2,valid,valid,NA
+Isolated,P525,S470,3,valid,valid,NA
+Isolated,P525,S525,4,valid,valid,NA
+Isolated,P527,S462,1,bad_compliance,bad_compliance,left part 1 early
+Isolated,P527,S490,2,bad_compliance,valid,NA
+Isolated,P527,S519,3,bad_compliance,valid,NA
+Isolated,P527,S527,4,bad_compliance,valid,NA
+Isolated,P529,S461,1,valid,valid,NA
+Isolated,P529,S491,2,valid,valid,NA
+Isolated,P529,S514,3,valid,valid,NA
+Isolated,P529,S529,4,valid,valid,NA
+Isolated,P530,S463,1,bad_compliance,bad_compliance,left part 1 early
+Isolated,P530,S488,2,bad_compliance,valid,left part 1 early
+Isolated,P530,S511,3,bad_compliance,valid,left part 1 early
+Isolated,P530,S530,4,bad_compliance,valid,left part 1 early
+Isolated,P531,S466,1,valid,valid,NA
+Isolated,P531,S484,2,valid,valid,NA
+Isolated,P531,S513,3,valid,valid,NA
+Isolated,P531,S531,4,valid,valid,NA
+Isolated,P532,S467,1,valid,valid,NA
+Isolated,P532,S493,2,valid,valid,NA
+Isolated,P532,S518,3,valid,valid,NA
+Isolated,P532,S532,4,valid,valid,NA
+Isolated,P534,S468,1,valid,valid,NA
+Isolated,P534,S494,2,valid,valid,NA
+Isolated,P534,S517,3,valid,valid,NA
+Isolated,P534,S534,4,valid,valid,NA
+Isolated,P568,S536,1,valid,valid,NA
+Isolated,P568,S545,2,valid,valid,NA
+Isolated,P568,S551,3,valid,valid,NA
+Isolated,P568,S568,4,valid,valid,NA
+Isolated,P569,S524,1,valid,valid,NA
+Isolated,P569,S548,2,valid,valid,NA
+Isolated,P569,S553,3,valid,valid,NA
+Isolated,P569,S569,4,valid,valid,NA
+Isolated,P570,S526,1,valid,valid,NA
+Isolated,P570,S546,2,valid,valid,NA
+Isolated,P570,S552,3,valid,valid,NA
+Isolated,P570,S570,4,valid,valid,NA
+Isolated,P571,S528,1,valid,valid,NA
+Isolated,P571,S549,2,valid,valid,NA
+Isolated,P571,S554,3,valid,valid,NA
+Isolated,P571,S571,4,valid,valid,NA
+Isolated,P585,S547,1,bad_compliance,bad_compliance,got frustrated at part1
+Isolated,P585,S550,2,bad_compliance,valid,got frustrated at part1
+Isolated,P585,S567,3,bad_compliance,valid,got frustrated at part1
+Isolated,P585,S585,4,bad_compliance,valid,got frustrated at part1
+Isolated,P617,S535,1,valid,valid,NA
+Isolated,P617,S572,2,valid,valid,NA
+Isolated,P617,S597,3,valid,valid,NA
+Isolated,P617,S617,4,valid,valid,NA
+Isolated,P762,S740,1,incomplete_sessions,bad_compliance,Left pt 1 early for class
+Isolated,P762,S762,2,incomplete_sessions,valid,NA
+Isolated,P765,S737,1,experiment_error,valid,NA
+Isolated,P765,S765,2,experiment_error,experiment_error,Said he didn't inherit the correct items
+Isolated,P825,S806,3,experiment_error,valid,NA
+Isolated,P825,S825,4,experiment_error,valid,NA
+Isolated,P767,S733,1,incomplete_sessions,valid,NA
+Isolated,P767,S767,2,incomplete_sessions,valid,NA
+Isolated,P811,S741,1,incomplete_sessions,valid,NA
+Isolated,P811,S772,2,incomplete_sessions,valid,NA
+Isolated,P811,S811,3,incomplete_sessions,bad_compliance,On part three was extremely tired
+Isolated,P816,S729,1,valid,valid,NA
+Isolated,P816,S760,2,valid,valid,NA
+Isolated,P816,S801,3,valid,valid,NA
+Isolated,P816,S816,4,valid,valid,NA
+Isolated,P817,S728,1,valid,valid,NA
+Isolated,P817,S757,2,valid,valid,NA
+Isolated,P817,S800,3,valid,valid,NA
+Isolated,P817,S817,4,valid,valid,NA
+Isolated,P818,S730,1,valid,valid,NA
+Isolated,P818,S759,2,valid,valid,NA
+Isolated,P818,S814,3,valid,valid,NA
+Isolated,P818,S818,4,valid,valid,NA
+Isolated,P819,S731,1,valid,valid,NA
+Isolated,P819,S756,2,valid,valid,NA
+Isolated,P819,S815,3,valid,valid,NA
+Isolated,P819,S819,4,valid,valid,NA
+Isolated,P820,S732,1,valid,valid,NA
+Isolated,P820,S761,2,valid,valid,NA
+Isolated,P820,S803,3,valid,valid,NA
+Isolated,P820,S820,4,valid,valid,NA
+Isolated,P822,S739,1,bad_compliance,valid,NA
+Isolated,P822,S771,2,bad_compliance,valid,NA
+Isolated,P822,S804,3,bad_compliance,bad_compliance,On her phone periodically in Part 3.
+Isolated,P822,S822,4,bad_compliance,valid,NA
+Isolated,P824,S734,1,valid,valid,NA
+Isolated,P824,S763,2,valid,valid,NA
+Isolated,P824,S805,3,valid,valid,NA
+Isolated,P824,S824,4,valid,valid,NA
+Isolated,P825,S465,1,valid,valid,NA
+Isolated,P825,S492,2,valid,valid,NA
+Isolated,P825,S515,3,valid,valid,NA
+Isolated,P825,S533,4,valid,valid,NA
+Isolated,P826,S736,1,valid,valid,NA
+Isolated,P826,S768,2,valid,valid,NA
+Isolated,P826,S807,3,valid,valid,NA
+Isolated,P826,S826,4,valid,valid,NA
+Isolated,P827,S735,1,valid,valid,NA
+Isolated,P827,S774,2,valid,valid,NA
+Isolated,P827,S812,3,valid,valid,NA
+Isolated,P827,S827,4,valid,valid,NA
+Isolated,P828,S743,1,incomplete_sessions,valid,NA
+Isolated,P828,S770,2,incomplete_sessions,valid,NA
+Isolated,P828,S828,3,incomplete_sessions,valid,NA
+Isolated,P829,S738,1,bad_compliance,bad_compliance,Seemed to give up
+Isolated,P829,S769,2,bad_compliance,bad_compliance,Seemed to give up
+Isolated,P829,S810,3,bad_compliance,bad_compliance,Seemed to give up
+Isolated,P829,S829,4,bad_compliance,bad_compliance,Seemed to give up
+Isolated,P830,S745,1,valid,valid,NA
+Isolated,P830,S773,2,valid,valid,NA
+Isolated,P830,S802,3,valid,valid,NA
+Isolated,P830,S830,4,valid,valid,NA
+Isolated,P831,S742,1,valid,valid,NA
+Isolated,P831,S776,2,valid,valid,NA
+Isolated,P831,S809,3,valid,valid,NA
+Isolated,P831,S831,4,valid,valid,NA
+Isolated,P832,S744,1,valid,valid,NA
+Isolated,P832,S775,2,valid,valid,NA
+Isolated,P832,S813,3,valid,valid,NA
+Isolated,P832,S832,4,valid,valid,NA
+Isolated,P839,S746,1,valid,valid,NA
+Isolated,P839,S766,2,valid,valid,NA
+Isolated,P839,S821,3,valid,valid,NA
+Isolated,P839,S839,4,valid,valid,NA
+Isolated,P840,S764,1,bad_compliance,valid,NA
+Isolated,P840,S808,2,bad_compliance,valid,NA
+Isolated,P840,S823,3,bad_compliance,valid,NA
+Isolated,P840,S840,4,bad_compliance,bad_compliance,On her phone in Pt 4
