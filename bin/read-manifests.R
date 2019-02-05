@@ -1,3 +1,19 @@
-source("data-raw/read-manifests-iterated-problem-solving.R")
-source("data-raw/read-manifests-team-structures.R")
-source("data-raw/read-manifests-inherited-instructions.R")
+# Exp1
+Exp1Manifest <- read_csv("data-raw/manifest-exp1.csv")
+use_data(Exp1Manifest, overwrite = TRUE)
+
+# Experiment 50min
+Manifest50min <- read_csv("data-raw/manifest-50min.csv")
+use_data(Manifest50min, overwrite = TRUE)
+
+# Experiment SelfOther
+ManifestSelfOther <- read_csv("data-raw/manifest-selfother.csv")
+use_data(ManifestSelfOther, overwrite = TRUE)
+
+# Experiment Scalability
+ManifestScalability <- read_csv("data-raw/manifest-scalability.csv")
+use_data(ManifestScalability, overwrite = TRUE)
+
+# Inherited instructions experiment
+ManifestInstructions <- read_csv("data-raw/manifest-instructions.csv")
+use_data(ManifestInstructions, overwrite = TRUE)
