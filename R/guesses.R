@@ -273,6 +273,6 @@ accumulate_session_score <- function(Guesses) {
     arrange(SessionTime) %>%
     group_by(SessionID) %>%
     mutate(TotalSessionScore = cumsum(SessionScore)) %>%
-    replace_na(list(TotalSessionScore = 0)) %>%
+    tidyr::replace_na(list(TotalSessionScore = 0)) %>%
     ungroup()
 }
