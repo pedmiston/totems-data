@@ -9,7 +9,7 @@
 #' SessionIX = 1
 #'
 #' For Isolated players, who are assigned multiple values for ID_Player:
-#' PlayerID = "P" + max(ID_Player)
+#' PlayerID = "P" + min(ID_Player)
 #' PlayerIX = 1
 #' SessionIX = 1:4?
 replace_id_player <- function(frame) {
@@ -33,7 +33,7 @@ replace_id_player <- function(frame) {
     group_by(TeamID) %>%
     arrange(ID_Player) %>%
     mutate(
-      PlayerID = paste0("P", max(ID_Player)),
+      PlayerID = paste0("P", min(ID_Player)),
       PlayerIX = 1,
       SessionID = paste0("S", ID_Player),
       SessionIX = 1:n()
