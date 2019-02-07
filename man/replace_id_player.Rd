@@ -17,7 +17,7 @@ PlayerIX = 1:4?
 SessionIX = 1
 
 For Isolated players, who are assigned multiple values for ID_Player:
-PlayerID = "P" + max(ID_Player)
+PlayerID = "P" + min(ID_Player)
 PlayerIX = 1
 SessionIX = 1:4?
 }

@@ -221,233 +221,233 @@ Diachronic,P154,S154,1,valid,valid,NA
 Diachronic,P199,S199,2,valid,valid,NA
 Diachronic,P224,S224,3,valid,valid,NA
 Diachronic,P299,S299,4,valid,valid,NA
-Isolated,P371,S352,1,incomplete_sessions,valid,NA
-Isolated,P371,S371,2,incomplete_sessions,valid,NA
-Isolated,P389,S347,1,valid,valid,NA
-Isolated,P389,S366,2,valid,valid,NA
-Isolated,P389,S379,3,valid,valid,NA
-Isolated,P391,S391,4,valid,valid,NA
-Isolated,P397,S350,1,valid,valid,NA
-Isolated,P397,S372,2,valid,valid,NA
-Isolated,P397,S378,3,valid,valid,NA
-Isolated,P397,S397,4,valid,valid,NA
-Isolated,P399,S353,1,valid,valid,NA
-Isolated,P399,S370,2,valid,valid,NA
-Isolated,P399,S381,3,valid,valid,NA
-Isolated,P399,S399,4,valid,valid,NA
-Isolated,P400,S354,1,valid,valid,NA
-Isolated,P400,S367,2,valid,valid,NA
-Isolated,P400,S382,3,valid,valid,NA
-Isolated,P400,S400,4,valid,valid,NA
-Isolated,P401,S351,1,valid,valid,NA
-Isolated,P401,S374,2,valid,valid,NA
-Isolated,P401,S385,3,valid,valid,NA
-Isolated,P401,S401,4,valid,valid,NA
-Isolated,P405,S355,1,bad_compliance,bad_compliance,left early forgot they had to be somewhere
-Isolated,P405,S375,2,bad_compliance,bad_compliance,left early forgot they had to be somewhere
-Isolated,P405,S384,3,bad_compliance,bad_compliance,left early forgot they had to be somewhere
-Isolated,P405,S405,4,bad_compliance,bad_compliance,left early forgot they had to be somewhere
-Isolated,P415,S346,1,valid,valid,
-Isolated,P415,S365,2,valid,valid,
-Isolated,P415,S398,3,valid,valid,
-Isolated,P415,S415,4,valid,valid,
-Isolated,P416,S348,1,experiment_error,valid,exp error in part4
-Isolated,P416,S368,2,experiment_error,valid,exp error in part4
-Isolated,P416,S383,3,experiment_error,valid,exp error in part4
-Isolated,P416,S416,4,experiment_error,experiment_error,exp error in part4
-Isolated,P419,S349,1,experiment_error,valid,exp error in part4
-Isolated,P419,S373,2,experiment_error,valid,exp error in part4
-Isolated,P419,S380,3,experiment_error,valid,exp error in part4
-Isolated,P419,S419,4,experiment_error,experiment_error,exp error in part4
-Isolated,P420,S402,1,incomplete_sessions,valid,NA
-Isolated,P420,S420,2,incomplete_sessions,bad_compliance,Part 2 was only present for about 15 minutes
-Isolated,P449,S387,1,valid,valid,NA
-Isolated,P449,S417,2,valid,valid,NA
-Isolated,P449,S437,3,valid,valid,NA
-Isolated,P449,S449,4,valid,valid,NA
-Isolated,P450,S396,1,valid,valid,NA
-Isolated,P450,S418,2,valid,valid,NA
-Isolated,P450,S438,3,valid,valid,NA
-Isolated,P450,S450,4,valid,valid,NA
-Isolated,P452,S411,1,valid,valid,NA
-Isolated,P452,S422,2,valid,valid,NA
-Isolated,P452,S439,3,valid,valid,NA
-Isolated,P452,S452,4,valid,valid,NA
-Isolated,P455,S386,1,valid,valid,NA
-Isolated,P455,S421,2,valid,valid,NA
-Isolated,P455,S436,3,valid,valid,NA
-Isolated,P455,S455,4,valid,valid,NA
-Isolated,P456,S410,1,valid,valid,NA
-Isolated,P456,S423,2,valid,valid,NA
-Isolated,P456,S440,3,valid,valid,NA
-Isolated,P456,S456,4,valid,valid,NA
-Isolated,P457,S406,1,valid,valid,NA
-Isolated,P457,S426,2,valid,valid,NA
-Isolated,P457,S441,3,valid,valid,NA
-Isolated,P457,S457,4,valid,valid,NA
-Isolated,P458,S407,1,valid,valid,NA
-Isolated,P458,S425,2,valid,valid,NA
-Isolated,P458,S442,3,valid,valid,NA
-Isolated,P458,S458,4,valid,valid,NA
-Isolated,P460,S409,1,bad_compliance,valid,NA
-Isolated,P460,S424,2,bad_compliance,valid,NA
-Isolated,P460,S443,3,bad_compliance,bad_compliance,Part 3 tired and gave up
-Isolated,P460,S460,4,bad_compliance,valid,NA
-Isolated,P464,S404,1,experiment_error,valid,NA
-Isolated,P464,S428,2,experiment_error,experiment_error,Power went out after 15 min
-Isolated,P464,S448,3,experiment_error,experiment_error,NA
-Isolated,P464,S464,4,experiment_error,valid,NA
-Isolated,P473,S403,1,experiment_error,valid,NA
-Isolated,P473,S427,2,experiment_error,experiment_error,Power went out after 15 min
-Isolated,P473,S454,3,experiment_error,experiment_error,Did not inherit data from Part 2
-Isolated,P473,S473,4,experiment_error,experiment_error,valid
-Isolated,P508,S388,1,experiment_error,valid,NA
-Isolated,P508,S447,2,experiment_error,experiment_error,Power went out after 15 min
-Isolated,P508,S474,3,experiment_error,valid,NA
-Isolated,P508,S508,4,experiment_error,valid,NA
-Isolated,P520,S469,1,valid,valid,NA
-Isolated,P520,S495,2,valid,valid,NA
-Isolated,P520,S516,3,valid,valid,NA
-Isolated,P520,S520,4,valid,valid,NA
-Isolated,P521,S451,1,valid,valid,NA
-Isolated,P521,S486,2,valid,valid,NA
-Isolated,P521,S509,3,valid,valid,NA
-Isolated,P521,S521,4,valid,valid,NA
-Isolated,P522,S472,1,valid,valid,NA
-Isolated,P522,S485,2,valid,valid,NA
-Isolated,P522,S512,3,valid,valid,NA
-Isolated,P522,S522,4,valid,valid,NA
-Isolated,P523,S453,1,valid,valid,NA
-Isolated,P523,S487,2,valid,valid,NA
-Isolated,P523,S510,3,valid,valid,NA
-Isolated,P523,S523,4,valid,valid,NA
-Isolated,P525,S408,1,valid,valid,NA
-Isolated,P525,S429,2,valid,valid,NA
-Isolated,P525,S470,3,valid,valid,NA
-Isolated,P525,S525,4,valid,valid,NA
-Isolated,P527,S462,1,bad_compliance,bad_compliance,left part 1 early
-Isolated,P527,S490,2,bad_compliance,valid,NA
-Isolated,P527,S519,3,bad_compliance,valid,NA
-Isolated,P527,S527,4,bad_compliance,valid,NA
-Isolated,P529,S461,1,valid,valid,NA
-Isolated,P529,S491,2,valid,valid,NA
-Isolated,P529,S514,3,valid,valid,NA
-Isolated,P529,S529,4,valid,valid,NA
-Isolated,P530,S463,1,bad_compliance,bad_compliance,left part 1 early
-Isolated,P530,S488,2,bad_compliance,valid,left part 1 early
-Isolated,P530,S511,3,bad_compliance,valid,left part 1 early
-Isolated,P530,S530,4,bad_compliance,valid,left part 1 early
-Isolated,P531,S466,1,valid,valid,NA
-Isolated,P531,S484,2,valid,valid,NA
-Isolated,P531,S513,3,valid,valid,NA
-Isolated,P531,S531,4,valid,valid,NA
-Isolated,P532,S467,1,valid,valid,NA
-Isolated,P532,S493,2,valid,valid,NA
-Isolated,P532,S518,3,valid,valid,NA
-Isolated,P532,S532,4,valid,valid,NA
-Isolated,P534,S468,1,valid,valid,NA
-Isolated,P534,S494,2,valid,valid,NA
-Isolated,P534,S517,3,valid,valid,NA
-Isolated,P534,S534,4,valid,valid,NA
-Isolated,P568,S536,1,valid,valid,NA
-Isolated,P568,S545,2,valid,valid,NA
-Isolated,P568,S551,3,valid,valid,NA
-Isolated,P568,S568,4,valid,valid,NA
-Isolated,P569,S524,1,valid,valid,NA
-Isolated,P569,S548,2,valid,valid,NA
-Isolated,P569,S553,3,valid,valid,NA
-Isolated,P569,S569,4,valid,valid,NA
-Isolated,P570,S526,1,valid,valid,NA
-Isolated,P570,S546,2,valid,valid,NA
-Isolated,P570,S552,3,valid,valid,NA
-Isolated,P570,S570,4,valid,valid,NA
-Isolated,P571,S528,1,valid,valid,NA
-Isolated,P571,S549,2,valid,valid,NA
-Isolated,P571,S554,3,valid,valid,NA
-Isolated,P571,S571,4,valid,valid,NA
-Isolated,P585,S547,1,bad_compliance,bad_compliance,got frustrated at part1
-Isolated,P585,S550,2,bad_compliance,valid,got frustrated at part1
-Isolated,P585,S567,3,bad_compliance,valid,got frustrated at part1
-Isolated,P585,S585,4,bad_compliance,valid,got frustrated at part1
-Isolated,P617,S535,1,valid,valid,NA
-Isolated,P617,S572,2,valid,valid,NA
-Isolated,P617,S597,3,valid,valid,NA
-Isolated,P617,S617,4,valid,valid,NA
-Isolated,P762,S740,1,incomplete_sessions,bad_compliance,Left pt 1 early for class
-Isolated,P762,S762,2,incomplete_sessions,valid,NA
-Isolated,P765,S737,1,experiment_error,valid,NA
-Isolated,P765,S765,2,experiment_error,experiment_error,Said he didn't inherit the correct items
-Isolated,P825,S806,3,experiment_error,valid,NA
-Isolated,P825,S825,4,experiment_error,valid,NA
-Isolated,P767,S733,1,incomplete_sessions,valid,NA
-Isolated,P767,S767,2,incomplete_sessions,valid,NA
-Isolated,P811,S741,1,incomplete_sessions,valid,NA
-Isolated,P811,S772,2,incomplete_sessions,valid,NA
-Isolated,P811,S811,3,incomplete_sessions,bad_compliance,On part three was extremely tired
-Isolated,P816,S729,1,valid,valid,NA
-Isolated,P816,S760,2,valid,valid,NA
-Isolated,P816,S801,3,valid,valid,NA
-Isolated,P816,S816,4,valid,valid,NA
-Isolated,P817,S728,1,valid,valid,NA
-Isolated,P817,S757,2,valid,valid,NA
-Isolated,P817,S800,3,valid,valid,NA
-Isolated,P817,S817,4,valid,valid,NA
-Isolated,P818,S730,1,valid,valid,NA
-Isolated,P818,S759,2,valid,valid,NA
-Isolated,P818,S814,3,valid,valid,NA
-Isolated,P818,S818,4,valid,valid,NA
-Isolated,P819,S731,1,valid,valid,NA
-Isolated,P819,S756,2,valid,valid,NA
-Isolated,P819,S815,3,valid,valid,NA
-Isolated,P819,S819,4,valid,valid,NA
-Isolated,P820,S732,1,valid,valid,NA
-Isolated,P820,S761,2,valid,valid,NA
-Isolated,P820,S803,3,valid,valid,NA
-Isolated,P820,S820,4,valid,valid,NA
-Isolated,P822,S739,1,bad_compliance,valid,NA
-Isolated,P822,S771,2,bad_compliance,valid,NA
-Isolated,P822,S804,3,bad_compliance,bad_compliance,On her phone periodically in Part 3.
-Isolated,P822,S822,4,bad_compliance,valid,NA
-Isolated,P824,S734,1,valid,valid,NA
-Isolated,P824,S763,2,valid,valid,NA
-Isolated,P824,S805,3,valid,valid,NA
-Isolated,P824,S824,4,valid,valid,NA
-Isolated,P825,S465,1,valid,valid,NA
-Isolated,P825,S492,2,valid,valid,NA
-Isolated,P825,S515,3,valid,valid,NA
-Isolated,P825,S533,4,valid,valid,NA
-Isolated,P826,S736,1,valid,valid,NA
-Isolated,P826,S768,2,valid,valid,NA
-Isolated,P826,S807,3,valid,valid,NA
-Isolated,P826,S826,4,valid,valid,NA
-Isolated,P827,S735,1,valid,valid,NA
-Isolated,P827,S774,2,valid,valid,NA
-Isolated,P827,S812,3,valid,valid,NA
-Isolated,P827,S827,4,valid,valid,NA
-Isolated,P828,S743,1,incomplete_sessions,valid,NA
-Isolated,P828,S770,2,incomplete_sessions,valid,NA
-Isolated,P828,S828,3,incomplete_sessions,valid,NA
-Isolated,P829,S738,1,bad_compliance,bad_compliance,Seemed to give up
-Isolated,P829,S769,2,bad_compliance,bad_compliance,Seemed to give up
-Isolated,P829,S810,3,bad_compliance,bad_compliance,Seemed to give up
-Isolated,P829,S829,4,bad_compliance,bad_compliance,Seemed to give up
-Isolated,P830,S745,1,valid,valid,NA
-Isolated,P830,S773,2,valid,valid,NA
-Isolated,P830,S802,3,valid,valid,NA
-Isolated,P830,S830,4,valid,valid,NA
-Isolated,P831,S742,1,valid,valid,NA
-Isolated,P831,S776,2,valid,valid,NA
-Isolated,P831,S809,3,valid,valid,NA
-Isolated,P831,S831,4,valid,valid,NA
-Isolated,P832,S744,1,valid,valid,NA
-Isolated,P832,S775,2,valid,valid,NA
-Isolated,P832,S813,3,valid,valid,NA
-Isolated,P832,S832,4,valid,valid,NA
-Isolated,P839,S746,1,valid,valid,NA
-Isolated,P839,S766,2,valid,valid,NA
-Isolated,P839,S821,3,valid,valid,NA
-Isolated,P839,S839,4,valid,valid,NA
-Isolated,P840,S764,1,bad_compliance,valid,NA
-Isolated,P840,S808,2,bad_compliance,valid,NA
-Isolated,P840,S823,3,bad_compliance,valid,NA
-Isolated,P840,S840,4,bad_compliance,bad_compliance,On her phone in Pt 4
+Isolated,P352,S352,1,incomplete_sessions,valid,NA
+Isolated,P352,S371,2,incomplete_sessions,valid,NA
+Isolated,P347,S347,1,valid,valid,NA
+Isolated,P347,S366,2,valid,valid,NA
+Isolated,P347,S379,3,valid,valid,NA
+Isolated,P347,S391,4,valid,valid,NA
+Isolated,P350,S350,1,valid,valid,NA
+Isolated,P350,S372,2,valid,valid,NA
+Isolated,P350,S378,3,valid,valid,NA
+Isolated,P350,S397,4,valid,valid,NA
+Isolated,P353,S353,1,valid,valid,NA
+Isolated,P353,S370,2,valid,valid,NA
+Isolated,P353,S381,3,valid,valid,NA
+Isolated,P353,S399,4,valid,valid,NA
+Isolated,P354,S354,1,valid,valid,NA
+Isolated,P354,S367,2,valid,valid,NA
+Isolated,P354,S382,3,valid,valid,NA
+Isolated,P354,S400,4,valid,valid,NA
+Isolated,P351,S351,1,valid,valid,NA
+Isolated,P351,S374,2,valid,valid,NA
+Isolated,P351,S385,3,valid,valid,NA
+Isolated,P351,S401,4,valid,valid,NA
+Isolated,P355,S355,1,bad_compliance,bad_compliance,left early forgot they had to be somewhere
+Isolated,P355,S375,2,bad_compliance,bad_compliance,left early forgot they had to be somewhere
+Isolated,P355,S384,3,bad_compliance,bad_compliance,left early forgot they had to be somewhere
+Isolated,P355,S405,4,bad_compliance,bad_compliance,left early forgot they had to be somewhere
+Isolated,P346,S346,1,valid,valid,
+Isolated,P346,S365,2,valid,valid,
+Isolated,P346,S398,3,valid,valid,
+Isolated,P346,S415,4,valid,valid,
+Isolated,P348,S348,1,experiment_error,valid,exp error in part4
+Isolated,P348,S368,2,experiment_error,valid,exp error in part4
+Isolated,P348,S383,3,experiment_error,valid,exp error in part4
+Isolated,P348,S416,4,experiment_error,experiment_error,exp error in part4
+Isolated,P349,S349,1,experiment_error,valid,exp error in part4
+Isolated,P349,S373,2,experiment_error,valid,exp error in part4
+Isolated,P349,S380,3,experiment_error,valid,exp error in part4
+Isolated,P349,S419,4,experiment_error,experiment_error,exp error in part4
+Isolated,P402,S402,1,incomplete_sessions,valid,NA
+Isolated,P402,S420,2,incomplete_sessions,bad_compliance,Part 2 was only present for about 15 minutes
+Isolated,P387,S387,1,valid,valid,NA
+Isolated,P387,S417,2,valid,valid,NA
+Isolated,P387,S437,3,valid,valid,NA
+Isolated,P387,S449,4,valid,valid,NA
+Isolated,P396,S396,1,valid,valid,NA
+Isolated,P396,S418,2,valid,valid,NA
+Isolated,P396,S438,3,valid,valid,NA
+Isolated,P396,S450,4,valid,valid,NA
+Isolated,P411,S411,1,valid,valid,NA
+Isolated,P411,S422,2,valid,valid,NA
+Isolated,P411,S439,3,valid,valid,NA
+Isolated,P411,S452,4,valid,valid,NA
+Isolated,P386,S386,1,valid,valid,NA
+Isolated,P386,S421,2,valid,valid,NA
+Isolated,P386,S436,3,valid,valid,NA
+Isolated,P386,S455,4,valid,valid,NA
+Isolated,P410,S410,1,valid,valid,NA
+Isolated,P410,S423,2,valid,valid,NA
+Isolated,P410,S440,3,valid,valid,NA
+Isolated,P410,S456,4,valid,valid,NA
+Isolated,P406,S406,1,valid,valid,NA
+Isolated,P406,S426,2,valid,valid,NA
+Isolated,P406,S441,3,valid,valid,NA
+Isolated,P406,S457,4,valid,valid,NA
+Isolated,P407,S407,1,valid,valid,NA
+Isolated,P407,S425,2,valid,valid,NA
+Isolated,P407,S442,3,valid,valid,NA
+Isolated,P407,S458,4,valid,valid,NA
+Isolated,P409,S409,1,bad_compliance,valid,NA
+Isolated,P409,S424,2,bad_compliance,valid,NA
+Isolated,P409,S443,3,bad_compliance,bad_compliance,Part 3 tired and gave up
+Isolated,P409,S460,4,bad_compliance,valid,NA
+Isolated,P404,S404,1,experiment_error,valid,NA
+Isolated,P404,S428,2,experiment_error,experiment_error,Power went out after 15 min
+Isolated,P404,S448,3,experiment_error,experiment_error,NA
+Isolated,P404,S464,4,experiment_error,valid,NA
+Isolated,P403,S403,1,experiment_error,valid,NA
+Isolated,P403,S427,2,experiment_error,experiment_error,Power went out after 15 min
+Isolated,P403,S454,3,experiment_error,experiment_error,Did not inherit data from Part 2
+Isolated,P403,S473,4,experiment_error,experiment_error,valid
+Isolated,P388,S388,1,experiment_error,valid,NA
+Isolated,P388,S447,2,experiment_error,experiment_error,Power went out after 15 min
+Isolated,P388,S474,3,experiment_error,valid,NA
+Isolated,P388,S508,4,experiment_error,valid,NA
+Isolated,P469,S469,1,valid,valid,NA
+Isolated,P469,S495,2,valid,valid,NA
+Isolated,P469,S516,3,valid,valid,NA
+Isolated,P469,S520,4,valid,valid,NA
+Isolated,P451,S451,1,valid,valid,NA
+Isolated,P451,S486,2,valid,valid,NA
+Isolated,P451,S509,3,valid,valid,NA
+Isolated,P451,S521,4,valid,valid,NA
+Isolated,P472,S472,1,valid,valid,NA
+Isolated,P472,S485,2,valid,valid,NA
+Isolated,P472,S512,3,valid,valid,NA
+Isolated,P472,S522,4,valid,valid,NA
+Isolated,P453,S453,1,valid,valid,NA
+Isolated,P453,S487,2,valid,valid,NA
+Isolated,P453,S510,3,valid,valid,NA
+Isolated,P453,S523,4,valid,valid,NA
+Isolated,P408,S408,1,valid,valid,NA
+Isolated,P408,S429,2,valid,valid,NA
+Isolated,P408,S470,3,valid,valid,NA
+Isolated,P408,S525,4,valid,valid,NA
+Isolated,P462,S462,1,bad_compliance,bad_compliance,left part 1 early
+Isolated,P462,S490,2,bad_compliance,valid,NA
+Isolated,P462,S519,3,bad_compliance,valid,NA
+Isolated,P462,S527,4,bad_compliance,valid,NA
+Isolated,P461,S461,1,valid,valid,NA
+Isolated,P461,S491,2,valid,valid,NA
+Isolated,P461,S514,3,valid,valid,NA
+Isolated,P461,S529,4,valid,valid,NA
+Isolated,P463,S463,1,bad_compliance,bad_compliance,left part 1 early
+Isolated,P463,S488,2,bad_compliance,valid,left part 1 early
+Isolated,P463,S511,3,bad_compliance,valid,left part 1 early
+Isolated,P463,S530,4,bad_compliance,valid,left part 1 early
+Isolated,P466,S466,1,valid,valid,NA
+Isolated,P466,S484,2,valid,valid,NA
+Isolated,P466,S513,3,valid,valid,NA
+Isolated,P466,S531,4,valid,valid,NA
+Isolated,P467,S467,1,valid,valid,NA
+Isolated,P467,S493,2,valid,valid,NA
+Isolated,P467,S518,3,valid,valid,NA
+Isolated,P467,S532,4,valid,valid,NA
+Isolated,P468,S468,1,valid,valid,NA
+Isolated,P468,S494,2,valid,valid,NA
+Isolated,P468,S517,3,valid,valid,NA
+Isolated,P468,S534,4,valid,valid,NA
+Isolated,P536,S536,1,valid,valid,NA
+Isolated,P536,S545,2,valid,valid,NA
+Isolated,P536,S551,3,valid,valid,NA
+Isolated,P536,S568,4,valid,valid,NA
+Isolated,P524,S524,1,valid,valid,NA
+Isolated,P524,S548,2,valid,valid,NA
+Isolated,P524,S553,3,valid,valid,NA
+Isolated,P524,S569,4,valid,valid,NA
+Isolated,P526,S526,1,valid,valid,NA
+Isolated,P526,S546,2,valid,valid,NA
+Isolated,P526,S552,3,valid,valid,NA
+Isolated,P526,S570,4,valid,valid,NA
+Isolated,P528,S528,1,valid,valid,NA
+Isolated,P528,S549,2,valid,valid,NA
+Isolated,P528,S554,3,valid,valid,NA
+Isolated,P528,S571,4,valid,valid,NA
+Isolated,P547,S547,1,bad_compliance,bad_compliance,got frustrated at part1
+Isolated,P547,S550,2,bad_compliance,valid,got frustrated at part1
+Isolated,P547,S567,3,bad_compliance,valid,got frustrated at part1
+Isolated,P547,S585,4,bad_compliance,valid,got frustrated at part1
+Isolated,P535,S535,1,valid,valid,NA
+Isolated,P535,S572,2,valid,valid,NA
+Isolated,P535,S597,3,valid,valid,NA
+Isolated,P535,S617,4,valid,valid,NA
+Isolated,P740,S740,1,incomplete_sessions,bad_compliance,Left pt 1 early for class
+Isolated,P740,S762,2,incomplete_sessions,valid,NA
+Isolated,P737,S737,1,experiment_error,valid,NA
+Isolated,P737,S765,2,experiment_error,experiment_error,Said he didn't inherit the correct items
+Isolated,P737,S806,3,experiment_error,valid,NA
+Isolated,P737,S825,4,experiment_error,valid,NA
+Isolated,P733,S733,1,incomplete_sessions,valid,NA
+Isolated,P733,S767,2,incomplete_sessions,valid,NA
+Isolated,P741,S741,1,incomplete_sessions,valid,NA
+Isolated,P741,S772,2,incomplete_sessions,valid,NA
+Isolated,P741,S811,3,incomplete_sessions,bad_compliance,On part three was extremely tired
+Isolated,P729,S729,1,valid,valid,NA
+Isolated,P729,S760,2,valid,valid,NA
+Isolated,P729,S801,3,valid,valid,NA
+Isolated,P729,S816,4,valid,valid,NA
+Isolated,P728,S728,1,valid,valid,NA
+Isolated,P728,S757,2,valid,valid,NA
+Isolated,P728,S800,3,valid,valid,NA
+Isolated,P728,S817,4,valid,valid,NA
+Isolated,P730,S730,1,valid,valid,NA
+Isolated,P730,S759,2,valid,valid,NA
+Isolated,P730,S814,3,valid,valid,NA
+Isolated,P730,S818,4,valid,valid,NA
+Isolated,P731,S731,1,valid,valid,NA
+Isolated,P731,S756,2,valid,valid,NA
+Isolated,P731,S815,3,valid,valid,NA
+Isolated,P731,S819,4,valid,valid,NA
+Isolated,P732,S732,1,valid,valid,NA
+Isolated,P732,S761,2,valid,valid,NA
+Isolated,P732,S803,3,valid,valid,NA
+Isolated,P732,S820,4,valid,valid,NA
+Isolated,P739,S739,1,bad_compliance,valid,NA
+Isolated,P739,S771,2,bad_compliance,valid,NA
+Isolated,P739,S804,3,bad_compliance,bad_compliance,On her phone periodically in Part 3.
+Isolated,P739,S822,4,bad_compliance,valid,NA
+Isolated,P734,S734,1,valid,valid,NA
+Isolated,P734,S763,2,valid,valid,NA
+Isolated,P734,S805,3,valid,valid,NA
+Isolated,P734,S824,4,valid,valid,NA
+Isolated,P465,S465,1,valid,valid,NA
+Isolated,P465,S492,2,valid,valid,NA
+Isolated,P465,S515,3,valid,valid,NA
+Isolated,P465,S533,4,valid,valid,NA
+Isolated,P736,S736,1,valid,valid,NA
+Isolated,P736,S768,2,valid,valid,NA
+Isolated,P736,S807,3,valid,valid,NA
+Isolated,P736,S826,4,valid,valid,NA
+Isolated,P735,S735,1,valid,valid,NA
+Isolated,P735,S774,2,valid,valid,NA
+Isolated,P735,S812,3,valid,valid,NA
+Isolated,P735,S827,4,valid,valid,NA
+Isolated,P743,S743,1,incomplete_sessions,valid,NA
+Isolated,P743,S770,2,incomplete_sessions,valid,NA
+Isolated,P743,S828,3,incomplete_sessions,valid,NA
+Isolated,P738,S738,1,bad_compliance,bad_compliance,Seemed to give up
+Isolated,P738,S769,2,bad_compliance,bad_compliance,Seemed to give up
+Isolated,P738,S810,3,bad_compliance,bad_compliance,Seemed to give up
+Isolated,P738,S829,4,bad_compliance,bad_compliance,Seemed to give up
+Isolated,P745,S745,1,valid,valid,NA
+Isolated,P745,S773,2,valid,valid,NA
+Isolated,P745,S802,3,valid,valid,NA
+Isolated,P745,S830,4,valid,valid,NA
+Isolated,P742,S742,1,valid,valid,NA
+Isolated,P742,S776,2,valid,valid,NA
+Isolated,P742,S809,3,valid,valid,NA
+Isolated,P742,S831,4,valid,valid,NA
+Isolated,P744,S744,1,valid,valid,NA
+Isolated,P744,S775,2,valid,valid,NA
+Isolated,P744,S813,3,valid,valid,NA
+Isolated,P744,S832,4,valid,valid,NA
+Isolated,P746,S746,1,valid,valid,NA
+Isolated,P746,S766,2,valid,valid,NA
+Isolated,P746,S821,3,valid,valid,NA
+Isolated,P746,S839,4,valid,valid,NA
+Isolated,P764,S764,1,bad_compliance,valid,NA
+Isolated,P764,S808,2,bad_compliance,valid,NA
+Isolated,P764,S823,3,bad_compliance,valid,NA
+Isolated,P764,S840,4,bad_compliance,bad_compliance,On her phone in Pt 4
